@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1c3a2e">
+<title>Rumanía en familia · 27 ago – 5 sep</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bosque:#1c3a2e;      /* verde bosque profundo */
+    --bosque2:#274d3d;
+    --crema:#f3ead9;
+    --crema-solid:#f4ecdc;
+    --dorado:#c99a3f;      /* dorado castillo */
+    --dorado-claro:#e3c179;
+    --rojo:#a8322a;        /* rojo folk rumano */
+    --tinta:#20180f;
+    --tinta-suave:#4a3f30;
+    --linea:rgba(32,24,15,.14);
+    --gris:#8f8677;                 /* backup: texto */
+    --gris-bg:rgba(32,24,15,.045);  /* backup: fondo */
+
+    /* Fallbacks: si no hay internet y no cargan las webfonts,
+       el archivo sigue viéndose bien con tipografías del sistema. */
+    --serif:'Fraunces','Playfair Display',Georgia,'Times New Roman',serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--crema-solid);
+    color:var(--tinta);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 80% at 80% 0%, rgba(201,154,63,.22), transparent 60%),
+      linear-gradient(160deg,#1c3a2e 0%, rgba(22,48,37,.9) 40%, #122a20 100%),
+      #163025;
+    background-color:#163025;
+    color:var(--crema-solid);
+    padding:64px 0 54px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:3px solid var(--dorado);
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:34px;
+    background-image:repeating-linear-gradient(45deg,var(--dorado) 0 14px,transparent 14px 28px);
+    opacity:.16;
+  }
+  .eyebrow{
+    font-family:var(--sans);font-weight:600;letter-spacing:.32em;text-transform:uppercase;
+    font-size:12px;color:var(--dorado-claro);margin-bottom:20px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:900;font-size:clamp(44px,9vw,78px);
+    line-height:.98;letter-spacing:-.02em;margin-bottom:8px;
+  }
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--dorado-claro);}
+  .hero .sub{
+    font-family:var(--serif);font-size:clamp(17px,3vw,21px);font-weight:400;
+    font-style:italic;color:#d8e4da;margin-top:14px;max-width:44ch;
+  }
+  .hero .meta{
+    margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .chip{
+    background:rgba(243,234,217,.1);border:1px solid rgba(227,193,121,.4);
+    color:var(--crema-solid);padding:8px 15px;border-radius:100px;font-size:13.5px;
+    font-weight:500;backdrop-filter:blur(4px);
+  }
+  .chip b{color:var(--dorado-claro);font-weight:600;}
+
+  /* ---------- SECCIONES ---------- */
+  section{padding:52px 0;}
+  .band{border-bottom:1px solid var(--linea);}
+  .sec-label{
+    font-family:var(--sans);font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+    font-size:11.5px;color:var(--rojo);margin-bottom:10px;
+  }
+  h2{
+    font-family:var(--serif);font-weight:600;font-size:clamp(27px,5vw,36px);
+    letter-spacing:-.01em;line-height:1.08;margin-bottom:8px;color:var(--bosque);
+  }
+  .lead{color:var(--tinta-suave);font-size:16px;max-width:60ch;margin-bottom:6px;}
+
+  /* ---------- MAPA RUTA ---------- */
+  .ruta{
+    margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;
+    font-family:var(--serif);font-size:15px;
+  }
+  .ruta span{background:#fff;border:1px solid var(--linea);padding:6px 13px;border-radius:8px;
+    font-weight:500;color:var(--bosque);white-space:nowrap;}
+  .ruta .arw{color:var(--dorado);font-weight:700;padding:0 2px;font-family:var(--sans);}
+  .ruta .peak{background:var(--bosque);color:var(--crema-solid);border-color:var(--bosque);}
+
+  /* ---------- TIMELINE DÍAS ---------- */
+  .days{margin-top:12px;}
+  .day{
+    display:grid;grid-template-columns:64px 1fr;gap:20px;
+    padding:22px 0;border-top:1px solid var(--linea);position:relative;
+  }
+  .day:first-child{border-top:none;}
+  .daynum{
+    font-family:var(--serif);font-weight:900;font-size:40px;line-height:.9;
+    color:var(--dorado);
+  }
+  .daynum small{display:block;font-family:var(--sans);font-size:10.5px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);margin-top:6px;}
+  .day h3{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--bosque);
+    margin-bottom:3px;line-height:1.15;}
+  .day .sleep{
+    display:inline-block;font-size:12px;font-weight:600;color:var(--rojo);
+    background:rgba(168,50,42,.08);padding:2px 9px;border-radius:6px;margin-bottom:8px;
+    letter-spacing:.02em;
+  }
+  .day p{font-size:14.5px;color:var(--tinta-suave);}
+  .day .tag{
+    display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--bosque2);border:1px solid var(--linea);
+    padding:2px 8px;border-radius:5px;margin-top:9px;margin-right:5px;
+  }
+  .day.peak-day{background:linear-gradient(90deg,rgba(201,154,63,.09),transparent 70%);
+    border-radius:12px;margin:0 -12px;padding-left:12px;padding-right:12px;}
+
+  /* ---------- FICHA ENTRADA DENTRO DEL DÍA ---------- */
+  .ticket{
+    margin-top:12px;background:#fff;border:1px solid var(--linea);
+    border-radius:10px;padding:11px 13px;
+  }
+  .ticket + .ticket{margin-top:7px;}
+  .ticket .t-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+  .ticket .t-name{font-family:var(--serif);font-weight:600;font-size:14.5px;color:var(--tinta);}
+  .ticket .t-price{font-family:var(--serif);font-weight:600;font-size:13.5px;color:var(--bosque2);margin-left:auto;white-space:nowrap;}
+  .ticket .t-free{color:var(--tinta-suave);}
+  .ticket .t-book{
+    display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;
+    padding:3px 9px;border-radius:6px;letter-spacing:.01em;
+  }
+  .book-now{background:var(--rojo);color:#fff;}
+  .book-soon{background:rgba(201,154,63,.2);color:#8a5a12;}
+  .book-door{background:rgba(28,58,46,.08);color:var(--bosque2);}
+  .ticket .t-book b{font-weight:700;}
+
+  /* ---------- BANNER RESERVAR YA ---------- */
+  .alert{
+    background:linear-gradient(135deg,#a8322a,#8a2820);color:#fff;
+    border-radius:14px;padding:20px 22px;margin-top:22px;
+  }
+  .alert .a-label{font-family:var(--sans);font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;font-size:11px;color:#f2cfc9;margin-bottom:10px;}
+  .alert h3{font-family:var(--serif);font-weight:600;font-size:19px;margin-bottom:10px;}
+  .alert ul{list-style:none;}
+  .alert li{font-size:14px;padding:6px 0;border-top:1px solid rgba(255,255,255,.16);}
+  .alert li:first-child{border-top:none;}
+  .alert li b{color:#ffe0b0;}
+  .alert li span{display:block;font-size:12.5px;color:#f2cfc9;margin-top:1px;}
+
+  /* ---------- PRESUPUESTO ---------- */
+  .budget{background:var(--bosque);color:var(--crema-solid);border-radius:18px;padding:34px 28px;margin-top:24px;}
+  .budget h2{color:var(--crema-solid);}
+  .budget .sec-label{color:var(--dorado-claro);}
+  .brow{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:13px 0;border-bottom:1px solid rgba(243,234,217,.13);}
+  .brow:last-of-type{border-bottom:none;}
+  .brow .k{font-size:15px;}
+  .brow .k small{display:block;color:#a9c0b1;font-size:12px;font-weight:400;margin-top:1px;}
+  .brow .v{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--dorado-claro);white-space:nowrap;}
+  .btotal{display:flex;justify-content:space-between;align-items:baseline;
+    margin-top:18px;padding-top:18px;border-top:2px solid var(--dorado);}
+  .btotal .k{font-family:var(--serif);font-size:19px;font-weight:600;}
+  .btotal .v{font-family:var(--serif);font-size:26px;font-weight:900;color:var(--dorado-claro);}
+  .bnote{font-size:12.5px;color:#a9c0b1;margin-top:14px;font-style:italic;}
+
+  /* ---------- NOTAS ---------- */
+  .notes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;}
+  .note{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:18px 18px;}
+  .note .ic{font-size:20px;margin-bottom:8px;display:block;}
+  .note h4{font-family:var(--serif);font-size:16px;color:var(--bosque);margin-bottom:5px;font-weight:600;}
+  .note p{font-size:13.5px;color:var(--tinta-suave);}
+  .note b{color:var(--rojo);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--tinta);padding:40px 0 44px;text-align:center;color:#cdbfa8;}
+  footer .fr{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--dorado-claro);margin-bottom:8px;}
+  footer p{font-size:13px;color:#9a8f7c;}
+
+  /* ---------- COMIDA ---------- */
+  .food-place{padding:16px 0;border-top:1px solid var(--linea);}
+  .food-place:first-of-type{border-top:none;}
+  .food-town{
+    display:flex;align-items:baseline;gap:10px;margin-top:30px;margin-bottom:4px;
+  }
+  .food-town:first-of-type{margin-top:8px;}
+  .food-town h3{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--bosque);}
+  .food-town .nights{font-size:12px;color:var(--tinta-suave);font-weight:500;}
+  .food-place .fp-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:3px;}
+  .food-place .fp-name{font-family:var(--serif);font-weight:600;font-size:16.5px;color:var(--tinta);}
+  .food-place .fp-veg{
+    font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    padding:2px 7px;border-radius:5px;
+  }
+  .veg-full{background:var(--bosque);color:var(--dorado-claro);}
+  .veg-friendly{background:rgba(201,154,63,.16);color:#8a6a1f;}
+  .food-place .fp-star{font-size:12.5px;color:var(--tinta-suave);font-weight:600;}
+  .food-place p{font-size:13.5px;color:var(--tinta-suave);}
+  .food-place p .hint{color:var(--rojo);font-weight:600;}
+  .food-star-note{
+    background:#fff;border:1px solid var(--linea);border-left:3px solid var(--dorado);
+    border-radius:10px;padding:14px 16px;margin-top:26px;font-size:13.5px;color:var(--tinta-suave);
+  }
+  .food-star-note b{color:var(--bosque);}
+
+  /* ==========================================================
+     DESPLEGABLE DE DÍA COMPLETO
+     ========================================================== */
+  .detalle{margin-top:14px;}
+  .detalle > summary{
+    list-style:none;cursor:pointer;user-select:none;
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--sans);font-size:12px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--bosque2);background:#fff;
+    border:1px solid var(--linea);border-radius:8px;
+    padding:7px 13px;transition:all .18s ease;
+  }
+  .detalle > summary::-webkit-details-marker{display:none;}
+  .detalle > summary:hover{border-color:var(--dorado);color:var(--bosque);}
+  .detalle > summary .chev{
+    font-size:9px;color:var(--dorado);transition:transform .2s ease;display:inline-block;
+  }
+  .detalle[open] > summary{
+    background:var(--bosque);color:var(--crema-solid);border-color:var(--bosque);
+  }
+  .detalle[open] > summary .chev{transform:rotate(180deg);color:var(--dorado-claro);}
+  .detalle[open] > summary:hover{color:#fff;}
+
+  .detalle-body{
+    margin-top:14px;padding:20px 20px 18px;
+    background:#fff;border:1px solid var(--linea);
+    border-left:3px solid var(--dorado);border-radius:12px;
+    animation:despliegue .22s ease;
+  }
+  @keyframes despliegue{from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:none;}}
+
+  .d-bloque{font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--rojo);margin:22px 0 12px;}
+  .d-bloque:first-child{margin-top:0;}
+
+  /* --- Timeline horaria --- */
+  .tl{list-style:none;position:relative;padding-left:0;}
+  .tl-item{display:grid;grid-template-columns:58px 1fr;gap:14px;position:relative;padding-bottom:18px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:"";position:absolute;left:63px;top:9px;bottom:-4px;width:1px;background:var(--linea);}
+  .tl-item:last-child::before{display:none;}
+  .tl-hora{
+    font-family:var(--serif);font-weight:600;font-size:13.5px;color:var(--bosque2);
+    text-align:right;padding-top:1px;white-space:nowrap;position:relative;
+  }
+  .tl-hora::after{
+    content:"";position:absolute;right:-11px;top:8px;width:7px;height:7px;
+    border-radius:50%;background:var(--dorado);border:2px solid #fff;box-shadow:0 0 0 1px var(--linea);
+  }
+  .tl-body{padding-left:6px;}
+  .tl-title{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--tinta);line-height:1.3;}
+  .tl-body p{font-size:13.5px;color:var(--tinta-suave);margin-top:3px;}
+  .tl-body p + p{margin-top:5px;}
+  .tl-body a{color:var(--bosque2);text-decoration:underline;text-underline-offset:2px;}
+
+  /* --- Chips de dato --- */
+  .dato{
+    display:inline-block;font-size:11.5px;font-weight:600;
+    background:rgba(28,58,46,.07);color:var(--bosque2);
+    padding:2px 8px;border-radius:5px;margin:5px 4px 0 0;
+  }
+  .dato.euro{background:rgba(201,154,63,.16);color:#8a6a1f;}
+
+  /* --- Bloque BACKUP (el gris del Google Doc) --- */
+  .bk{
+    margin-top:9px;padding:10px 12px;border-radius:8px;
+    background:var(--gris-bg);border:1px dashed rgba(32,24,15,.16);
+  }
+  .bk-label{
+    font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gris);margin-bottom:4px;
+  }
+  .bk .bk-name{font-family:var(--serif);font-weight:600;font-size:13.5px;color:var(--gris);}
+  .bk p{font-size:12.5px;color:var(--gris);margin-top:2px;}
+  .bk .dato{background:rgba(32,24,15,.05);color:var(--gris);}
+
+  /* --- Aviso verificado --- */
+  .aviso{
+    margin-top:9px;padding:11px 13px;border-radius:8px;
+    background:rgba(168,50,42,.06);border-left:3px solid var(--rojo);
+  }
+  .aviso .av-label{
+    font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--rojo);margin-bottom:3px;
+  }
+  .aviso p{font-size:13px;color:var(--tinta-suave);margin:0;}
+  .aviso p + p{margin-top:5px;}
+  .aviso b{color:var(--rojo);}
+
+  /* --- Dato sin confirmar --- */
+  .duda{
+    margin-top:9px;padding:11px 13px;border-radius:8px;
+    background:rgba(201,154,63,.09);border-left:3px solid var(--dorado);
+  }
+  .duda .av-label{
+    font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:#8a6a1f;margin-bottom:3px;
+  }
+  .duda p{font-size:13px;color:var(--tinta-suave);margin:0;}
+
+  /* --- Curiosidad --- */
+  .curio{
+    margin-top:9px;padding:11px 13px;border-radius:8px;
+    background:rgba(28,58,46,.05);border-left:3px solid var(--bosque2);
+  }
+  .curio .av-label{
+    font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--bosque2);margin-bottom:3px;
+  }
+  .curio p{font-size:13px;color:var(--tinta-suave);margin:0;font-style:italic;}
+
+  /* --- Mini presupuesto del día --- */
+  .presu{margin-top:6px;border-top:1px solid var(--linea);}
+  .presu-row{display:flex;justify-content:space-between;gap:14px;padding:8px 0;
+    border-bottom:1px solid var(--linea);font-size:13.5px;color:var(--tinta-suave);}
+  .presu-row .v{font-family:var(--serif);font-weight:600;color:var(--bosque2);white-space:nowrap;}
+  .presu-row.gris,.presu-row.gris .v{color:var(--gris);}
+  .presu-tot{display:flex;justify-content:space-between;gap:14px;padding-top:11px;margin-top:2px;
+    border-top:2px solid var(--dorado);}
+  .presu-tot .k{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--bosque);}
+  .presu-tot .v{font-family:var(--serif);font-weight:900;font-size:19px;color:var(--dorado);}
+
+  @media(max-width:560px){
+    .notes{grid-template-columns:1fr;}
+    .day{grid-template-columns:52px 1fr;gap:14px;}
+    .daynum{font-size:32px;}
+    section{padding:42px 0;}
+    .detalle-body{padding:16px 14px;}
+    .tl-item{grid-template-columns:46px 1fr;gap:10px;}
+    .tl-item::before{left:51px;}
+    .tl-hora{font-size:12.5px;}
+    .tl-hora::after{right:-9px;}
+  }
+
+  /* --- Al imprimir o guardar en PDF, todo abierto --- */
+  @media print{
+    .detalle > summary{display:none;}
+    .detalle:not([open]) > .detalle-body{display:block !important;}
+    .detalle-body{animation:none;border-left-color:#999;}
+    .hero{padding:30px 0 24px;}
+    section{padding:24px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Cuaderno de ruta · Transilvania</div>
+    <h1>Rumanía<br><em>en familia</em></h1>
+    <p class="sub">Diez días entre castillos, ciudadelas medievales, la carretera más bella de los Cárpatos y, con suerte, algún oso al costado del camino.</p>
+    <div class="meta">
+      <span class="chip"><b>27 ago</b> → <b>5 sep</b></span>
+      <span class="chip">2 adultos + <b>el enano (5)</b></span>
+      <span class="chip">9 noches · <b>10 días</b></span>
+      <span class="chip">En <b>auto</b> por los Cárpatos</span>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-label">El recorrido</div>
+    <h2>Un arco por los Cárpatos</h2>
+    <p class="lead">Subimos de Bucarest hacia Transilvania por el este, cerramos bajando por la carretera de montaña. Sin repetir camino.</p>
+    <div class="ruta">
+      <span>Bucarest</span><span class="arw">→</span>
+      <span>Brașov</span><span class="arw">→</span>
+      <span>Bran</span><span class="arw">→</span>
+      <span>Sighișoara</span><span class="arw">→</span>
+      <span>Sibiu</span><span class="arw">→</span>
+      <span class="peak">Transfăgărășan ⛰</span><span class="arw">→</span>
+      <span>Curtea de Argeș</span><span class="arw">→</span>
+      <span>Bucarest</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-label">Día a día</div>
+    <h2>El plan</h2>
+
+    <div class="alert">
+      <div class="a-label">⚠ Reservar ahora · no dejar para después</div>
+      <h3>Lo que se agota en agosto</h3>
+      <ul>
+        <li><b>Castillo de Peleș</b> (día 2) — desde dic. 2025 <b>ya no hay taquilla con persona</b>: solo online en bilete.peles.ro o máquinas SelfPay. Entrada por franja horaria, cupo 2000/día. <span>El museo recomienda comprar 2–3 días antes en temporada</span></li>
+        <li><b>El auto</b> — todavía sin reservar, ~8-9 días. <span>Marca seria con mostrador en aeropuerto, seguro sin franquicia</span></li>
+        <li><b>Palacio del Parlamento</b> (día 10, opcional) — solo con tour guiado. <span>Si se hace, reservar 4–7 días antes · tours en español</span></li>
+      </ul>
+    </div>
+
+    <div class="days">
+
+      <div class="day">
+        <div class="daynum">1<small>Jue 27</small></div>
+        <div>
+          <h3>Llegada 14 h → Sinaia</h3>
+          <span class="sleep">Hotel Sinaia</span>
+          <p>Llegamos a Bucarest, levantamos el auto y subimos directo a <b>Sinaia</b> (~2 h), a los pies de los Cárpatos. Monasterio, plaza de juegos y cena reservada.</p>
+          <span class="tag">Levantamos el auto</span>
+
+          <details class="detalle">
+            <summary>Ver el día completo <span class="chev">▼</span></summary>
+            <div class="detalle-body">
+
+              <div class="d-bloque">Por la mañana</div>
+              <ul class="tl">
+
+                <li class="tl-item">
+                  <div class="tl-hora">14:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Aterrizaje en Otopeni</div>
+                    <p>Llevar comida para el peque en el avión y darle la biodramina antes de la ruta de montaña.</p>
+                    <p>Sacar lei del cajero en el aeropuerto: mucho de lo que viene (parkings, iglesias, torres) es solo efectivo.</p>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">15:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Recoger el auto y la sillita</div>
+                    <p>La sillita se retira aparte, en Strada Libertăţii 14, Otopeni. Suma unos 15 min al plan.</p>
+                    <span class="dato">Auto todavía sin reservar</span>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">15:30</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Comer algo rápido antes de subir</div>
+                    <p>Hay un McDonald's apenas salís del aeropuerto, camino a Sinaia. Un Burger King y un Pizza Hut quedan a 10 min para el otro lado.</p>
+                    <div class="bk">
+                      <div class="bk-label">Backup</div>
+                      <div class="bk-name">Comer en el aeropuerto</div>
+                      <p>Si el trámite del auto se estira, resolver ahí mismo y no perder tiempo desviándose.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">15:45</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Ruta a Sinaia</div>
+                    <p>Son 122 km por la DN1. Sin tráfico, 1 h 30. Un jueves de fines de agosto el tramo Comarnic–Sinaia es un embudo clásico.</p>
+                    <span class="dato">Contar 2 h</span>
+                    <div class="aviso">
+                      <div class="av-label">Llegada real estimada</div>
+                      <p>Entre las <b>17:30 y las 18:30</b>. El check in es a las 17:00, así que no hay problema con el hotel, pero sí condiciona lo que se puede visitar después.</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="d-bloque">Por la tarde</div>
+              <ul class="tl">
+
+                <li class="tl-item">
+                  <div class="tl-hora">17:30</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Check in y dejar las valijas</div>
+                    <p>El hotel está cruzando la calle desde el Parque Dimitrie Ghica.</p>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">18:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Monasterio de Sinaia</div>
+                    <p>A 600 m del hotel, cuesta arriba. El recinto abre <b>todos los días de 8 a 20</b> (dato oficial), así que llegamos bien.</p>
+                    <p>La iglesia grande (Sfânta Treime) es la que se construyó cuando los reyes empezaron a veranear acá; detrás está la pequeña, la que el monasterio tenía antes. Acceso a los patios, gratis. Hay agua potable gratis afuera.</p>
+                    <span class="dato">20 min</span>
+                    <span class="dato">Hombros y rodillas cubiertos</span>
+                    <div class="duda">
+                      <div class="av-label">Sin confirmar</div>
+                      <p>El horario y el precio del <b>museo y la Biserica Veche</b> no figuran en la web oficial y las fuentes se contradicen (unas dicen 10–17 y 5–10 lei, otras 8–18 y 30 lei). Si llegamos después de las 17, probablemente estén cerrados. Para asegurar: <b>+40 244 317 917</b>.</p>
+                    </div>
+                    <div class="curio">
+                      <div class="av-label">Si llegamos cerca de las 19</div>
+                      <p>En la iglesia grande está la Utrenie, de 18:45 a 20:15. Se puede entrar y quedarse atrás en silencio: canto bizantino a capela entre velas, de lo más memorable del lugar.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">18:30</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Parque Dimitrie Ghica</div>
+                    <p>Bajando andando desde el monasterio se entra directo. Zonas verdes, fuentes y una plaza de juegos muy buena para que el peque queme las últimas energías del día mientras nosotros nos sentamos en un banco. El hotel está cruzando la calle a la salida.</p>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">19:15</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Paseo por el pueblo</div>
+                    <p>Solo si queda tiempo y ganas.</p>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">20:30</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Cena · Snow Restaurant</div>
+                    <p>Strada Cuza Vodă 2A. Abre todos los días de 7 a 23, verificado. Cocina rumana tradicional, terraza grande.</p>
+                    <span class="dato">Reservado · conf. 660c59</span>
+                    <span class="dato euro">~50–60 lei por persona</span>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">22:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Noche en Sinaia</div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">2<small>Vie 28</small></div>
+        <div>
+          <h3>Bucegi + Peleș → Brașov</h3>
+          <span class="sleep">Zinne Apartments · Brașov</span>
+          <p>Mañana de montaña en la <b>Cota 2000</b> del Bucegi, almuerzo arriba, y por la tarde el castillo de <b>Peleș</b> antes de bajar a Brașov.</p>
+          <span class="tag">Peleș: entradas online</span>
+
+          <details class="detalle">
+            <summary>Ver el día completo <span class="chev">▼</span></summary>
+            <div class="detalle-body">
+
+              <div class="aviso">
+                <div class="av-label">⚠ Antes de este día</div>
+                <p>Desde diciembre de 2025 <b>Peleș ya no tiene taquilla con persona</b>. Las entradas se compran solo en bilete.peles.ro o en las máquinas SelfPay junto al castillo, y son <b>por franja horaria</b> con cupo de 2000 personas/día.</p>
+                <p>El propio museo recomienda comprar con 2 o 3 días de antelación en temporada. <b>Comprar la franja del viernes 28 ya.</b></p>
+              </div>
+
+              <div class="d-bloque">Por la mañana</div>
+              <ul class="tl">
+
+                <li class="tl-item">
+                  <div class="tl-hora">10:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Desayuno en el hotel</div>
+                    <p>Se sirve hasta las 10. Check out hasta las 12, pero dejamos las valijas en el hotel hasta la vuelta.</p>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">11:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Parking de la base de la góndola</div>
+                    <p>Tarifa única de día. Se puede comprar online junto con los tickets y ahorrarse una cola.</p>
+                    <span class="dato">30 lei el día</span>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">11:15</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Telegondola · Cota 1000 → 1400 → 2000</div>
+                    <p>Siete minutos el primer tramo, transbordo de cabina directo, otros siete el segundo. Precios verificados en la tienda oficial.</p>
+                    <span class="dato">119 lei adulto</span>
+                    <span class="dato">75 lei el peque (5 años)</span>
+                    <span class="dato euro">313 lei los tres · ~63 €</span>
+                    <div class="aviso">
+                      <div class="av-label">Ojo con los horarios</div>
+                      <p>El viernes el primer tramo opera de <b>9:00 a 17:00</b>, pero el tramo Carp (1400 → 2000) <b>corta a las 16:30</b>. Y es el primero que se cierra si hay viento fuerte, porque va en terreno alpino.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">11:35</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Cota 2000 · meseta alpina</div>
+                    <p>Una hora para caminar por la meseta, vistas de 360 grados sobre los Cárpatos y fotos con el cielo despejado del mediodía.</p>
+                    <p>Abrigo obligatorio: viento fuerte y bastante menos temperatura que abajo. Cortavientos y gorro para el peque. Y gorra, crema solar y agua, que arriba pega distinto.</p>
+                    <div class="curio">
+                      <div class="av-label">Dato</div>
+                      <p>Lo que se pisa arriba es el borde de la meseta de los Bucegi, montaña sagrada para los dacios. Carol I eligió Sinaia porque el paisaje le recordaba a los Alpes de su Sigmaringen natal.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">12:35</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Bajada a Cota 1400</div>
+                    <p>Diez minutos de cabina hasta la zona de restaurantes.</p>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="d-bloque">Almuerzo en Cota 1400</div>
+              <ul class="tl">
+                <li class="tl-item">
+                  <div class="tl-hora">12:45</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Popas Alpin</div>
+                    <p>Cabaña-restaurante a unos pasos de la estación. Barata, con mucha rotación, ideal para comer rápido platos calientes.</p>
+                    <p><b>Para ella:</b> supa de legume (sopa de verduras, totalmente vegetal, muy bien valorada), mămăligă cu brânză și smântână (polenta con queso local y crema agria) o cașcaval pane.<br>
+                    <b>Para ellos:</b> supă de pui cu tăiței, piept de pui la grătar o șnițel de pui, entre 15 y 32 lei.</p>
+                    <span class="dato euro">120–180 lei toda la familia</span>
+                    <span class="dato">1 h 30 de sobremesa</span>
+
+                    <div class="bk">
+                      <div class="bk-label">Backup</div>
+                      <div class="bk-name">La Ceaunu' Crăpat</div>
+                      <p>El más famoso del nivel, cocina rústica en ollas de barro, terraza orientada al valle. Más caro y con más cola.</p>
+                      <p>Mămăligă cu brânză și smântână 30–38 lei · Cașcaval pane 32–40 lei · Ochiuri / omletă cu brânză 24–30 lei · Salată de varză o verde 14–20 lei · Pollo o milanesa para el peque 45–50 lei · Bebidas 10–15 lei.</p>
+                      <p>Postre en cualquiera de los dos: <b>papanași cu dulceață de afine</b>, 26–35 lei. Los buñuelos gigantes de queso dulce fritos con crema agria y mermelada de arándanos.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">14:15</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Regreso a Cota 1000</div>
+                    <p>Último tramo de vuelta a la base, donde quedó el auto.</p>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="d-bloque">Por la tarde</div>
+              <ul class="tl">
+
+                <li class="tl-item">
+                  <div class="tl-hora">14:40</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Parcare Aleea Peleșului</div>
+                    <p>Ocho minutos en auto desde la góndola. Es el parking municipal más cercano, en la subida del bosque entre el monasterio y el castillo. Desde ahí, 10–15 min a pie cuesta arriba por sendero adoquinado, tranquilo para ir despacio con el peque.</p>
+                    <p>Si no hay lugar: bajar ahí a los dos y estacionar abajo.</p>
+                    <span class="dato">30 lei el día</span>
+
+                    <div class="bk">
+                      <div class="bk-label">Backup</div>
+                      <div class="bk-name">Parcare cu plată · Aleea Carmen Sylva</div>
+                      <p>En la zona baja urbana. La caminata es más larga y empinada, 20–25 min hasta la puerta.</p>
+                      <p>30 lei el día completo o 6 lei la hora.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">15:15</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Castillo de Peleș</div>
+                    <p>Tour guiado en inglés, se forma en la entrada por orden de llegada y no cuesta extra. La entrada de 100 lei cubre <b>planta baja y primera planta</b>, no solo la baja. Los jardines son gratis.</p>
+                    <span class="dato">100 lei adulto</span>
+                    <span class="dato">Menores de 7, gratis</span>
+                    <span class="dato">~2 h</span>
+                    <div class="aviso">
+                      <div class="av-label">Sin margen</div>
+                      <p>Las 15:15 es <b>el último tour en inglés del día</b> (los anteriores: 9:45, 10:45, 11:45, 12:45, 13:45 y 14:45). Última entrada individual, 16:00. Si perdemos ese, no hay otro.</p>
+                    </div>
+                    <div class="curio">
+                      <div class="av-label">Dato</div>
+                      <p>En 1883 Peleș ya tenía calefacción central, ascensor, aspiradora centralizada y luz eléctrica propia. Casi ningún palacio europeo la tenía todavía.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">16:15</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Castillo de Pelișor</div>
+                    <p>A dos minutos andando de Peleș. Tour guiado en inglés a las 16:00, también sin coste extra.</p>
+                    <span class="dato">30 lei adulto</span>
+                    <span class="dato">Menores de 7, gratis</span>
+                    <div class="aviso">
+                      <div class="av-label">Conflicto de horarios</div>
+                      <p>La última entrada a Pelișor es a las <b>16:15</b>. Si el tour de Peleș arranca 15:15 y dura entre 45 y 60 min, salimos justo cuando Pelișor ya cerró el acceso. <b>Con el plan actual hay que elegir uno de los dos.</b></p>
+                      <p>Si queremos los dos: primera góndola a las 9:00, Peleș en la franja 12:45–14:30 con tour en inglés a las 12:45 o 13:45, y Pelișor a las 15:00.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">19:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Salida hacia Brașov</div>
+                    <p>Una hora de ruta. Pasamos antes por el hotel de Sinaia a buscar las valijas.</p>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">20:00</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Check in en Brașov</div>
+                    <p>Ver si hay lugar para dejar el auto dentro del patio. Si no, el <b>Park and Ride Regina Maria</b>: subterráneo y vigilado, a 350 m del piso, bajo el Parque Central en Bulevardul Eroilor 25. Se puede dejar varios días seguidos sin pensar en multas.</p>
+                    <span class="dato">72 lei / 24 h</span>
+                    <span class="dato">5 lei la hora</span>
+
+                    <div class="bk">
+                      <div class="bk-label">Backup</div>
+                      <div class="bk-name">Plazas azules en la calle · Zona 0</div>
+                      <p>3 lei la hora o 24 lei el día. Pago obligatorio de lunes a sábado, 8:00 a 20:00; los domingos es gratis. Se paga en el parquímetro (no dan cambio) o con la app oficial TPark cargando la matrícula.</p>
+                      <p>Dónde buscar: Bulevardul Eroilor, Strada Mureșenilor o Strada George Barițiu, detrás de la Iglesia Negra. Encontrar hueco puede llevar rato.</p>
+                      <p>Cuidado con las plazas de líneas blancas con "R" o cartel de "Rezervat": la grúa municipal se lleva el auto muy rápido.</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="tl-item">
+                  <div class="tl-hora">21:30</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Cena en el piso</div>
+                    <p>Pastas o pizza. Hay un Carrefour Express a dos calles.</p>
+                    <span class="dato euro">~100 lei</span>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="d-bloque">Coste del día (sin nafta)</div>
+              <div class="presu">
+                <div class="presu-row"><span class="k">Telegondola · 2 adultos + peque</span><span class="v">313 lei</span></div>
+                <div class="presu-row"><span class="k">Parking góndola</span><span class="v">30 lei</span></div>
+                <div class="presu-row"><span class="k">Parking Peleș</span><span class="v">30 lei</span></div>
+                <div class="presu-row"><span class="k">Parking Brașov · 24 h</span><span class="v">72 lei</span></div>
+                <div class="presu-row"><span class="k">Peleș · 2 adultos (peque gratis)</span><span class="v">200 lei</span></div>
+                <div class="presu-row"><span class="k">Almuerzo Cota 1400</span><span class="v">~200 lei</span></div>
+                <div class="presu-row"><span class="k">Cena en el piso</span><span class="v">~100 lei</span></div>
+                <div class="presu-row gris"><span class="k">Pelișor · 2 adultos <em>(si se hace)</em></span><span class="v">60 lei</span></div>
+                <div class="presu-tot"><span class="k">Total</span><span class="v">945 lei · ~190 €</span></div>
+              </div>
+
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">3<small>Sáb 29</small></div>
+        <div>
+          <h3>Bran + Râșnov</h3>
+          <span class="sleep">Zinne Apartments · Brașov</span>
+          <p>El castillo de <b>Bran</b> ("Drácula") y la fortaleza de Râșnov ahí al lado. Triángulo corto, mañana y tarde sin apuro.</p>
+          <span class="tag">Sin mover valijas</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Castillo de Bran</span><span class="t-price">~44 € · peque gratis</span></div>
+            <span class="t-book book-soon">Reservar unos días antes · llegar temprano (abre 9 h)</span>
+          </div>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Fortaleza de Râșnov</span><span class="t-price">~15 € · los 3</span></div>
+            <span class="t-book book-door">En puerta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">4<small>Dom 30</small></div>
+        <div>
+          <h3>Zona Brașov · día flexible</h3>
+          <span class="sleep">Zinne Apartments · Brașov</span>
+          <p>Iglesias fortificadas de <b>Prejmer</b> y Hărman (UNESCO, abren domingo desde 11 h), o teleférico al monte Tâmpa. Día tranquilo, sin mover valijas.</p>
+          <span class="tag">Flexible</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Prejmer / Hărman</span><span class="t-price">~10 € · los 3</span></div>
+            <span class="t-book book-door">En puerta · domingo abren al mediodía</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">5<small>Lun 31</small></div>
+        <div>
+          <h3>Brașov → Sighișoara</h3>
+          <span class="sleep">Boutique Hotel von Graf · Sighișoara</span>
+          <p>Ciudadela medieval habitada, Patrimonio de la Humanidad. Calles empedradas, todo peatonal. La torre la vemos mañana (los lunes cierra).</p>
+          <span class="tag">~2 h de ruta</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Ciudadela (torre cierra lunes)</span><span class="t-price t-free">Casco gratis</span></div>
+            <span class="t-book book-door">La torre, mañana temprano antes de salir</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">6<small>Mar 1</small></div>
+        <div>
+          <h3>Sighișoara → Sibiu</h3>
+          <span class="sleep">Apartment Balcescu · Sibiu</span>
+          <p>Torre del Reloj por la mañana (ya abierta un martes), parada en <b>Biertan</b> camino a Sibiu, y llegada al casco de Sibiu con "los ojos" en los tejados.</p>
+          <span class="tag">~1 h 30 de ruta</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Torre del Reloj de Sighișoara</span><span class="t-price">~12 € · los 3</span></div>
+            <span class="t-book book-door">En puerta · martes abierta</span>
+          </div>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Iglesia fortificada de Biertan</span><span class="t-price">~8 € · los 3</span></div>
+            <span class="t-book book-door">En puerta · queda de paso</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">7<small>Mié 2</small></div>
+        <div>
+          <h3>Día en Sibiu</h3>
+          <span class="sleep">Apartment Balcescu · Sibiu</span>
+          <p>Día completo en Sibiu: la Plaza Grande, la Plaza Chica, el Puente de las Mentiras y "los ojos de Sibiu" (juego asegurado para el peque). Sin mover valijas.</p>
+          <span class="tag">Sin auto</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Casco histórico · los ojos de Sibiu</span><span class="t-price t-free">Gratis</span></div>
+            <span class="t-book book-door">Todo peatonal · museos opcionales aparte</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day peak-day">
+        <div class="daynum">8<small>Jue 3</small></div>
+        <div>
+          <h3>Transfăgărășan ⛰ · el día grande</h3>
+          <span class="sleep">Baltina Parc · Curtea de Argeș</span>
+          <p>Salida temprano de Sibiu. Subimos por el norte (el tramo de bosque donde <b>bajan los osos</b>, mejor a primera hora), lago Bâlea arriba, y bajamos por el lado sur. Check-in del hotel 13–18 h: bajar con tiempo.</p>
+          <span class="tag">Abrigo arriba (10–15°)</span><span class="tag">Osos: ventanilla arriba</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">La carretera + lago Bâlea</span><span class="t-price t-free">Gratis</span></div>
+            <span class="t-book book-door">Sin entrada · subimos en auto hasta arriba</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">9<small>Vie 4</small></div>
+        <div>
+          <h3>Curtea de Argeș → Bucarest</h3>
+          <span class="sleep">Stil Old Town · Bucarest</span>
+          <p>El monasterio de Curtea de Argeș por la mañana y ~2 h 30 de vuelta a Bucarest por la autopista A1. Última noche en el casco viejo (Lipscani).</p>
+          <span class="tag">Devolvemos el auto</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Monasterio de Curtea de Argeș</span><span class="t-price">~12 € · los 3</span></div>
+            <span class="t-book book-door">En puerta · sitio religioso activo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="daynum">10<small>Sáb 5</small></div>
+        <div>
+          <h3>Bucarest → vuelo · 18 h</h3>
+          <span class="sleep">Volvemos a casa ✈</span>
+          <p>Mañana en Bucarest: casco viejo, o el Palacio del Parlamento si lo reservamos. Devolvemos el auto y al aeropuerto sin madrugar.</p>
+          <span class="tag">Salida 18 h</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Palacio del Parlamento (opcional)</span><span class="t-price">~75 € · los 3</span></div>
+            <span class="t-book book-soon">Si se hace: reservar antes · tour guiado · 3 pasaportes</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-label">Los números</div>
+    <h2>Qué sale, más o menos</h2>
+    <p class="lead">Rangos realistas para los tres, en euros. Los vuelos ya están comprados.</p>
+    <div class="budget">
+      <div class="sec-label">Presupuesto estimado</div>
+      <div class="brow"><div class="k">Vuelos <small>Barcelona ⇄ Bucarest · ya comprados</small></div><div class="v">460 €</div></div>
+      <div class="brow"><div class="k">Alojamiento <small>9 noches · reservas confirmadas</small></div><div class="v">626 €</div></div>
+      <div class="brow"><div class="k">Auto <small>~8-9 días · sin reservar aún</small></div><div class="v">350–450 €</div></div>
+      <div class="brow"><div class="k">Nafta <small>~750 km · sin peajes en Rumanía</small></div><div class="v">70–95 €</div></div>
+      <div class="brow"><div class="k">Entradas <small>Peleș, Bran, Râșnov, torre, monasterio · el peque gratis casi todo</small></div><div class="v">~210 €</div></div>
+      <div class="brow"><div class="k">Comidas <small>~40–65 €/día × 10 · algunos aptos con cocina</small></div><div class="v">400–650 €</div></div>
+      <div class="btotal"><div class="k">Total puerta a puerta</div><div class="v">~2.100–2.500 €</div></div>
+      <p class="bnote">Los 6 hoteles ya están reservados (626 € las 9 noches). Falta reservar el auto y las entradas de Peleș. Los apartamentos de Brașov y Sibiu tienen cocina.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-label">Dónde comer</div>
+    <h2>Mesa veggie en cada parada</h2>
+    <p class="lead">Buena opción vegetariana para ella en cada parada, con carne para ellos. Sitios mixtos que funcionan con el peque.</p>
+
+    <div class="food-town"><h3>Bucarest</h3><span class="nights">última noche (9)</span></div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Level Up</span><span class="fp-veg veg-full">Vegano</span><span class="fp-star">★ 4.7</span></div>
+      <p>La joya veggie de la ciudad: comida rumana tradicional en versión vegana (sarmale, mici, polenta, papanași) y también burgers y pizza. Todo al momento, esperá un poco. <span class="hint">Imperdible.</span></p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Aubergine</span><span class="fp-veg veg-friendly">Muchas opciones</span><span class="fp-star">★ 4.4</span></div>
+      <p>Mediterráneo/libanés con muchísimas opciones veggie y veganas, ambiente hogareño y limonadas caseras. El plan B perfecto.</p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Caru' cu bere</span><span class="fp-veg veg-friendly">Opciones veggie</span><span class="fp-star">★ 4.6</span></div>
+      <p>El restaurante histórico icónico, con música y baile folk en vivo. Coliflor, hongos con polenta, sopa de porotos. Por la experiencia y para el peque. <span class="hint">Reservar.</span></p>
+    </div>
+
+    <div class="food-town"><h3>Brașov</h3><span class="nights">noches 2 · 3 · 4</span></div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Vegasmo</span><span class="fp-veg veg-full">Vegetariano</span><span class="fp-star">★ 4.6</span></div>
+      <p>El veggie del casco: porciones grandes, hummus, sopas, wraps, bowls, kombucha casera. Muy familiar. <span class="hint">Cierra 18h entre semana</span>, mejor almuerzo o cena temprana.</p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Brauhaus Czell</span><span class="fp-veg veg-friendly">Menú diverso</span><span class="fp-star">★ 4.9</span></div>
+      <p>Brewpub para una cena de "salir", con cerveza artesanal y menú variado. Ideal para alternar una de las tres noches.</p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Brunch House</span><span class="fp-veg veg-friendly">Desayuno</span><span class="fp-star">★ 4.9</span></div>
+      <p>Brunch excelente y tranquilo, buena parada con el peque antes de salir hacia Bran.</p>
+    </div>
+
+    <div class="food-town"><h3>Sighișoara</h3><span class="nights">noche 5</span></div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Gasthaus Altepost</span><span class="fp-veg veg-friendly">Menú veggie</span><span class="fp-star">★ 4.3</span></div>
+      <p>Al pie de la ciudadela, con menú vegetariano variado, buena ensalada, sopa y pizza. Un guía local lo nombra el mejor del pueblo.</p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Ferdinand</span><span class="fp-veg veg-friendly">Pizza · pastas</span><span class="fp-star">★ 4.3</span></div>
+      <p>Muy buena masa de pizza, pastas y ensaladas. Fácil para el peque (margherita) y con opciones sin carne.</p>
+    </div>
+
+    <div class="food-town"><h3>Sibiu</h3><span class="nights">noches 6 · 7</span></div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Soul Indian Cuisine</span><span class="fp-veg veg-full">Muy veggie</span><span class="fp-star">★ 4.9</span></div>
+      <p>Cocina india, naturalmente rica en platos vegetarianos y veganos (currys, biryani, tikka masala). La apuesta más segura si querés sabor sin carne. <span class="hint">La mejor de la parada.</span></p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Kulinarium</span><span class="fp-veg veg-friendly">Opciones veggie</span><span class="fp-star">★ 4.5</span></div>
+      <p>En la plaza chica, comida rumana con vuelta moderna y opciones sin carne. Popular, conviene reservar.</p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Ouă și Unt</span><span class="fp-veg veg-friendly">Desayuno</span><span class="fp-star">★ 5.0</span></div>
+      <p>Brunch de calidad para cargar pilas antes de la Transfăgărășan. Abre miér–dom hasta las 15h, tu jueves cae bien.</p>
+    </div>
+
+    <div class="food-town"><h3>Curtea de Argeș</h3><span class="nights">noche 8 · tras la montaña</span></div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">La Ștefănel</span><span class="fp-veg veg-friendly">Opciones veggie</span><span class="fp-star">★ 4.7</span></div>
+      <p>El mejor puntuado del pueblo: bruschetta, verduras grilladas, pastas y papanași muy elogiados. Cálido, ideal para llegar cansados del día de montaña.</p>
+    </div>
+    <div class="food-place">
+      <div class="fp-head"><span class="fp-name">Curtea Veche</span><span class="fp-veg veg-friendly">Pizza · sopas</span><span class="fp-star">★ 4.4</span></div>
+      <p>Grande y familiar, pizzas enormes y ensaladas. Fácil y rápido con el peque, abierto hasta tarde.</p>
+    </div>
+
+    <div class="food-star-note">
+      🌿 La estrella veggie del viaje es <b>Level Up en Bucarest</b>: comida rumana tradicional en versión vegana, algo difícil de encontrar. En las paradas chicas no hay veggie puro, pero pizzas, pastas, sopas y ensaladas resuelven bien (y también le sirven al peque).
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-label">Para no olvidar</div>
+    <h2>Notas prácticas</h2>
+    <div class="notes">
+      <div class="note">
+        <span class="ic">🧳</span>
+        <h4>Valija</h4>
+        <p>Ropa de verano para Bucarest (calor real, 28–32°) y <b>capas + abrigo</b> para el día del Transfăgărășan, que arriba está a 10–15°.</p>
+      </div>
+      <div class="note">
+        <span class="ic">🐻</span>
+        <h4>Osos</h4>
+        <p>Se ven en la subida norte, mejor <b>temprano o al atardecer</b>. Siempre desde el auto, ventanilla arriba y nunca darles comida.</p>
+      </div>
+      <div class="note">
+        <span class="ic">📄</span>
+        <h4>Papeles</h4>
+        <p>Pasaporte válido (los tres). <b>Sin visa</b> para argentinos. Chequear ETIAS cerca de la fecha y el permiso internacional de conducir.</p>
+      </div>
+      <div class="note">
+        <span class="ic">🎫</span>
+        <h4>Reservas</h4>
+        <p>Peleș y Bran <b>por franja horaria online</b>. Silla homologada confirmada con el alquiler. Llegar temprano a los castillos.</p>
+      </div>
+      <div class="note">
+        <span class="ic">🚗</span>
+        <h4>Auto</h4>
+        <p><b>Falta reservar</b> (~8-9 días, en Bucarest). Marca seria, seguro sin franquicia. Rumanía no tiene peajes, solo la viñeta. La Transfăgărășan es gratis.</p>
+      </div>
+      <div class="note">
+        <span class="ic">🌡️</span>
+        <h4>Clima</h4>
+        <p>Agosto es ideal: ~25–27° en ciudades, Transfăgărășan abierta y en su mejor momento. Alguna tormenta breve de tarde posible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
+    <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
+  </div>
+</footer>
+
+</body>
+</html>
