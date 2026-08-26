@@ -4,13 +4,24 @@
    Sin señal (o con señal muy mala), se sirve la última copia guardada.
    El timeout es lo que evita que la app se quede colgada en una zona sin cobertura. */
 
-const CACHE = 'rumania-v2';
+const CACHE = 'rumania-v5';
 const TIMEOUT = 3500;
 
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './mapa-ruta.jpg',
+  './mapa-sinaia.jpg',
+  './mapa-prejmer-harman.jpg',
+  './mapa-brasov-casco.jpg',
+  './mapa-dinoparc-cueva.jpg',
+  './mapa-rasnov-bran.jpg',
+  './mapa-ruta-rupea.jpg',
+  './mapa-sighisoara-ciudadela.jpg',
+  './mapa-ruta-fagaras.jpg',
+  './mapa-ruta-sibiu.jpg',
+  './mapa-sibiu-casco.jpg',
   './icon-192.png',
   './icon-512.png',
   './apple-touch-icon.png'
@@ -19,7 +30,7 @@ const ASSETS = [
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE)
-      .then((c) => c.addAll(ASSETS).catch(() => null))
+      .then((c) => Promise.all(ASSETS.map((a) => c.add(a).catch(() => null))))
       .then(() => self.skipWaiting())
   );
 });

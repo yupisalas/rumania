@@ -407,6 +407,49 @@
   details.sug .sug-body p{font-size:13px;color:var(--tinta-suave);margin:0;}
   details.sug .sug-body p + p{margin-top:5px;}
 
+  /* --- Mapa ilustrado de la ruta --- */
+  .mapa{
+    margin:22px 0 4px;border:1px solid var(--linea);border-radius:10px;
+    overflow:hidden;background:#efe4cd;cursor:zoom-in;position:relative;
+    box-shadow:0 2px 14px rgba(32,24,15,.10);
+  }
+  .mapa img{display:block;width:100%;height:auto;}
+  .mapa .lupa{
+    position:absolute;right:10px;bottom:10px;
+    background:rgba(28,58,46,.85);color:var(--crema-solid);
+    font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;padding:6px 10px;border-radius:20px;
+    pointer-events:none;
+  }
+  .mapa-pie{
+    font-size:12px;color:var(--tinta-suave);text-align:center;
+    margin:8px 0 18px;font-style:italic;
+  }
+  .mapa.mini{margin:14px 0 4px;border-radius:8px;box-shadow:none;}
+  .mapa.mini .lupa{font-size:9px;padding:5px 9px;right:8px;bottom:8px;}
+  .mapa.mini + .mapa-pie{font-size:11.5px;margin:6px 0 14px;}
+
+  /* --- Lightbox --- */
+  .lb{
+    position:fixed;inset:0;z-index:9999;display:none;
+    background:rgba(18,42,32,.96);
+    overflow:auto;-webkit-overflow-scrolling:touch;
+  }
+  .lb.open{display:block;}
+  .lb img{display:block;max-width:none;height:auto;margin:0 auto;}
+  .lb .cerrar{
+    position:fixed;top:14px;right:14px;z-index:2;
+    background:var(--crema-solid);color:var(--tinta);border:none;border-radius:20px;
+    font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;padding:9px 15px;cursor:pointer;
+    box-shadow:0 2px 10px rgba(0,0,0,.3);
+  }
+  .lb .tip{
+    position:fixed;left:0;right:0;bottom:14px;text-align:center;z-index:2;
+    color:rgba(243,234,217,.75);font-size:11.5px;font-family:var(--sans);
+    pointer-events:none;
+  }
+
   /* --- Mini presupuesto del día --- */
   .presu{margin-top:6px;border-top:1px solid var(--linea);}
   .presu-row{display:flex;justify-content:space-between;gap:14px;padding:8px 0;
@@ -461,6 +504,13 @@
     <div class="sec-label">El recorrido</div>
     <h2>Un arco por los Cárpatos</h2>
     <p class="lead">Subimos de Bucarest hacia Transilvania por el este, cerramos bajando por la carretera de montaña. Sin repetir camino.</p>
+
+    <div class="mapa" data-src="mapa-ruta.jpg">
+      <img src="mapa-ruta.jpg" alt="Mapa ilustrado en estilo de cartografía antigua con las paradas del viaje: Sighișoara, Biertan, Sibiu, el lago Bâlea, Vidraru, Curtea de Argeș, Bran, Râșnov, Brașov, Prejmer, Sinaia y Bucarest, con los Cárpatos cruzando el centro" loading="lazy">
+      <span class="lupa">Tocá para ampliar</span>
+    </div>
+    <p class="mapa-pie">Las doce paradas del viaje, con los Cárpatos cruzando por el medio. El oso está en la subida de la Transfăgărășan, donde de verdad los hay, y la cara de piedra al sur de Sinaia es el Sphinx de los Bucegi.</p>
+
     <div class="ruta">
       <span>Bucarest</span><span class="arw">→</span>
       <span>Brașov</span><span class="arw">→</span>
@@ -503,6 +553,12 @@
           <details class="detalle">
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
+              <div class="mapa mini" data-src="mapa-sinaia.jpg">
+                <img src="mapa-sinaia.jpg" alt="Mapa de Sinaia con el hotel, el monasterio, el parque Dimitrie Ghica, la telecabina y el castillo de Peleș" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">Sinaia entera: el hotel, el monasterio a 600 m y el parque de juegos al lado. Peleș y la telegondola quedan para mañana.</p>
+
 
               <div class="d-bloque">Por la mañana</div>
               <ul class="tl">
@@ -632,6 +688,12 @@
           <details class="detalle">
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
+              <div class="mapa mini" data-src="mapa-sinaia.jpg">
+                <img src="mapa-sinaia.jpg" alt="Mapa de Sinaia con la telecabina abajo y el castillo de Peleș arriba" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">La telegondola abajo a la derecha, Peleș arriba a la izquierda. Entre las dos hay 8 minutos en auto.</p>
+
 
               <div class="aviso">
                 <div class="av-label">⚠ Antes de este día</div>
@@ -846,6 +908,12 @@
           <details class="detalle">
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
+              <div class="mapa mini" data-src="mapa-prejmer-harman.jpg">
+                <img src="mapa-prejmer-harman.jpg" alt="Mapa con Brașov, Hărman y Prejmer al noreste, y la telecabina del Tâmpa" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">Hărman y Prejmer al noreste de Brașov, uno detrás del otro. La telecabina del Tâmpa, abajo a la izquierda.</p>
+
 
               <div class="d-bloque">Por la mañana</div>
               <ul class="tl">
@@ -893,6 +961,12 @@
                   </div>
                 </li>
               </ul>
+
+                            <div class="mapa mini" data-src="mapa-brasov-casco.jpg">
+                <img src="mapa-brasov-casco.jpg" alt="Mapa del casco histórico de Brașov con la Piața Sfatului, la Iglesia Negra, las puertas de Șchei y Ecaterina, el Bastión de los Tejedores y la Torre Blanca" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">El circuito de la tarde: de la telecabina a las puertas, el bastión, el barrio de Șchei y las torres, cerrando en la Piața Sfatului.</p>
 
               <div class="d-bloque">Por la tarde · el monte y las murallas</div>
               <ul class="tl">
@@ -1038,6 +1112,12 @@
           <details class="detalle">
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
+              <div class="mapa mini" data-src="mapa-rasnov-bran.jpg">
+                <img src="mapa-rasnov-bran.jpg" alt="Mapa de la zona de Râșnov con Bran al sur y Brașov al noreste" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">Todo el día pasa en el mismo valle: Râșnov en el centro, Bran abajo a la izquierda.</p>
+
 
               <div class="aviso">
                 <div class="av-label">⚠ Antes de este día</div>
@@ -1094,6 +1174,12 @@
                   </div>
                 </li>
               </ul>
+
+                            <div class="mapa mini" data-src="mapa-dinoparc-cueva.jpg">
+                <img src="mapa-dinoparc-cueva.jpg" alt="Mapa de detalle con el Dino Parc, el Restaurant Terasa Pe Vale y el parking de la cueva Valea Cetății" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">Dino Parc, el restaurante y el parking de la cueva, sobre la misma DN1E. Del almuerzo a la cueva son minutos.</p>
 
               <div class="d-bloque">Por la tarde</div>
               <ul class="tl">
@@ -1201,6 +1287,12 @@
           <details class="detalle">
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
+              <div class="mapa mini" data-src="mapa-ruta-rupea.jpg">
+                <img src="mapa-ruta-rupea.jpg" alt="Mapa de la ruta de Brașov a Sighișoara por la E60 pasando por la ciudadela de Rupea" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">Brașov a Sighișoara por la E60, con Rupea justo a mitad de camino. 119 km, 1 h 52 sin parar.</p>
+
 
               <div class="aviso">
                 <div class="av-label">⚠ Antes de este día</div>
@@ -1269,6 +1361,12 @@
                   </div>
                 </li>
               </ul>
+
+                            <div class="mapa mini" data-src="mapa-sighisoara-ciudadela.jpg">
+                <img src="mapa-sighisoara-ciudadela.jpg" alt="Mapa de la ciudadela de Sighișoara con la Torre del Reloj, las torres de los gremios, la Casa de Vlad Dracul, la Escuela de la Colina y el cementerio sajón" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">El circuito completo de la ciudadela: se sube por Strada Tâmplarilor a la Escuela de la Colina, se baja bordeando las torres de los gremios y se cierra en la Torre del Reloj.</p>
 
               <div class="d-bloque">La ciudadela · 3 h 30 · calzado con agarre</div>
               <ul class="tl">
@@ -1436,6 +1534,12 @@
                 </li>
               </ul>
 
+                            <div class="mapa mini" data-src="mapa-ruta-fagaras.jpg">
+                <img src="mapa-ruta-fagaras.jpg" alt="Mapa con las tres rutas posibles de Sighișoara a Făgăraș" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">Tres formas de bajar a Făgăraș. La de la derecha, por la E60 y Rupea, son 103 km y 1 h 34. Las otras dos son más cortas en kilómetros pero por caminos secundarios.</p>
+
               <div class="d-bloque">Por la tarde · la fortaleza de Făgăraș</div>
 
               <div class="cerrado">
@@ -1480,6 +1584,12 @@
                   </div>
                 </li>
               </ul>
+
+                            <div class="mapa mini" data-src="mapa-ruta-sibiu.jpg">
+                <img src="mapa-ruta-sibiu.jpg" alt="Mapa de la ruta de Făgăraș a Sibiu por la DN1" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">De Făgăraș a Sibiu, 81 km y 1 h 11 por la DN1, bordeando los Făgăraș por el norte.</p>
 
               <div class="d-bloque">Llegada a Sibiu</div>
               <ul class="tl">
@@ -1539,6 +1649,12 @@
           <details class="detalle">
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
+              <div class="mapa mini" data-src="mapa-sibiu-casco.jpg">
+                <img src="mapa-sibiu-casco.jpg" alt="Mapa del casco histórico de Sibiu con la Piața Mare, el Turnul Sfatului, el Puente de las Mentiras, la Catedral Evangélica, la Catedral Ortodoxa y el Parcul Cetății" loading="lazy">
+                <span class="lupa">Ampliar</span>
+              </div>
+              <p class="mapa-pie">Todo el día cabe en este cuadrado. Ojo al Turnul Sfatului: el propio Google ya lo marca como cerrado temporalmente.</p>
+
 
               <div class="d-bloque">Por la mañana · las dos plazas</div>
               <ul class="tl">
@@ -1877,11 +1993,17 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-26 · v4</b><br>
+      Versión de la guía: <b>2026-08-26 · v7</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
 </footer>
+
+<div class="lb" id="lightbox">
+  <button class="cerrar" type="button" id="lbCerrar">Cerrar ✕</button>
+  <img id="lbImg" src="" alt="Mapa ampliado">
+  <span class="tip">Deslizá para moverte por el mapa</span>
+</div>
 
 <div class="upd" id="aviso">
   <span>Hay una versión más nueva de la guía.</span>
@@ -1889,6 +2011,39 @@
 </div>
 
 <script>
+/* Mapas: tocar para ampliar */
+(function(){
+  var lb   = document.getElementById('lightbox');
+  var lbImg= document.getElementById('lbImg');
+  var cerr = document.getElementById('lbCerrar');
+  if(!lb || !lbImg) return;
+
+  function abrir(src){
+    lbImg.src = src;
+    lbImg.style.width = '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbImg.onload = function(){
+      var w = Math.max(lbImg.naturalWidth, Math.round(window.innerWidth * 1.6));
+      lbImg.style.width = w + 'px';
+      lb.scrollTop = 0;
+      lb.scrollLeft = (lb.scrollWidth - lb.clientWidth) / 2;
+    };
+    if(lbImg.complete) lbImg.onload();
+  }
+  function cerrar(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.mapa[data-src]'), function(m){
+    m.addEventListener('click', function(){ abrir(m.getAttribute('data-src')); });
+  });
+  cerr.addEventListener('click', cerrar);
+  lb.addEventListener('click', function(e){ if(e.target !== cerr) cerrar(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') cerrar(); });
+})();
+
 (function(){
   var estado = document.getElementById('estado');
   var aviso  = document.getElementById('aviso');
