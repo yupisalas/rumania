@@ -373,6 +373,40 @@
   }
   .curio p{font-size:13px;color:var(--tinta-suave);margin:0;font-style:italic;}
 
+  /* --- Cerrado / problema: cabecera roja fuerte --- */
+  .cerrado{
+    margin-top:9px;padding:11px 13px;border-radius:8px;
+    background:rgba(168,50,42,.10);border:1px solid rgba(168,50,42,.35);
+    border-left:4px solid var(--rojo);
+  }
+  .cerrado .av-label{
+    font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--rojo);margin-bottom:3px;
+  }
+  .cerrado p{font-size:13px;color:var(--tinta-suave);margin:0;}
+  .cerrado p + p{margin-top:5px;}
+  .cerrado b{color:var(--rojo);}
+
+  /* --- Sugerencia colapsada dentro de una parada --- */
+  details.sug{
+    margin-top:8px;border:1px dashed rgba(168,50,42,.4);border-radius:8px;
+    background:rgba(168,50,42,.035);
+  }
+  details.sug > summary{
+    list-style:none;cursor:pointer;padding:8px 12px;
+    font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--rojo);
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  details.sug > summary::-webkit-details-marker{display:none;}
+  details.sug > summary .chev{font-size:9px;transition:transform .2s;}
+  details.sug[open] > summary .chev{transform:rotate(180deg);}
+  details.sug .sug-body{padding:0 12px 12px;}
+  details.sug .sug-name{font-family:var(--serif);font-weight:600;font-size:14.5px;
+    color:var(--bosque2);margin-bottom:3px;}
+  details.sug .sug-body p{font-size:13px;color:var(--tinta-suave);margin:0;}
+  details.sug .sug-body p + p{margin-top:5px;}
+
   /* --- Mini presupuesto del día --- */
   .presu{margin-top:6px;border-top:1px solid var(--linea);}
   .presu-row{display:flex;justify-content:space-between;gap:14px;padding:8px 0;
@@ -1334,19 +1368,20 @@
       <div class="day">
         <div class="daynum">6<small>Mar 1</small></div>
         <div>
-          <h3>Torre del Reloj → Sibiu</h3>
+          <h3>Sighișoara → Făgăraș → Sibiu</h3>
           <span class="sleep">Apartment Balcescu · Sibiu</span>
-          <p>Mañana en lo alto de la <b>Torre del Reloj</b>, ya abierta un martes, y tarde de traslado a <b>Sibiu</b> con una parada en el camino. Hay que elegir cuál: Biertan o la fortaleza de Făgăraș.</p>
-          <span class="tag">Hay que elegir la parada</span><span class="tag">Efectivo</span>
+          <p>Mañana en lo alto de la <b>Torre del Reloj</b>, ya abierta un martes, y por la tarde la <b>fortaleza de Făgăraș</b> antes de bajar a Sibiu. Ojo con el horario de cierre de Făgăraș.</p>
+          <span class="tag">~2 h 30 de ruta</span><span class="tag">Efectivo</span>
 
           <details class="detalle">
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
 
-              <div class="aviso">
-                <div class="av-label">⚠ Ojo con el precio de la torre</div>
-                <p>La entrada a la <b>Torre del Reloj subió a 50 lei por adulto</b> (Museo de Historia). El Museo de Armas son 20 lei aparte y la Cámara de Tortura 10 lei más. La guía vieja decía 15 o 16 lei: eso ya no corre.</p>
-                <p>No encontré confirmada la tarifa del peque. En la Casa de los Gremios cobran 10 lei a partir de los 5 años, así que llevar efectivo de sobra y preguntar en taquilla. <b>Tel. +40 265 771 108.</b></p>
+              <div class="cerrado">
+                <div class="av-label">⚠ Precio corregido · fuente oficial</div>
+                <p>Tarifa 2026 publicada por el <b>Ayuntamiento de Sighișoara</b>: Torre del Reloj <b>50 lei adulto</b> y 15 lei estudiante. La guía vieja decía 15 o 16 lei y eso ya no corre.</p>
+                <p>El Museo de Armas son 20 lei más (5 estudiantes) y la Cámara de Tortura 15 lei (4 estudiantes). <b>El combinado de los tres sale 70 lei</b> en vez de 85, así que si van a hacer más de uno conviene el combinado.</p>
+                <p>El peque de 5 no es "elev" todavía: preguntar en taquilla. Tel. <b>+40 265 771 108.</b></p>
               </div>
 
               <div class="d-bloque">Por la mañana</div>
@@ -1366,7 +1401,8 @@
                     <div class="tl-title">Torre del Reloj (Turnul cu Ceas)</div>
                     <p>El martes abre a las 09:00 y cierra 17:30 (horario de verano, del 15 de mayo al 15 de septiembre). Ir primera hora: son 110 escalones en 6 niveles y arriba hay poco espacio, así que con gente es incómodo.</p>
                     <p>Dentro está el Museo de Historia, y el mirador da la mejor vista de toda Sighișoara.</p>
-                    <span class="dato">50 lei adulto</span>
+                    <span class="dato">50 lei adulto · 15 estudiante</span>
+                    <span class="dato">Combinado 3 sitios: 70 lei</span>
                     <span class="dato">64 m · 110 escalones</span>
                     <span class="dato">Lunes cerrado</span>
                     <div class="curio">
@@ -1384,7 +1420,7 @@
                     <span class="dato">20 lei adulto · 10 el peque</span>
                     <div class="aviso">
                       <div class="av-label">Corrección</div>
-                      <p>La <b>Torre de los Herreros</b> no se visita por dentro: es acceso libre y solo por fuera, como casi todas las torres de la muralla. La única que se sube además de la del Reloj no existe. Lo que sí se paga es la <b>Iglesia de la Colina</b>, 20 lei por adulto, abierta de 10:00 a 18:00.</p>
+                      <p>La <b>Torre de los Herreros</b> no se visita por dentro: es acceso libre y solo por fuera, como casi todas las torres de la muralla. Lo que sí se paga es la <b>Iglesia de la Colina</b>, 20 lei por adulto, abierta de 10:00 a 18:00.</p>
                     </div>
                   </div>
                 </li>
@@ -1400,47 +1436,47 @@
                 </li>
               </ul>
 
-              <div class="d-bloque">La parada del camino · hay que elegir</div>
+              <div class="d-bloque">Por la tarde · la fortaleza de Făgăraș</div>
 
-              <div class="aviso">
-                <div class="av-label">⚠ El problema de Făgăraș</div>
-                <p>Făgăraș <b>cierra a las 17:00 y la última entrada es a las 16:00</b> (martes a viernes abre 08:00). Está a 1 h 20 de Sighișoara. Si salimos a las 14:30 llegamos 15:50, entramos raspando y tenemos <b>una hora justa</b> adentro de una fortaleza con 80 habitaciones que la gente recorre en tres.</p>
-                <p>Para que funcione hay que <b>salir de Sighișoara a las 13:30 como muy tarde</b>, sin sobremesa. Y después quedan 1 h 10 más hasta Sibiu.</p>
+              <div class="cerrado">
+                <div class="av-label">⚠ Făgăraș cierra antes de lo que dice la guía vieja</div>
+                <p>No abre hasta las 18:00 con última entrada a las 17:00. El horario real es <b>martes a viernes de 08:00 a 17:00, con última entrada a las 16:00</b>, y los lunes cierra.</p>
+                <p>Está a 1 h 20 de Sighișoara. Con el plan de llegar a las 16:00 entramos <b>al minuto exacto y con una hora justa adentro</b>, en una fortaleza de 80 habitaciones que la gente recorre en tres. Para que funcione bien hay que <b>salir de Sighișoara a las 13:30 como muy tarde</b>, sin sobremesa.</p>
               </div>
 
               <ul class="tl">
 
                 <li class="tl-item">
-                  <div class="tl-hora">14:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Opción A · Biertan (la que recomiendo)</div>
-                    <p>A 40 minutos de Sighișoara y <b>directamente sobre la ruta a Sibiu</b>, sin desvío. En septiembre abre de 10:00 a 17:00 con <b>pausa de 13:00 a 14:00</b>, así que llegando a las 14:30 está perfecto. Es la iglesia fortificada más espectacular de Transilvania y Patrimonio de la Humanidad.</p>
-                    <p>Era una de las dos elegidas en la guía maestra junto con Prejmer. Sale 10 lei, no hay presión de horario y después quedan 1 h 20 tranquilos hasta Sibiu.</p>
-                    <span class="dato">10 lei</span>
-                    <span class="dato">40 min de Sighișoara</span>
-                    <span class="dato">Sin desvío</span>
-                    <div class="curio">
-                      <div class="av-label">Dato</div>
-                      <p>La puerta de la sacristía tiene <b>19 cerrojos que se accionan con una sola llave</b>. Es un mecanismo del siglo XVI que ganó premio en la Exposición Universal de París de 1900, y todavía funciona.</p>
-                      <p>La otra historia que cuentan ahí: había una <b>"torre del divorcio"</b>. A los matrimonios que querían separarse los encerraban juntos dos semanas con una sola cama, un plato y un juego de cubiertos. En 300 años se divorció una sola pareja.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
                   <div class="tl-hora">15:50</div>
                   <div class="tl-body">
-                    <div class="tl-title">Opción B · Fortaleza de Făgăraș</div>
-                    <p>Fortaleza con foso de agua, cinco torres y unas 80 habitaciones, hoy el Museo del País de Făgăraș. Gabriel Bethlen la convirtió de fortaleza militar en residencia principesca entre 1613 y 1629, y los fosos con agua que se ven hoy son de esa época. Para el peque, el foso y las murallas son un golazo.</p>
-                    <p><b>Martes a viernes 08:00 a 17:00, última entrada 16:00. Cierra lunes.</b> Strada Mihai Viteazul 1. Tel. +40 368 404 287.</p>
-                    <span class="dato">30 lei adulto · 10 estudiantes</span>
-                    <span class="dato">Parking 2,25 lei/h · 17 lei el día</span>
-                    <span class="dato">App TPark</span>
+                    <div class="tl-title">Fortaleza de Făgăraș</div>
+                    <p>Fortaleza con foso de agua, cinco torres (Temniței, Roșu, Thomori, Pictat y Armelor) y unas 80 habitaciones repartidas en varios niveles, hoy el Museo del País de Făgăraș. Sala del Trono, Sala de la Dieta, Sala Pintada, y colecciones de armas medievales y de los gremios de la ciudad.</p>
+                    <p>Para el peque, el foso con agua y el patio interior con galerías de arcadas son lo mejor.</p>
+                    <span class="dato">30 lei adulto · 10 estudiante</span>
+                    <span class="dato">Mar-Vie 08:00 a 17:00</span>
+                    <span class="dato">Última entrada 16:00</span>
+                    <span class="dato">Lunes cerrado</span>
+                    <span class="dato">Strada Mihai Viteazul 1</span>
+                    <span class="dato">Tel. +40 368 404 287</span>
+                    <div class="curio">
+                      <div class="av-label">Dato</div>
+                      <p>Nació como fortaleza militar a fines del siglo XIV, pero fue <b>Gabriel Bethlen</b> quien entre 1613 y 1629 la convirtió en residencia principesca y la volvió uno de los centros políticos de Transilvania. Los fosos con agua que se ven hoy son de esa época.</p>
+                    </div>
                     <div class="aviso">
                       <div class="av-label">Cuidado con el GPS</div>
                       <p>Waze y Google Maps a veces te mandan por atrás de la fortaleza, a la Strada Podului, por el sentido de las calles del centro. Para el parking principal, seguir por la avenida <b>Strada Mihai Viteazul</b> y no hacerles caso.</p>
-                      <p>Detrás, en Strada Podului, hay explanadas donde se suele estacionar gratis (Parcare Cetatea Făgăraș), a menos de 5 min caminando bordeando el agua.</p>
+                      <p>Parking oficial en la entrada: 2,25 lei la hora o 17 lei el día, con la app TPark. Detrás, en Strada Podului, hay explanadas donde se suele estacionar gratis (Parcare Cetatea Făgăraș), a menos de 5 min bordeando el agua.</p>
                     </div>
+
+                    <details class="sug">
+                      <summary>Sugerencia si el horario no cierra <span class="chev">▼</span></summary>
+                      <div class="sug-body">
+                        <div class="sug-name">Biertan en vez de Făgăraș</div>
+                        <p>Si salimos tarde de Sighișoara o no queremos la carrera contra el reloj, la alternativa natural es <b>Biertan</b>: está a 40 minutos y <b>directamente sobre la ruta a Sibiu, sin desvío</b>. En septiembre abre de 10:00 a 17:00 con pausa de 13:00 a 14:00, así que llegando a las 14:30 entra cómodo.</p>
+                        <p>Es la iglesia fortificada más espectacular de Transilvania, Patrimonio de la Humanidad, y era una de las dos elegidas en la guía maestra junto con Prejmer. Sale <b>10 lei</b> y después quedan 1 h 20 tranquilos hasta Sibiu.</p>
+                        <p>La puerta de la sacristía tiene <b>19 cerrojos que se accionan con una sola llave</b>, un mecanismo del siglo XVI premiado en la Exposición Universal de París de 1900, y todavía funciona. La otra historia que cuentan ahí: había una "torre del divorcio" donde encerraban dos semanas a los matrimonios que querían separarse, con una sola cama, un plato y un juego de cubiertos. En 300 años se divorció una sola pareja.</p>
+                      </div>
+                    </details>
                   </div>
                 </li>
               </ul>
@@ -1476,14 +1512,15 @@
               <div class="d-bloque">Coste del día (sin nafta)</div>
               <div class="presu">
                 <div class="presu-row"><span class="k">Torre del Reloj · 2 adultos</span><span class="v">100 lei</span></div>
-                <div class="presu-row"><span class="k">Biertan · 2 adultos</span><span class="v">20 lei</span></div>
+                <div class="presu-row"><span class="k">Făgăraș · 2 adultos</span><span class="v">60 lei</span></div>
                 <div class="presu-row"><span class="k">Parking Sighișoara</span><span class="v">~20 lei</span></div>
+                <div class="presu-row"><span class="k">Parking Făgăraș</span><span class="v">17 lei</span></div>
                 <div class="presu-row"><span class="k">Parking Sibiu</span><span class="v">15 lei</span></div>
                 <div class="presu-row"><span class="k">Almuerzo La Perla</span><span class="v">~140 lei</span></div>
                 <div class="presu-row"><span class="k">Cena en el depto</span><span class="v">~100 lei</span></div>
                 <div class="presu-row gris"><span class="k">Casa de los Gremios · los tres <em>(si se hace)</em></span><span class="v">50 lei</span></div>
-                <div class="presu-row gris"><span class="k">Făgăraș en vez de Biertan <em>(diferencia)</em></span><span class="v">+40 lei</span></div>
-                <div class="presu-tot"><span class="k">Total</span><span class="v">395 lei · ~79 €</span></div>
+                <div class="presu-row gris"><span class="k">Biertan en vez de Făgăraș <em>(sale más barato)</em></span><span class="v">-40 lei</span></div>
+                <div class="presu-tot"><span class="k">Total</span><span class="v">452 lei · ~90 €</span></div>
               </div>
 
             </div>
@@ -1503,12 +1540,6 @@
             <summary>Ver el día completo <span class="chev">▼</span></summary>
             <div class="detalle-body">
 
-              <div class="aviso">
-                <div class="av-label">⚠ La Torre del Consejo está cerrada</div>
-                <p>El <b>Turnul Sfatului cerró el 19 de enero de 2026 por rehabilitación, y son 24 meses de obra</b> (fuente: Ayuntamiento de Sibiu). No se puede subir. El plan de "subir a la torre para ubicarse" no va.</p>
-                <p>El reemplazo es la <b>torre de la Catedral Evangélica</b>, en la Plaza Huet: 73 metros, con cuatro esquinas panorámicas arriba. El miércoles abre de 10:00 a 17:00 y los menores de 6 entran gratis.</p>
-              </div>
-
               <div class="d-bloque">Por la mañana · las dos plazas</div>
               <ul class="tl">
 
@@ -1517,7 +1548,21 @@
                   <div class="tl-body">
                     <div class="tl-title">Calle Bălcescu y Piața Mare</div>
                     <p>Se sale del depto y en dos minutos de calle peatonal adoquinada se desemboca en la Plaza Grande. Fachadas barrocas y, arriba, <b>los ojos</b>: las ventanas de los desvanes que parecen párpados entornados.</p>
-                    <p>El Turnul Sfatului se ve por fuera y se cruza el arco por debajo para pasar a la <b>Piața Mică</b>, más chica y bohemia.</p>
+                    <p>El plan original era <b>subir al Turnul Sfatului</b>, el arco que conecta las dos plazas, para ubicarse desde arriba antes de arrancar.</p>
+                    <div class="cerrado">
+                      <div class="av-label">⛔ Cerrado · no se puede subir</div>
+                      <p>El Ayuntamiento de Sibiu <b>cerró el Turnul Sfatului el 19 de enero de 2026 por rehabilitación, y son 24 meses de obra</b>. No reabre durante el viaje.</p>
+                      <p>Se sigue viendo por fuera y se cruza el arco por debajo para pasar a la <b>Piața Mică</b>, más chica y bohemia. Eso no cambia.</p>
+                    </div>
+                    <details class="sug">
+                      <summary>Sugerencia para reemplazar la subida <span class="chev">▼</span></summary>
+                      <div class="sug-body">
+                        <div class="sug-name">La torre de la Catedral Evangélica</div>
+                        <p>En la Plaza Huet, a cinco minutos de acá y de paso en el recorrido del mediodía. Son <b>73 metros</b>, más alta que el Turnul Sfatului, y arriba hay cuatro esquinas panorámicas que dan a los cuatro lados de la ciudad.</p>
+                        <p>El miércoles abre de <b>10:00 a 17:00</b>. La entrada a la iglesia son <b>10 lei</b> por adulto y <b>5 lei más para subir la torre</b>. Los menores de 6 entran gratis, así que el peque no paga.</p>
+                        <p>Si se hace, conviene dejarla para el bloque de las 12:00, cuando el recorrido pasa por la Plaza Huet, y no volver sobre los pasos.</p>
+                      </div>
+                    </details>
                     <div class="curio">
                       <div class="av-label">Dato para el peque</div>
                       <p>La leyenda dice que los ojos vigilaban a los vecinos y que por eso la ciudad "te mira". La explicación real es más aburrida: eran <b>respiraderos para ventilar los desvanes</b>, donde los sajones secaban alimentos. El efecto igual funciona, y es un juego asegurado: contar cuántos ojos encuentra.</p>
@@ -1530,8 +1575,9 @@
                   <div class="tl-body">
                     <div class="tl-title">Puente de las Mentiras y Plaza Huet</div>
                     <p>Al final de la Plaza Chica está el <b>Puente de las Mentiras</b>. Después se baja por el <b>Pasaje de los Orfebres</b>, un callejón medieval de piedra, y se vuelve arriba por la <b>Torre de las Escaleras</b>, de lo más antiguo que queda en pie en Sibiu.</p>
-                    <p>Arriba aparece la Plaza Huet con la <b>Catedral Evangélica</b> gótica. Acá es donde se sube la torre.</p>
-                    <span class="dato">Torre: mié 10:00 a 17:00</span>
+                    <p>Arriba aparece la Plaza Huet con la <b>Catedral Evangélica</b> gótica. Si se decide subir a su torre (ver la sugerencia del bloque anterior), este es el momento.</p>
+                    <span class="dato">Iglesia 10 lei · torre 5 lei más</span>
+                    <span class="dato">Mié 10:00 a 17:00</span>
                     <span class="dato">Menores de 6, gratis</span>
                     <div class="curio">
                       <div class="av-label">Dato</div>
@@ -1598,7 +1644,7 @@
                     <div class="tl-title">Museo ASTRA</div>
                     <p>A 15 minutos de Sibiu. Museo al aire libre enorme, en bosque y con lagos: casas tradicionales, molinos, animales y el Castillo de Arcilla del Valle de las Hadas. Para un chico de 5 años es muchísimo mejor que otra tarde de casco histórico.</p>
                     <p>Las audioguías son códigos QR en los carteles de cada casa, se escuchan con la app oficial ASTRA.</p>
-                    <span class="dato">50 lei adulto (tarifa 2026)</span>
+                    <span class="dato">50 lei adulto (tarifa 2026 anunciada, confirmar)</span>
                     <span class="dato">Menores de 7, gratis</span>
                     <span class="dato">Parking 10 lei</span>
                     <div class="bk">
@@ -1613,7 +1659,7 @@
               <div class="d-bloque">Coste del día (sin nafta)</div>
               <div class="presu">
                 <div class="presu-row"><span class="k">Torres de la Strada Cetății · los tres</span><span class="v">6 lei</span></div>
-                <div class="presu-row"><span class="k">Torre de la Catedral Evangélica · 2 adultos</span><span class="v">a confirmar</span></div>
+                <div class="presu-row gris"><span class="k">Catedral Evangélica + torre · 2 adultos <em>(si se hace)</em></span><span class="v">30 lei</span></div>
                 <div class="presu-row"><span class="k">Parking Sibiu</span><span class="v">15 lei</span></div>
                 <div class="presu-row"><span class="k">Almuerzo en el depto</span><span class="v">~100 lei</span></div>
                 <div class="presu-row"><span class="k">Cena y tomar algo</span><span class="v">~200 lei</span></div>
@@ -1685,10 +1731,10 @@
       <div class="brow"><div class="k">Auto <small>Klass Wagen · T-Cross automático · Total Cover · ya pagado</small></div><div class="v">274,50 €</div></div>
       <div class="brow"><div class="k">Nafta <small>~750 km · sin peajes en Rumanía</small></div><div class="v">70–95 €</div></div>
       <div class="brow"><div class="k">Parking <small>Brașov es lo más caro: 72 lei/día en el subterráneo</small></div><div class="v">60–80 €</div></div>
-      <div class="brow"><div class="k">Entradas <small>1.717 lei sumados uno por uno · Bran, Peleș y la telegondola son la mitad</small></div><div class="v">~345 €</div></div>
+      <div class="brow"><div class="k">Entradas <small>1.757 lei sumados uno por uno · Bran, Peleș y la telegondola son la mitad</small></div><div class="v">~350 €</div></div>
       <div class="brow"><div class="k">Comidas <small>~40–65 €/día × 10 · algunos aptos con cocina</small></div><div class="v">400–650 €</div></div>
-      <div class="btotal"><div class="k">Total puerta a puerta</div><div class="v">~2.235–2.645 €</div></div>
-      <p class="bnote">Las entradas están sumadas una por una a 5 lei = 1 €, no estimadas. Aparte quedan los opcionales: Parlamento 75 €, ASTRA ~20 €, trenecito de Sighișoara 12 €, tren turístico de Sibiu ~9 €, Poenari ~9 €. Los 6 hoteles y el auto ya están pagados o confirmados.</p>
+      <div class="btotal"><div class="k">Total puerta a puerta</div><div class="v">~2.240–2.650 €</div></div>
+      <p class="bnote">Las entradas están sumadas una por una a 5 lei = 1 €, no estimadas. Aparte quedan los opcionales: Parlamento 75 €, ASTRA ~20 €, trenecito de Sighișoara 12 €, tren turístico de Sibiu ~9 €, torre de la Catedral Evangélica 6 €, Poenari ~9 €. Los 6 hoteles y el auto ya están pagados o confirmados.</p>
     </div>
   </div>
 </section>
