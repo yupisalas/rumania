@@ -461,7 +461,42 @@
   .presu-tot .k{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--bosque);}
   .presu-tot .v{font-family:var(--serif);font-weight:900;font-size:19px;color:var(--dorado);}
 
+  /* ---------- RESERVAS ---------- */
+  .resv{display:grid;gap:14px;margin-top:26px;}
+  .resv-card{
+    background:#fff;border:1px solid var(--linea);border-left:3px solid var(--dorado);
+    border-radius:14px;padding:18px 18px;
+  }
+  .resv-card.auto{border-left-color:var(--bosque);}
+  .resv-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:2px;}
+  .resv-name{font-family:var(--serif);font-weight:600;font-size:17.5px;color:var(--bosque);}
+  .resv-when{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--rojo);}
+  .resv-addr{font-size:13px;color:var(--tinta-suave);margin-bottom:11px;}
+  .resv-addr a{color:var(--bosque2);text-decoration:none;border-bottom:1px solid var(--linea);}
+  .resv-keys{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .resv-key{
+    background:var(--gris-bg);border:1px solid var(--linea);border-radius:8px;padding:5px 10px;
+    font-size:11px;color:var(--gris);text-transform:uppercase;letter-spacing:.08em;font-weight:600;
+  }
+  .resv-key b{
+    display:block;font-family:var(--serif);font-size:16px;font-weight:700;
+    color:var(--tinta);letter-spacing:.03em;text-transform:none;
+  }
+  .resv-key.pin b{color:var(--rojo);}
+  .resv-meta{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+  .resv-meta div{padding:6px 0;border-top:1px solid var(--linea);font-size:13px;color:var(--tinta-suave);}
+  .resv-meta .lab{
+    display:block;font-size:10.5px;color:var(--gris);font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;margin-bottom:1px;
+  }
+  .resv-meta b{color:var(--rojo);}
+  .resv-nota{
+    background:#fff;border:1px solid var(--linea);border-left:3px solid var(--rojo);
+    border-radius:12px;padding:14px 16px;margin-top:16px;font-size:13px;color:var(--tinta-suave);
+  }
+
   @media(max-width:560px){
+    .resv-meta{grid-template-columns:1fr;}
     .notes{grid-template-columns:1fr;}
     .day{grid-template-columns:52px 1fr;gap:14px;}
     .daynum{font-size:32px;}
@@ -1794,160 +1829,12 @@
         <div>
           <h3>Transfăgărășan ⛰ · el día grande</h3>
           <span class="sleep">Baltina Parc · Curtea de Argeș</span>
-          <p>Subida por el norte, lago <b>Bâlea</b> arriba, túnel Capra y bajada por el lado sur hasta la presa de <b>Vidraru</b> y Poenari. Check in del hotel 13-18 h: bajar con tiempo.</p>
-          <span class="tag">Abrigo arriba (10-15°)</span><span class="tag">Osos: ventanilla arriba</span><span class="tag">Tentativo</span>
-
-          <details class="detalle">
-            <summary>Ver el día completo <span class="chev">▼</span></summary>
-            <div class="detalle-body">
-
-              <div class="aviso">
-                <div class="av-label">⚠ Plan tentativo</div>
-                <p>Los horarios de este día todavía <b>no están cerrados</b>. Es el borrador, sirve para orientarse pero puede cambiar entero.</p>
-              </div>
-
-              <div class="aviso">
-                <div class="av-label">⚠ Antes de este día</div>
-                <p>La carretera tiene <b>horario diario de 07:00 a 21:00</b> en temporada. El sector alpino reabrió el 12 de junio de 2026.</p>
-                <p>Chequear el miércoles a la noche en <b>Infotrafic</b> que el túnel de Bâlea esté abierto y que no hayan vuelto las obras del km 61 (ver el bloque de Vidraru).</p>
-                <p>El jueves juega a favor: de lunes a jueves es cuando menos tráfico hay.</p>
-              </div>
-
-              <div class="d-bloque">Por la mañana · la subida norte</div>
-              <ul class="tl">
-
-                <li class="tl-item">
-                  <div class="tl-hora">09:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Salida de Sibiu</div>
-                    <p>Desayuno fuerte en el departamento y salida hacia la montaña. Check out hasta las 12:00, así que no hay presión por ese lado.</p>
-                    <div class="cerrado">
-                      <div class="av-label">⚠ Los osos quedan fuera con este horario</div>
-                      <p>Saliendo 09:30, el bosque de media montaña del lado norte se cruza cerca de las <b>10:30</b>, que es la peor franja del día para verlos.</p>
-                      <p>Si los osos importan, hay que <b>salir de Sibiu a las 07:00 o 07:30</b>. Es la única cosa del viaje que no tiene arreglo después.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">10:45</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Parada en Bâlea Cascadă</div>
-                    <p>Veinte minutos para estirar las piernas. En los puestos peatonales venden <b>kürtőskalács</b> recién hecho, el pan dulce en espiral que se asa sobre brasas y sale caliente. Para el peque es media atracción en sí.</p>
-                    <span class="dato">20 min</span>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">11:45</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Cima · lago Bâlea</div>
-                    <p>Paseo por la zona llana del lago glacial, a más de 2.000 metros. Es el punto alto del viaje en todos los sentidos.</p>
-                    <p>Almuerzo temprano en <b>Cabana Bâlea Lac</b>, el restaurante de madera de la orilla. Comer a esa altura con esas vistas es de las cosas que se recuerdan.</p>
-                    <span class="dato">11:45 a 13:00</span>
-                    <span class="dato">Abrigo de verdad: 10-15°</span>
-                    <div class="bk">
-                      <div class="bk-label">Si arriba hay niebla o lluvia</div>
-                      <div class="bk-name">La Cetate, al pie de Poenari</div>
-                      <p>Pasar de largo el túnel y bajar a almorzar ahí. Está a menor altitud, con mejor clima, y tiene <b>terraza llana y parque infantil privado con hamacas</b> donde el peque juega mientras esperan la comida. Con un día feo arriba, es claramente mejor plan.</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">Por la tarde · la bajada sur</div>
-              <ul class="tl">
-
-                <li class="tl-item">
-                  <div class="tl-hora">13:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">El túnel Capra</div>
-                    <p>Se cruza el túnel oscuro hacia el flanco sur de los Făgăraș. Es el punto donde cambia el paisaje de golpe.</p>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">13:15</div>
-                  <div class="tl-body">
-                    <div class="tl-title">El tramo boscoso del sur</div>
-                    <p>Conducción lenta por la hilera de curvas del lado sur, más arbolado y más suave que el norte. Avisarle al peque que mire por las ventanas.</p>
-                    <p>Si aparece un oso: <b>quedarse dentro del auto</b>, ventanilla arriba, no darle comida, no acercarse a sacar fotos y no bloquear la carretera.</p>
-                    <span class="dato">13:15 a 14:15</span>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">14:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Mirador de la presa de Vidraru</div>
-                    <p>Parada de veinte minutos. Se puede caminar sobre el muro de la presa, protegido con bloques altos de hormigón, así que se cruza tranquilo de la mano.</p>
-                    <span class="dato">20 min</span>
-                    <div class="aviso">
-                      <div class="av-label">⚠ Verificar las obras del km 61</div>
-                      <p>Entre febrero y el <b>20 de marzo de 2026</b> hubo cierres en el km 61+500 a 61+750 por la retecnologización de la presa, en las franjas 08:00-11:00 y 13:00-18:00 de lunes a jueves.</p>
-                      <p>Esa restricción <b>ya venció</b> y no hay aviso nuevo, pero la obra de Hidroelectrica es de varios años. Si volviera con el mismo horario, <b>las 14:30 de un jueves caen justo dentro del cierre</b>. Chequear la noche anterior.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">15:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Base de la fortaleza de Poenari</div>
-                    <p>Parada fotográfica desde abajo para ver el castillo en lo alto del risco. Subir son 1.480 escalones, así que con el peque se mira y se sigue.</p>
-                    <div class="curio">
-                      <div class="av-label">Dato</div>
-                      <p>Este sí fue de Vlad țepeș de verdad, a diferencia de Bran. Lo reconstruyó en el siglo XV con trabajo forzado de los boyardos de Târgoviște, a los que castigó así por la muerte de su hermano.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">16:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Llegada a Curtea de Argeș y monasterio</div>
-                    <p>Visita al monasterio y tiempo libre para que el peque corra por el parque ajardinado, que es enorme y peatonal.</p>
-                    <span class="dato">~60 lei los tres</span>
-                    <span class="dato">Sitio religioso activo</span>
-                    <div class="aviso">
-                      <div class="av-label">⚠ Ojo con el check in</div>
-                      <p>Baltina Parc recibe de <b>13:00 a 18:00</b> y hay alguien esperando en el alojamiento. Si el monasterio se hace a las 16:00, hay que pasar por el hotel <b>antes de las 18:00</b>, no después.</p>
-                      <p>Con el monasterio hecho hoy, la mañana del viernes queda libre.</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">La alternativa sin curvas</div>
-              <ul class="tl">
-                <li class="tl-item">
-                  <div class="tl-hora">Plan B</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Subir en telecabina y rodear por el valle</div>
-                    <p>Si preocupa el mareo del peque: se conduce de Sibiu a la base de <b>Bâlea Cascadă</b>, tramo suave y sin curvas revueltas, se deja el auto en el parking vigilado y se suben los tres en la <b>telecabina</b>, diez minutos colgados en el aire.</p>
-                    <p>Se almuerza arriba en el lago, se baja en telecabina, y desde la base se rodea la montaña por el <b>valle del Olt (DN7)</b>, que es recto y plano, hasta Curtea de Argeș.</p>
-                    <span class="dato euro">~400 lei los tres, ida y vuelta</span>
-                    <div class="cerrado">
-                      <div class="av-label">⚠ Lo que se pierde</div>
-                      <p>Con este plan <b>no se hace la Transfăgărășan entera</b>, que era una de las decisiones firmes del viaje. Se pierden el túnel Capra, la bajada sur, la presa de Vidraru y Poenari.</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">Coste del día (sin nafta)</div>
-              <div class="presu">
-                <div class="presu-row"><span class="k">La carretera y el lago Bâlea</span><span class="v">Gratis</span></div>
-                <div class="presu-row"><span class="k">Almuerzo en Cabana Bâlea Lac</span><span class="v">~250 lei</span></div>
-                <div class="presu-row"><span class="k">Monasterio de Curtea de Argeș · los tres</span><span class="v">~60 lei</span></div>
-                <div class="presu-row"><span class="k">Cena en Curtea de Argeș</span><span class="v">~150 lei</span></div>
-                <div class="presu-row"><span class="k">Parking Baltina Parc</span><span class="v">Gratis</span></div>
-                <div class="presu-row gris"><span class="k">Telecabina de Bâlea <em>(solo si se hace el plan B)</em></span><span class="v">400 lei</span></div>
-                <div class="presu-tot"><span class="k">Total</span><span class="v">~460 lei · ~92 €</span></div>
-              </div>
-
-            </div>
-          </details>
+          <p>Salida temprano de Sibiu. Subimos por el norte, el tramo de bosque donde <b>bajan los osos</b>, mejor a primera hora, lago Bâlea arriba, y bajamos por el lado sur. Check in del hotel 13-18 h: bajar con tiempo.</p>
+          <span class="tag">Abrigo arriba (10-15°)</span><span class="tag">Osos: ventanilla arriba</span><span class="tag">Falta detallar</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">La carretera + lago Bâlea</span><span class="t-price t-free">Gratis</span></div>
+            <span class="t-book book-door">Verificar en CNAIR las obras del km 61 (Vidraru) y que el túnel de Bâlea esté abierto</span>
+          </div>
         </div>
       </div>
 
@@ -1956,150 +1843,12 @@
         <div>
           <h3>Curtea de Argeș → Bucarest</h3>
           <span class="sleep">Stil Old Town · Bucarest</span>
-          <p>Mañana tranquila y ~2 h 30 a Bucarest por la A1. Tarde y noche a pie por <b>Lipscani</b>: los pasajes, Hanu' lui Manuc, Cărturești Carusel y cena en Caru' cu Bere.</p>
-          <span class="tag">Tentativo</span><span class="tag">El auto queda guardado</span>
-
-          <details class="detalle">
-            <summary>Ver el día completo <span class="chev">▼</span></summary>
-            <div class="detalle-body">
-
-              <div class="aviso">
-                <div class="av-label">⚠ Plan tentativo</div>
-                <p>Horarios todavía <b>sin cerrar</b>. Es el borrador de la tarde de Lipscani.</p>
-              </div>
-
-              <div class="d-bloque">Por la mañana</div>
-              <ul class="tl">
-
-                <li class="tl-item">
-                  <div class="tl-hora">12:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Check out y paseo por Curtea de Argeș</div>
-                    <p>Paseo por el centro y almuerzo antes de salir. Si el monasterio ya se hizo ayer al llegar, la mañana queda libre del todo y se puede salir antes.</p>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">13:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Ruta a Bucarest por la A1</div>
-                    <p>Dos horas y media de autopista. Es el tramo más fácil de todo el viaje.</p>
-                    <span class="dato">~2 h 30</span>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">Llegada a Bucarest</div>
-              <ul class="tl">
-
-                <li class="tl-item">
-                  <div class="tl-hora">15:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Interparking Universitate</div>
-                    <p>Se entra por las avenidas grandes (Calea Victoriei o Bulevardul Magheru) y se baja directo a la rampa subterránea, sin meterse en las peatonales. En el GPS, poner el nombre tal cual.</p>
-                    <p>Es subterráneo, moderno y tiene <b>ascensores directos a la plaza</b>, así que se sale rodando con el cochecito hacia el hotel. El auto queda guardado hasta mañana.</p>
-                    <span class="dato euro">50 lei / 24 h</span>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">16:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Check in · Stil Old Town</div>
-                    <p>Strada Gabroveni 29, en plena zona peatonal del casco viejo. Las plantas superiores son solo por escaleras.</p>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">Por la tarde · Lipscani a pie</div>
-              <ul class="tl">
-
-                <li class="tl-item">
-                  <div class="tl-hora">17:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Pasaje Macca-Villacrosse y Calea Victoriei</div>
-                    <p>Se sale caminando del hotel. La galería tiene techo de <b>cristal amarillo</b> y la luz de la tarde ahí adentro es rarísima, muy fotográfica. Después, la gran avenida comercial.</p>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">18:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Pasaje Victoria · la calle de los paraguas</div>
-                    <p>Callejón cubierto entero de paraguas de colores colgados. Foto obligada con el peque.</p>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">18:45</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Hanu' lui Manuc y merienda</div>
-                    <p>El patio interior de madera del viejo caravasar, que para un chico parece un castillo. Parada en una <i>patiserie</i> por un <b>covrig</b> de chocolate para aguantar hasta la cena.</p>
-                    <span class="dato">~40 lei</span>
-                    <div class="curio">
-                      <div class="av-label">Dato</div>
-                      <p>Es la posada más antigua de Bucarest que sigue funcionando, de 1808. La construyó un comerciante armenio, y en 1812 se firmó ahí adentro el tratado que cerró la guerra ruso-turca.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">19:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Librería Cărturești Carusel</div>
-                    <p>Seis plantas blancas en espiral dentro de un edificio del siglo XIX. Zumo en la cafetería de arriba mirando el hueco central.</p>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">20:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Show de las fuentes · Piața Unirii</div>
-                    <p>Estaba planeado como el broche de la noche: 45 minutos de agua, luces y música, a 5 o 7 minutos a pie hacia el sur desde el hotel.</p>
-                    <div class="cerrado">
-                      <div class="av-label">⛔ Probablemente no exista · sin confirmar</div>
-                      <p>Las fuentes de Piața Unirii fueron <b>desafectadas a finales de junio de 2025</b> para las obras del Planșeul Unirii, con los últimos espectáculos "Simfonia Apei" el 29 de junio.</p>
-                      <p>No hay ningún anuncio de que hayan vuelto en 2026. Históricamente iban de viernes a domingo y en septiembre arrancaban a las 20:00, pero <b>eso es de antes del desmontaje</b>.</p>
-                      <p>No armar la noche alrededor de esto sin confirmarlo antes.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">21:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Cena · Caru' cu Bere</div>
-                    <p>El restaurante histórico icónico, con música y baile folk en vivo. <b>Para ella:</b> cașcaval pane, coliflor, hongos con polenta o sopa de porotos. <b>Para el peque:</b> el queso empanado sale seguro.</p>
-                    <span class="dato">Reservado</span>
-                    <span class="dato">~300 lei</span>
-                    <div class="bk">
-                      <div class="bk-label">Propina</div>
-                      <p>En Rumania no viene incluida. Lo habitual es dejar entre el <b>10 y el 15%</b>. Se puede seleccionar directo en el datáfono al pagar con tarjeta.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">22:45</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Vuelta al hotel</div>
-                    <p>Tres minutos andando desde el restaurante. Ideal si el peque ya está fundido.</p>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">Coste del día (sin nafta)</div>
-              <div class="presu">
-                <div class="presu-row"><span class="k">Interparking Universitate · 24 h</span><span class="v">50 lei</span></div>
-                <div class="presu-row"><span class="k">Almuerzo en Curtea de Argeș</span><span class="v">~120 lei</span></div>
-                <div class="presu-row"><span class="k">Merienda · covrigi y café</span><span class="v">~40 lei</span></div>
-                <div class="presu-row"><span class="k">Cena en Caru' cu Bere</span><span class="v">~300 lei</span></div>
-                <div class="presu-row gris"><span class="k">Monasterio de Curtea de Argeș <em>(si no se hizo ayer)</em></span><span class="v">~60 lei</span></div>
-                <div class="presu-tot"><span class="k">Total</span><span class="v">~510 lei · ~102 €</span></div>
-              </div>
-
-            </div>
-          </details>
+          <p>El monasterio de Curtea de Argeș por la mañana y ~2 h 30 de vuelta a Bucarest por la A1. Tarde en Lipscani: Curtea Veche, Stavropoleos, Cărturești Carusel y el pasaje Macca-Villacrosse.</p>
+          <span class="tag">Falta detallar</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Monasterio de Curtea de Argeș</span><span class="t-price">~12 € · los 3</span></div>
+            <span class="t-book book-door">En puerta · sitio religioso activo</span>
+          </div>
         </div>
       </div>
 
@@ -2108,130 +1857,12 @@
         <div>
           <h3>Bucarest → vuelo · 18 h</h3>
           <span class="sleep">Volvemos a casa ✈</span>
-          <p>Una última mañana en Bucarest, devolución del auto y de la sillita en Otopeni, y vuelo a las 18:00 con <b>Wizz Air</b>.</p>
-          <span class="tag">Tentativo</span><span class="tag">Wizz: la puerta cierra 30 min antes</span>
-
-          <details class="detalle">
-            <summary>Ver el día completo <span class="chev">▼</span></summary>
-            <div class="detalle-body">
-
-              <div class="aviso">
-                <div class="av-label">⚠ Plan tentativo</div>
-                <p>La mañana <b>todavía no está decidida</b>: hay dos opciones abiertas y no encajan igual con los horarios. Ver el bloque de abajo.</p>
-              </div>
-
-              <div class="cerrado">
-                <div class="av-label">✈ Wizz Air · leer antes de salir</div>
-                <p>Hacer el <b>check in online</b>. En mostrador cobran 40 € por persona.</p>
-                <p>Hay que pasar sí o sí por el <b>mostrador de facturación de Wizz</b> para que le peguen la etiqueta adhesiva de equipaje al chasis del cochecito, aunque no se facture nada más.</p>
-                <p>Las puertas de embarque abren 45 minutos antes y <b>cierran estrictamente 30 minutos antes</b> de la hora del vuelo. No se hacen excepciones.</p>
-              </div>
-
-              <div class="d-bloque">La mañana · dos opciones</div>
-              <ul class="tl">
-
-                <li class="tl-item">
-                  <div class="tl-hora">Opción A</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Piața Obor o Parcul Herăstrău</div>
-                    <p>Lo que estaba decidido. <b>Piața Obor</b> es el mercado de verdad de la ciudad, sin turistas: ir temprano y con efectivo. <b>Herăstrău</b> es el plan relajado, y queda de camino al aeropuerto por Șoseaua Kiseleff.</p>
-                    <p>Las dos son a pie o en taxi corto, sin depender del auto ni de horarios de museo.</p>
-                    <span class="dato">Sin entradas</span>
-                    <span class="dato">Obor: efectivo</span>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">Opción B</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Museo Nacional de la Aldea (Dimitrie Gusti)</div>
-                    <p>Museo al aire libre con iglesias de madera y molinos, senderos verdes y llanos, muy bueno para el cochecito. Se aparca en <b>Parcare Subterană Romexpo B3</b> y se cruza a la entrada norte en 7 u 8 minutos de paseo pavimentado. Entrando por esa puerta se recorre al revés, que es la zona más tranquila.</p>
-                    <p>Viniendo en auto desde el centro se rodea la rotonda del <b>Arco del Triunfo</b>, buen momento para verlo de cerca.</p>
-                    <span class="dato">40 lei adulto</span>
-                    <span class="dato">Peque gratis</span>
-                    <span class="dato">Entradas online</span>
-                    <div class="cerrado">
-                      <div class="av-label">⚠ Esto contradice una decisión ya tomada</div>
-                      <p>El Museo de la Aldea es exactamente lo que se descartó a cambio del <b>ASTRA de Sibiu</b>, que es más grande, está en bosque y tiene más cosas para chicos. La idea era justamente <b>liberar el sábado</b>.</p>
-                      <p>Y los horarios se pisan: el check out del hotel es a las <b>11:00</b> y el museo empieza a las 11:00. Habría que salir del hotel antes, con las valijas ya en el auto.</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">13:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Almuerzo · Restaurante Pescăruș</div>
-                    <p>Solo si se hace la opción B. Está sobre el lago de Herăstrău, a un paso del museo. Comer con vista al agua es una buena forma de despedirse.</p>
-                    <span class="dato">~200 lei los tres</span>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">La vuelta</div>
-              <ul class="tl">
-
-                <li class="tl-item">
-                  <div class="tl-hora">11:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Check out · Stil Old Town</div>
-                    <p>Llevar leche y fruta para el desayuno del peque en el camino.</p>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">13:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Salida hacia Otopeni</div>
-                    <p>Se vuelve al auto y se toma la DN1 hacia el norte. Conviene salir en esta franja: más tarde el tráfico de sábado complica.</p>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">14:00</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Devolver la sillita y el auto</div>
-                    <p>La <b>sillita se devuelve aparte</b>, en Strada Libertății 14, Otopeni, a unos 250 m de Klass Wagen. Hacerlo primero y después entregar el auto.</p>
-                    <p><b>Filmar el auto entero</b> al devolverlo, igual que al retirarlo.</p>
-                    <span class="dato">Klass Wagen · OTP</span>
-                    <span class="dato">Reserva a las 15:00, se puede antes</span>
-                  </div>
-                </li>
-
-                <li class="tl-item">
-                  <div class="tl-hora">15:30</div>
-                  <div class="tl-body">
-                    <div class="tl-title">En el aeropuerto</div>
-                    <p>Dos horas y media antes del vuelo. Alcanza cómodo para el mostrador de Wizz, la etiqueta del cochecito y el control.</p>
-                    <span class="dato">Vuelo 18:00</span>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">Si no se usara el auto</div>
-              <ul class="tl">
-                <li class="tl-item">
-                  <div class="tl-hora">Backup</div>
-                  <div class="tl-body">
-                    <div class="tl-title">Cómo llegar a Otopeni sin auto</div>
-                    <p><b>Bus exprés línea 100</b> desde Piața Unirii: 45 a 50 minutos, 3 lei, se paga adentro acercando la tarjeta contactless al validador.</p>
-                    <p><b>Uber o Bolt:</b> entre 50 y 80 lei desde el casco histórico, hasta 100 si hay mucha demanda. Más seguro porque se ve el precio cerrado antes de subir.</p>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="d-bloque">Coste del día (sin nafta)</div>
-              <div class="presu">
-                <div class="presu-row gris"><span class="k">Museo de la Aldea · 2 adultos <em>(opción B)</em></span><span class="v">80 lei</span></div>
-                <div class="presu-row gris"><span class="k">Parking Romexpo <em>(opción B)</em></span><span class="v">~20 lei</span></div>
-                <div class="presu-row gris"><span class="k">Almuerzo en Pescăruș <em>(opción B)</em></span><span class="v">~200 lei</span></div>
-                <div class="presu-row"><span class="k">Desayuno y algo para el camino</span><span class="v">~60 lei</span></div>
-                <div class="presu-row gris"><span class="k">Palacio del Parlamento · los tres <em>(si se hace)</em></span><span class="v">375 lei</span></div>
-                <div class="presu-tot"><span class="k">Total · opción B</span><span class="v">~360 lei · ~72 €</span></div>
-              </div>
-
-            </div>
-          </details>
+          <p>Mañana en Bucarest: <b>Piața Obor</b> (mercado auténtico, ir temprano, efectivo) o <b>Parcul Herăstrău</b> (relajado, de camino al aeropuerto por Șos. Kiseleff). Sin museos. Devolvemos el auto y al aeropuerto sin madrugar.</p>
+          <span class="tag">Auto: devolución 15:00</span>
+          <div class="ticket">
+            <div class="t-top"><span class="t-name">Palacio del Parlamento (opcional)</span><span class="t-price">~75 € · los 3</span></div>
+            <span class="t-book book-soon">Si se hace: reservar antes · tour guiado · 3 pasaportes</span>
+          </div>
         </div>
       </div>
 
@@ -2345,6 +1976,161 @@
 
 <section class="band">
   <div class="wrap">
+    <div class="sec-label">Dónde dormimos</div>
+    <h2>Las reservas, con los códigos</h2>
+    <p class="lead">Todo lo que hay que tener a mano al llegar a cada puerta: confirmación, PIN, teléfono, horarios y dónde dejar el auto. Titular de todas las reservas: <b>Valeria Andrea Bauleo</b>.</p>
+
+    <div class="resv">
+
+      <div class="resv-card">
+        <div class="resv-head">
+          <span class="resv-name">Hotel Sinaia</span>
+          <span class="resv-when">Día 1 · 27–28 ago · 1 noche</span>
+        </div>
+        <p class="resv-addr">Bd. Carol I nr. 8, 106100 Sinaia · <a href="tel:+40244302900">+40 244 302 900</a></p>
+        <div class="resv-keys">
+          <span class="resv-key">Confirmación <b>5983894940</b></span>
+          <span class="resv-key pin">PIN <b>7869</b></span>
+        </div>
+        <div class="resv-meta">
+          <div><span class="lab">Precio</span>86 € · ya pagado</div>
+          <div><span class="lab">Check in / out</span>15:00–00:00 · hasta 12:00</div>
+          <div><span class="lab">Habitación</span>Doble estándar. Desayuno incluido y spa, 2 h por adulto y día</div>
+          <div><span class="lab">Parking</span>En el hotel, 40 lei/día. Al aire libre, altura máx. 2 m</div>
+        </div>
+      </div>
+
+      <div class="resv-card">
+        <div class="resv-head">
+          <span class="resv-name">Zinne Apartments</span>
+          <span class="resv-when">Días 2–4 · 28–31 ago · 3 noches · Brașov</span>
+        </div>
+        <p class="resv-addr">Strada Nicolae Bălcescu 18, ap. 15, 500019 Brașov · <a href="tel:+40741255225">+40 741 255 225</a></p>
+        <div class="resv-keys">
+          <span class="resv-key">Confirmación <b>6714410848</b></span>
+          <span class="resv-key pin">PIN <b>6307</b></span>
+        </div>
+        <div class="resv-meta">
+          <div><span class="lab">Precio</span>172 € (~192 € con tasas) · cobro automático de Booking</div>
+          <div><span class="lab">Check in / out</span><b>15:00–20:00</b> · 07:00–12:00</div>
+          <div><span class="lab">Tipo</span>Estudio entero, 2ª planta <b>solo escaleras</b>. Cocina completa, sin desayuno</div>
+          <div><span class="lab">Parking</span>En la calle. Alternativa cubierta: Park and Ride Regina Maria, 72 lei/24 h</div>
+        </div>
+      </div>
+
+      <div class="resv-card">
+        <div class="resv-head">
+          <span class="resv-name">Boutique Hotel von Graf</span>
+          <span class="resv-when">Día 5 · 31 ago–1 sep · 1 noche · Sighișoara</span>
+        </div>
+        <p class="resv-addr">Strada Tâmplarilor 4, 545400 Sighișoara · <a href="tel:+40747848067">+40 747 848 067</a></p>
+        <div class="resv-keys">
+          <span class="resv-key">Confirmación <b>5814774633</b></span>
+          <span class="resv-key pin">PIN <b>7636</b></span>
+        </div>
+        <div class="resv-meta">
+          <div><span class="lab">Precio</span>80 €</div>
+          <div><span class="lab">Check in / out</span>15:00–23:30 · hasta 11:00</div>
+          <div><span class="lab">Habitación</span>Doble con dosel, en el ático. Desayuno incluido, 08:30–10:30</div>
+          <div><span class="lab">Parking</span>Subir solo a descargar valijas; el auto va al parking público de la base, ~20 lei/día</div>
+        </div>
+      </div>
+
+      <div class="resv-card">
+        <div class="resv-head">
+          <span class="resv-name">Apartment Balcescu No 10</span>
+          <span class="resv-when">Días 6–7 · 1–3 sep · 2 noches · Sibiu</span>
+        </div>
+        <p class="resv-addr">Strada Nicolae Bălcescu 10, 550159 Sibiu · <a href="tel:+40748501577">+40 748 501 577</a></p>
+        <div class="resv-keys">
+          <span class="resv-key">Confirmación <b>5283971774</b></span>
+          <span class="resv-key pin">PIN <b>5487</b></span>
+        </div>
+        <div class="resv-meta">
+          <div><span class="lab">Precio</span>131 €</div>
+          <div><span class="lab">Check in / out</span>14:00–00:00 · hasta 12:00</div>
+          <div><span class="lab">Tipo</span>Planta baja, sin escaleras. Cocina completa, sin desayuno</div>
+          <div><span class="lab">Parking</span><b>Llamar al anfitrión antes de llegar.</b> Estacionar en Strada Alexandru Xenopol 5, ~10 lei/día</div>
+        </div>
+      </div>
+
+      <div class="resv-card">
+        <div class="resv-head">
+          <span class="resv-name">Baltina Parc Transfăgărășan</span>
+          <span class="resv-when">Día 8 · 3–4 sep · 1 noche · Curtea de Argeș</span>
+        </div>
+        <p class="resv-addr">Comuna Corbeni, Sat Bucșenești nr. 245, 117277 · <a href="tel:+40749646596">+40 749 646 596</a></p>
+        <div class="resv-keys">
+          <span class="resv-key">Confirmación <b>5488535112</b></span>
+          <span class="resv-key pin">PIN <b>2560</b></span>
+        </div>
+        <div class="resv-meta">
+          <div><span class="lab">Precio</span>72 € · se paga en el alojamiento, Visa o Mastercard en lei</div>
+          <div><span class="lab">Check in / out</span><b>13:00–18:00</b> · 10:00–12:00</div>
+          <div><span class="lab">Tipo</span>Casa entera, 1 dormitorio, sin desayuno</div>
+          <div><span class="lab">Parking</span>Privado y gratis, en el establecimiento</div>
+        </div>
+      </div>
+
+      <div class="resv-card">
+        <div class="resv-head">
+          <span class="resv-name">Stil Old Town Boutique Hotel</span>
+          <span class="resv-when">Día 9 · 4–5 sep · 1 noche · Bucarest</span>
+        </div>
+        <p class="resv-addr">Strada Gabroveni 29, Sector 3, 030167 Bucarest · <a href="tel:+40771448994">+40 771 448 994</a></p>
+        <div class="resv-keys">
+          <span class="resv-key">Confirmación <b>6714487762</b></span>
+          <span class="resv-key pin">PIN <b>8281</b></span>
+        </div>
+        <div class="resv-meta">
+          <div><span class="lab">Precio</span>85 €</div>
+          <div><span class="lab">Check in / out</span>15:00–00:00 · hasta 11:00</div>
+          <div><span class="lab">Habitación</span>Doble deluxe, plantas superiores <b>solo escaleras</b>. Sin desayuno</div>
+          <div><span class="lab">Parking</span><b>Sin resolver</b>, es casco viejo peatonal. A 17 km de Otopeni</div>
+        </div>
+      </div>
+
+      <div class="resv-card auto">
+        <div class="resv-head">
+          <span class="resv-name">Auto · Klass Wagen</span>
+          <span class="resv-when">Días 1–10 · Otopeni</span>
+        </div>
+        <p class="resv-addr">Aeropuerto Otopeni · <a href="tel:+40374020002">+40 374 020 002</a></p>
+        <div class="resv-keys">
+          <span class="resv-key">Reserva <b>OTP-247715485834724</b></span>
+        </div>
+        <div class="resv-meta">
+          <div><span class="lab">Precio</span>274,50 € · ya pagado</div>
+          <div><span class="lab">Retiro / devolución</span>Jue 27 a las 15:00 · sáb 5 a las 15:00</div>
+          <div><span class="lab">Vehículo</span>VW T-Cross automático</div>
+          <div><span class="lab">Seguro</span>Klass Total Cover, <b>franquicia cero</b>: cristales, neumáticos y bajos</div>
+        </div>
+      </div>
+
+      <div class="resv-card auto">
+        <div class="resv-head">
+          <span class="resv-name">Sillita · Babonbo / Coo Rent</span>
+          <span class="resv-when">Se retira aparte</span>
+        </div>
+        <p class="resv-addr">Strada Libertății 14, Otopeni, a ~250 m de Klass Wagen · <a href="tel:+40765136410">+40 765 136 410</a></p>
+        <div class="resv-meta">
+          <div><span class="lab">Modelo</span>Joie Every Stage</div>
+          <div><span class="lab">Suma al plan</span>~15 min, es otra parada</div>
+          <div><span class="lab">Instalación</span>Con cinturón, <b>no ISOFIX</b></div>
+          <div><span class="lab">Ojo</span>El peque va <b>a contramarcha</b> (14 kg, 103 cm). Si dan la versión R129 i-Size, el tope a contramarcha son 105 cm: quedan 2 cm</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="resv-nota">
+      Los PINs son los de Booking, para abrir la caja de llaves o identificarse en recepción. Si algo falla, el teléfono de cada tarjeta es el directo del alojamiento, no el de Booking.
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
     <div class="sec-label">Para no olvidar</div>
     <h2>Notas prácticas</h2>
     <div class="notes">
@@ -2397,7 +2183,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-26 · v8</b><br>
+      Versión de la guía: <b>2026-08-27 · v8</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
