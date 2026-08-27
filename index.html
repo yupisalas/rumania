@@ -170,6 +170,165 @@
     border-radius:0 8px 8px 0;padding:9px 12px;color:var(--tinta);
   }
 
+
+  /* ---------- REGISTRO DE GASTOS ---------- */
+  .gx-btn{
+    position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));
+    right:calc(13px + env(safe-area-inset-right));z-index:120;
+    font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.02em;
+    background:rgba(22,48,37,.92);color:var(--crema-solid);
+    border:1px solid rgba(227,193,121,.55);border-radius:100px;
+    padding:11px 16px;cursor:pointer;backdrop-filter:blur(6px);
+    box-shadow:0 4px 16px rgba(0,0,0,.28);line-height:1;
+    display:flex;align-items:center;gap:8px;
+  }
+  .gx-btn .gx-plus{color:var(--dorado-claro);font-weight:700;font-size:15px;line-height:1;}
+  .gx-btn .gx-tot{
+    font-family:var(--serif);font-weight:600;color:var(--dorado-claro);
+    border-left:1px solid rgba(227,193,121,.35);padding-left:9px;
+  }
+  .gx-btn:active{transform:scale(.96);}
+  body:has(.upd.show) .gx-btn{bottom:calc(84px + env(safe-area-inset-bottom));}
+
+  .gx-bg{
+    position:fixed;inset:0;z-index:200;background:rgba(18,42,32,.6);
+    opacity:0;pointer-events:none;transition:opacity .24s ease;
+  }
+  .gx-bg.open{opacity:1;pointer-events:auto;}
+
+  .gx{
+    position:fixed;left:0;right:0;bottom:0;z-index:201;
+    max-width:520px;margin:0 auto;
+    background:var(--crema-solid);border-top:3px solid var(--dorado);
+    border-radius:20px 20px 0 0;
+    padding:10px 20px calc(22px + env(safe-area-inset-bottom));
+    box-shadow:0 -10px 34px rgba(0,0,0,.26);
+    transform:translateY(110%);transition:transform .28s cubic-bezier(.24,.9,.3,1);
+    max-height:92vh;overflow:auto;-webkit-overflow-scrolling:touch;
+  }
+  .gx.open{transform:translateY(0);}
+
+  .gx-hero{text-align:center;padding:2px 0 16px;}
+  .gx-hero .n{
+    font-family:var(--serif);font-weight:600;font-size:38px;color:var(--bosque);line-height:1;
+  }
+  .gx-hero .sub{
+    font-family:var(--sans);font-size:12.5px;color:var(--tinta-suave);margin-top:7px;
+  }
+  .gx-bar{
+    height:7px;border-radius:100px;background:rgba(32,24,15,.09);
+    margin:13px 0 6px;position:relative;overflow:hidden;
+  }
+  .gx-bar i{
+    display:block;height:100%;border-radius:100px;background:var(--bosque2);
+    transition:width .3s ease;
+  }
+  .gx-bar i.alto{background:var(--rojo);}
+  .gx-bar .tope{
+    position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--dorado);left:74.9%;
+  }
+  .gx-hero .esc{
+    display:flex;justify-content:space-between;
+    font-family:var(--sans);font-size:11px;color:var(--gris);letter-spacing:.04em;
+  }
+
+  .gx-form{
+    background:#fff;border:1px solid var(--linea);border-radius:14px;
+    padding:14px;margin-bottom:18px;
+  }
+  .gx-row{display:flex;align-items:center;gap:9px;}
+  .gx-row input.monto{
+    flex:1;min-width:0;font-family:var(--serif);font-weight:600;font-size:28px;color:var(--bosque);
+    background:transparent;border:none;border-bottom:2px solid var(--linea);
+    padding:4px 2px 8px;outline:none;-webkit-appearance:none;
+  }
+  .gx-row input.monto:focus{border-bottom-color:var(--dorado);}
+  .gx-cur{display:flex;border:1px solid var(--linea);border-radius:100px;overflow:hidden;flex:none;}
+  .gx-cur button{
+    font-family:var(--sans);font-size:13px;font-weight:600;color:var(--tinta-suave);
+    background:#fff;border:none;padding:9px 13px;cursor:pointer;line-height:1;
+  }
+  .gx-cur button.on{background:var(--bosque);color:var(--crema-solid);}
+
+  .gx-cats{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;}
+  .gx-cats button{
+    font-family:var(--sans);font-size:12.5px;font-weight:500;color:var(--bosque);
+    background:#fff;border:1px solid var(--linea);border-radius:100px;
+    padding:7px 12px;cursor:pointer;line-height:1;
+  }
+  .gx-cats button.on{background:var(--bosque);color:var(--crema-solid);border-color:var(--bosque);}
+
+  .gx-nota{
+    width:100%;font-family:var(--sans);font-size:14px;color:var(--tinta);
+    background:transparent;border:none;border-bottom:1px solid var(--linea);
+    padding:9px 2px;margin-top:13px;outline:none;-webkit-appearance:none;
+  }
+  .gx-nota:focus{border-bottom-color:var(--dorado);}
+  .gx-add{
+    width:100%;margin-top:14px;font-family:var(--sans);font-size:14px;font-weight:600;
+    letter-spacing:.04em;background:var(--dorado);color:#20180f;border:none;
+    border-radius:10px;padding:13px;cursor:pointer;
+  }
+  .gx-add:active{transform:scale(.99);}
+  .gx-add[disabled]{opacity:.4;}
+
+  .gx-h{
+    font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--rojo);margin:20px 0 10px;
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  }
+  .gx-h em{font-style:normal;color:var(--gris);letter-spacing:.02em;text-transform:none;font-size:12px;}
+
+  .gx-it{
+    display:flex;align-items:center;gap:10px;padding:10px 0;
+    border-bottom:1px solid var(--linea);font-family:var(--sans);font-size:14px;
+  }
+  .gx-it .em{font-size:15px;flex:none;width:20px;text-align:center;}
+  .gx-it .tx{flex:1;min-width:0;color:var(--tinta);line-height:1.3;}
+  .gx-it .tx small{display:block;color:var(--gris);font-size:12px;margin-top:1px;}
+  .gx-it .vl{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--bosque);flex:none;}
+  .gx-it .vl small{display:block;font-family:var(--sans);font-weight:400;font-size:11px;color:var(--gris);text-align:right;}
+  .gx-it .del{
+    background:none;border:none;color:var(--gris);font-size:15px;cursor:pointer;
+    padding:2px 0 2px 6px;line-height:1;flex:none;
+  }
+  .gx-vacio{
+    font-family:var(--sans);font-size:13.5px;color:var(--gris);line-height:1.5;
+    padding:6px 0 2px;
+  }
+
+  .gx-dia{
+    display:flex;align-items:center;gap:10px;padding:9px 0;
+    border-bottom:1px solid var(--linea);font-family:var(--sans);font-size:13.5px;
+  }
+  .gx-dia.hoy{background:rgba(201,154,63,.09);margin:0 -8px;padding:9px 8px;border-radius:6px;}
+  .gx-dia .nm{flex:1;min-width:0;color:var(--tinta);}
+  .gx-dia .nm b{font-weight:600;}
+  .gx-dia .nm small{display:block;color:var(--gris);font-size:11.5px;}
+  .gx-dia .rl{font-family:var(--serif);font-weight:600;font-size:14px;color:var(--bosque);flex:none;text-align:right;}
+  .gx-dia .rl small{display:block;font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.02em;}
+  .gx-dia .rl small.bien{color:#3d7a5a;}
+  .gx-dia .rl small.mal{color:var(--rojo);}
+  .gx-dia .rl small.na{color:var(--gris);}
+
+  .gx-acc{display:flex;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--linea);}
+  .gx-acc button{
+    flex:1;font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.03em;
+    background:#fff;border:1px solid var(--linea);border-radius:10px;
+    padding:11px 8px;cursor:pointer;color:var(--bosque);
+  }
+  .gx-acc button.peligro{color:var(--rojo);border-color:rgba(168,50,42,.3);}
+  .gx-msj{
+    font-family:var(--sans);font-size:12.5px;color:var(--bosque);text-align:center;
+    margin-top:10px;min-height:16px;
+  }
+  .gx-exp{
+    width:100%;height:150px;margin-top:12px;font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:11px;line-height:1.45;color:var(--tinta);background:#fff;
+    border:1px solid var(--linea);border-radius:10px;padding:10px;display:none;
+  }
+  .gx-pie{font-size:12px;color:var(--gris);line-height:1.5;margin-top:12px;font-family:var(--sans);}
+
   /* ---------- HERO ---------- */
   .hero{
     background:
@@ -2273,7 +2432,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-27 · v9</b><br>
+      Versión de la guía: <b>2026-08-27 · v10</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -2322,6 +2481,59 @@
 
   <p class="cnv-nota">Curso oficial BNR del 27 ago 2026: <b>1 € = 5,2588 lei</b>. En casas de cambio y cajeros te van a dar algo menos, así que podés tocar el número y ajustarlo. De cabeza: dividí los lei por 5 y sacale un 5%.</p>
   <p class="cnv-nota alerta">En el cajero, si te ofrece cobrarte en euros, decí que no y elegí <b>lei</b>. Evitá los cajeros Euronet; buscá BCR, BRD, Banca Transilvania o ING.</p>
+</div>
+
+
+<button class="gx-btn" type="button" id="gxBtn" aria-label="Abrir registro de gastos">
+  <span class="gx-plus">+</span><span>gasto</span><span class="gx-tot" id="gxFabTot" hidden></span>
+</button>
+
+<div class="gx-bg" id="gxBg"></div>
+
+<div class="gx" id="gxSheet" role="dialog" aria-modal="true" aria-label="Registro de gastos">
+  <div class="cnv-grab"></div>
+  <div class="cnv-head">
+    <h3>Gastos del viaje</h3>
+    <button type="button" class="cnv-x" id="gxX" aria-label="Cerrar">✕</button>
+  </div>
+
+  <div class="gx-hero">
+    <div class="n" id="gxTotal">0 €</div>
+    <div class="sub" id="gxSub">Sin gastos cargados todavía</div>
+    <div class="gx-bar"><i id="gxBar" style="width:0%"></i><span class="tope"></span></div>
+    <div class="esc"><span>0 €</span><span>previsto 880 a 1.175 €</span></div>
+  </div>
+
+  <div class="gx-form">
+    <div class="gx-row">
+      <input class="monto" id="gxMonto" type="text" inputmode="decimal" placeholder="0" autocomplete="off" spellcheck="false" aria-label="Importe">
+      <div class="gx-cur" id="gxCur">
+        <button type="button" data-cur="lei" class="on">lei</button>
+        <button type="button" data-cur="eur">€</button>
+      </div>
+    </div>
+    <div class="gx-cats" id="gxCats"></div>
+    <input class="gx-nota" id="gxNota" type="text" placeholder="Nota opcional (dónde, qué)" autocomplete="off">
+    <button type="button" class="gx-add" id="gxAdd">Añadir gasto</button>
+  </div>
+
+  <div class="gx-h"><span id="gxHoyTit">Hoy</span><em id="gxHoyRes"></em></div>
+  <div id="gxHoyLista"></div>
+
+  <div class="gx-h"><span>Por categoría</span></div>
+  <div id="gxCatLista"></div>
+
+  <div class="gx-h"><span>Día por día</span><em>real / previsto</em></div>
+  <div id="gxDiaLista"></div>
+
+  <div class="gx-acc">
+    <button type="button" id="gxExport">Copiar resumen</button>
+    <button type="button" id="gxWipe" class="peligro">Borrar todo</button>
+  </div>
+  <textarea class="gx-exp" id="gxExpTxt" readonly></textarea>
+  <div class="gx-msj" id="gxMsj"></div>
+
+  <p class="gx-pie">Los gastos se guardan solo en este navegador, no se sincronizan con otro teléfono. Copiá el resumen cada noche para tener respaldo. Cada gasto guarda el cambio que había al cargarlo, así el histórico no se mueve. El conversor manda para los gastos nuevos y para comparar contra los previstos.</p>
 </div>
 
 <div class="lb" id="lightbox">
@@ -2504,6 +2716,363 @@
 
   window.addEventListener('offline', function(){ pinta('Sin conexión · copia guardada', true); });
   window.addEventListener('online',  function(){ pinta('Al día · guardada para usar sin señal'); });
+})();
+</script>
+
+
+<script>
+/* Registro de gastos · guarda en el propio navegador (localStorage) */
+(function(){
+  var KEY = 'rumania.gastos';
+  var BNR = 5.2588;
+  var PMIN = 880, PMAX = 1175;
+
+  /* Los estimados salen de la tabla "Coste del día" de cada jornada de esta
+     misma guía. Los días sin tabla van en null y no se comparan. */
+  var DIAS = [
+    {d:1,  f:'2026-08-27', n:'Jue 27 · Llegada y Sinaia',        est:null},
+    {d:2,  f:'2026-08-28', n:'Vie 28 · Bucegi, Peleș, Brașov',   est:945},
+    {d:3,  f:'2026-08-29', n:'Sáb 29 · Prejmer y Brașov',        est:604},
+    {d:4,  f:'2026-08-30', n:'Dom 30 · Dino Parc, cueva, Bran',  est:917},
+    {d:5,  f:'2026-08-31', n:'Lun 31 · Rupea y Sighișoara',      est:560},
+    {d:6,  f:'2026-09-01', n:'Mar 1 · Făgăraș y Sibiu',          est:452},
+    {d:7,  f:'2026-09-02', n:'Mié 2 · Sibiu',                    est:320},
+    {d:8,  f:'2026-09-03', n:'Jue 3 · Transfăgărășan',           est:null},
+    {d:9,  f:'2026-09-04', n:'Vie 4 · Curtea de Argeș, Bucarest',est:null},
+    {d:10, f:'2026-09-05', n:'Sáb 5 · Bucarest y vuelta',        est:null}
+  ];
+  var CATS = [
+    {k:'comida',   n:'Comida',   e:'🍽'},
+    {k:'entradas', n:'Entradas', e:'🎟'},
+    {k:'parking',  n:'Parking',  e:'🅿'},
+    {k:'nafta',    n:'Nafta',    e:'⛽'},
+    {k:'otros',    n:'Otros',    e:'✦'}
+  ];
+
+  var $ = function(id){ return document.getElementById(id); };
+  var btn = $('gxBtn'), sh = $('gxSheet'), bg = $('gxBg');
+  if(!btn || !sh || !bg) return;
+
+  var datos = [];
+  var cur = 'lei';
+  var cat = 'comida';
+
+  /* ---- utilidades ---- */
+  function num(v){
+    v = String(v).replace(/\s/g,'').replace(/,/g,'.').replace(/[^0-9.]/g,'');
+    var n = parseFloat(v);
+    return isFinite(n) ? n : null;
+  }
+  function eur(n){
+    var s = (Math.round(n*100)/100).toFixed(2);
+    var p = s.split('.');
+    p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return p[0] + ',' + p[1] + ' €';
+  }
+  function lei(n){
+    return Math.round(n) + ' lei';
+  }
+  /* La tasa la manda el conversor, así hay un solo número en toda la guía */
+  function tasa(){
+    var el = $('cnvRate');
+    var r = el ? num(el.value) : null;
+    if(!r){
+      try{ r = num(localStorage.getItem('rumania.tasa')); }catch(e){}
+    }
+    return (r && r > 0) ? r : BNR;
+  }
+  function aEur(g){
+    if(g.u === 'eur') return g.m;
+    return g.m / (g.r && g.r > 0 ? g.r : tasa());
+  }
+  function hoyISO(){
+    var d = new Date();
+    var m = String(d.getMonth()+1).padStart(2,'0');
+    var x = String(d.getDate()).padStart(2,'0');
+    return d.getFullYear() + '-' + m + '-' + x;
+  }
+  function diaDeHoy(){
+    var h = hoyISO();
+    for(var i=0;i<DIAS.length;i++){ if(DIAS[i].f === h) return DIAS[i].d; }
+    return (h < DIAS[0].f) ? 1 : 10;   /* antes de salir o después: extremos */
+  }
+  function infoDia(d){
+    for(var i=0;i<DIAS.length;i++){ if(DIAS[i].d === d) return DIAS[i]; }
+    return null;
+  }
+  function infoCat(k){
+    for(var i=0;i<CATS.length;i++){ if(CATS[i].k === k) return CATS[i]; }
+    return CATS[4];
+  }
+
+  function cargar(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      datos = raw ? JSON.parse(raw) : [];
+      if(!Array.isArray(datos)) datos = [];
+    }catch(e){ datos = []; }
+  }
+  function guardar(){
+    try{ localStorage.setItem(KEY, JSON.stringify(datos)); }
+    catch(e){ msj('No se pudo guardar. ¿Modo privado en el navegador?'); }
+  }
+  var tMsj;
+  function msj(t){
+    $('gxMsj').textContent = t;
+    clearTimeout(tMsj);
+    tMsj = setTimeout(function(){ $('gxMsj').textContent = ''; }, 4000);
+  }
+
+  /* ---- pintado ---- */
+  function totalEur(lista){
+    var s = 0;
+    for(var i=0;i<lista.length;i++) s += aEur(lista[i]);
+    return s;
+  }
+  function delDia(d){
+    return datos.filter(function(g){ return g.d === d; });
+  }
+
+  function pintar(){
+    var tot = totalEur(datos);
+    var hoy = diaDeHoy();
+
+    /* cabecera */
+    $('gxTotal').textContent = eur(tot);
+    if(datos.length === 0){
+      $('gxSub').textContent = 'Sin gastos cargados todavía';
+    } else {
+      var falta = PMAX - tot;
+      $('gxSub').textContent = datos.length + (datos.length === 1 ? ' gasto · ' : ' gastos · ') +
+        lei(tot * tasa()) + (falta > 0 ? ' · quedan ' + eur(falta) + ' del techo' : ' · pasaste el techo previsto');
+    }
+    var pct = Math.min(100, (tot / PMAX) * 100);
+    var barra = $('gxBar');
+    barra.style.width = pct + '%';
+    barra.className = (tot > PMAX) ? 'alto' : '';
+
+    /* botón flotante */
+    var fab = $('gxFabTot');
+    if(tot > 0){ fab.hidden = false; fab.textContent = eur(tot); }
+    else { fab.hidden = true; }
+
+    /* hoy */
+    var iHoy = infoDia(hoy);
+    $('gxHoyTit').textContent = 'Hoy · día ' + hoy;
+    var lHoy = delDia(hoy);
+    var tHoy = totalEur(lHoy);
+    if(iHoy && iHoy.est){
+      $('gxHoyRes').textContent = eur(tHoy) + ' de ' + eur(iHoy.est / tasa()) + ' previstos';
+    } else {
+      $('gxHoyRes').textContent = eur(tHoy) + ' · sin estimado en la guía';
+    }
+
+    var cHoy = $('gxHoyLista');
+    cHoy.innerHTML = '';
+    if(lHoy.length === 0){
+      cHoy.innerHTML = '<p class="gx-vacio">Todavía nada hoy. Cargá el primero arriba.</p>';
+    } else {
+      lHoy.slice().reverse().forEach(function(g){
+        var c = infoCat(g.c);
+        var div = document.createElement('div');
+        div.className = 'gx-it';
+        div.innerHTML =
+          '<span class="em">' + c.e + '</span>' +
+          '<span class="tx">' + c.n + (g.t ? '<small>' + esc(g.t) + '</small>' : '') + '</span>' +
+          '<span class="vl">' + eur(aEur(g)) +
+            (g.u === 'lei' ? '<small>' + lei(g.m) + '</small>' : '') + '</span>' +
+          '<button class="del" type="button" aria-label="Borrar">✕</button>';
+        div.querySelector('.del').addEventListener('click', function(){
+          datos = datos.filter(function(x){ return x.i !== g.i; });
+          guardar(); pintar();
+        });
+        cHoy.appendChild(div);
+      });
+    }
+
+    /* categorías */
+    var cc = $('gxCatLista');
+    cc.innerHTML = '';
+    if(datos.length === 0){
+      cc.innerHTML = '<p class="gx-vacio">Aparece cuando cargues algo.</p>';
+    } else {
+      CATS.forEach(function(c){
+        var l = datos.filter(function(g){ return g.c === c.k; });
+        if(l.length === 0) return;
+        var t = totalEur(l);
+        var div = document.createElement('div');
+        div.className = 'gx-it';
+        div.innerHTML =
+          '<span class="em">' + c.e + '</span>' +
+          '<span class="tx">' + c.n + '<small>' + l.length + (l.length === 1 ? ' gasto' : ' gastos') +
+            ' · ' + Math.round(t / (t ? totalEur(datos) : 1) * 100) + '% del total</small></span>' +
+          '<span class="vl">' + eur(t) + '</span>';
+        cc.appendChild(div);
+      });
+    }
+
+    /* día por día */
+    var cd = $('gxDiaLista');
+    cd.innerHTML = '';
+    DIAS.forEach(function(D){
+      var l = delDia(D.d);
+      var t = totalEur(l);
+      var div = document.createElement('div');
+      div.className = 'gx-dia' + (D.d === hoy ? ' hoy' : '');
+      var pie = '';
+      if(D.est){
+        var e = D.est / tasa();
+        var dif = t - e;
+        if(l.length === 0){
+          pie = '<small class="na">previsto ' + eur(e) + '</small>';
+        } else if(dif <= 0){
+          pie = '<small class="bien">' + eur(Math.abs(dif)) + ' por debajo</small>';
+        } else {
+          pie = '<small class="mal">' + eur(dif) + ' por encima</small>';
+        }
+      } else {
+        pie = '<small class="na">sin estimado</small>';
+      }
+      div.innerHTML =
+        '<span class="nm"><b>Día ' + D.d + '</b><small>' + D.n.replace(/^[^·]+· /,'') + '</small></span>' +
+        '<span class="rl">' + (l.length ? eur(t) : '–') + pie + '</span>';
+      cd.appendChild(div);
+    });
+  }
+
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ---- alta ---- */
+  function agregar(){
+    var m = num($('gxMonto').value);
+    if(m === null || m <= 0){ msj('Poné un importe.'); return; }
+    datos.push({
+      i: Date.now() + '-' + Math.random().toString(36).slice(2,7),
+      d: diaDeHoy(),
+      c: cat,
+      m: m,
+      u: cur,
+      r: tasa(),
+      t: $('gxNota').value.trim().slice(0,80),
+      ts: new Date().toISOString()
+    });
+    guardar();
+    $('gxMonto').value = '';
+    $('gxNota').value = '';
+    $('gxMonto').blur();
+    pintar();
+    msj('Cargado. Total del viaje: ' + eur(totalEur(datos)));
+  }
+
+  /* ---- exportar ---- */
+  function resumen(){
+    var t = tasa();
+    var L = [];
+    L.push('GASTOS RUMANÍA · ' + new Date().toLocaleDateString('es-ES'));
+    L.push('Cambio usado: 1 € = ' + String(t).replace('.', ',') + ' lei');
+    L.push('TOTAL: ' + eur(totalEur(datos)) + '  (' + lei(totalEur(datos) * t) + ')  ·  previsto 880 a 1.175 €');
+    L.push('');
+    DIAS.forEach(function(D){
+      var l = delDia(D.d);
+      if(l.length === 0) return;
+      L.push('Día ' + D.d + ' · ' + D.n + ' → ' + eur(totalEur(l)) +
+             (D.est ? '  (previsto ' + eur(D.est / t) + ')' : ''));
+      l.forEach(function(g){
+        L.push('   ' + infoCat(g.c).n.toLowerCase() + ' · ' +
+               (g.u === 'lei' ? lei(g.m) : eur(g.m)) +
+               ' = ' + eur(aEur(g)) + (g.t ? ' · ' + g.t : ''));
+      });
+      L.push('');
+    });
+    L.push('POR CATEGORÍA');
+    CATS.forEach(function(c){
+      var l = datos.filter(function(g){ return g.c === c.k; });
+      if(l.length) L.push('   ' + c.n + ': ' + eur(totalEur(l)));
+    });
+    return L.join('\n');
+  }
+
+  /* ---- montaje ---- */
+  var cc = $('gxCats');
+  CATS.forEach(function(c){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('data-cat', c.k);
+    b.textContent = c.e + ' ' + c.n;
+    if(c.k === cat) b.className = 'on';
+    cc.appendChild(b);
+  });
+  cc.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-cat]');
+    if(!b) return;
+    cat = b.getAttribute('data-cat');
+    Array.prototype.forEach.call(cc.children, function(x){
+      x.className = (x === b) ? 'on' : '';
+    });
+  });
+
+  $('gxCur').addEventListener('click', function(e){
+    var b = e.target.closest('button[data-cur]');
+    if(!b) return;
+    cur = b.getAttribute('data-cur');
+    Array.prototype.forEach.call(this.children, function(x){
+      x.className = (x === b) ? 'on' : '';
+    });
+  });
+
+  $('gxAdd').addEventListener('click', agregar);
+  $('gxMonto').addEventListener('keydown', function(e){ if(e.key === 'Enter') agregar(); });
+  $('gxNota').addEventListener('keydown', function(e){ if(e.key === 'Enter') agregar(); });
+
+  $('gxExport').addEventListener('click', function(){
+    var txt = resumen();
+    var ta = $('gxExpTxt');
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){
+        msj('Copiado. Pegalo donde quieras guardarlo.');
+      }).catch(function(){
+        ta.style.display = 'block'; ta.value = txt; ta.select();
+        msj('Copialo a mano desde el cuadro.');
+      });
+    } else {
+      ta.style.display = 'block'; ta.value = txt; ta.select();
+      msj('Copialo a mano desde el cuadro.');
+    }
+  });
+
+  $('gxWipe').addEventListener('click', function(){
+    if(!datos.length){ msj('No hay nada que borrar.'); return; }
+    if(confirm('¿Borrar los ' + datos.length + ' gastos cargados? No se puede deshacer.')){
+      datos = [];
+      guardar(); pintar();
+      msj('Registro vacío.');
+    }
+  });
+
+  function abrir(){
+    pintar();
+    bg.classList.add('open');
+    sh.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrar(){
+    bg.classList.remove('open');
+    sh.classList.remove('open');
+    document.body.style.overflow = '';
+    $('gxExpTxt').style.display = 'none';
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  }
+  btn.addEventListener('click', abrir);
+  bg.addEventListener('click', cerrar);
+  $('gxX').addEventListener('click', cerrar);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && sh.classList.contains('open')) cerrar();
+  });
+
+  cargar();
+  pintar();
 })();
 </script>
 
