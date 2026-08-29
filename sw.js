@@ -4,7 +4,7 @@
    Sin señal (o con señal muy mala), se sirve la última copia guardada.
    El timeout es lo que evita que la app se quede colgada en una zona sin cobertura. */
 
-const CACHE = 'rumania-v7';
+const CACHE = 'rumania-v8';
 const TIMEOUT = 3500;
 
 const ASSETS = [

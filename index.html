@@ -297,6 +297,28 @@
     padding:6px 0 2px;
   }
 
+  .gx-tabs{display:flex;border:1px solid var(--linea);border-radius:100px;overflow:hidden;flex:none;}
+  .gx-tabs button{
+    font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--tinta-suave);background:#fff;border:none;
+    padding:7px 14px;cursor:pointer;line-height:1;
+  }
+  .gx-tabs button.on{background:var(--bosque);color:var(--crema-solid);}
+
+  .gx-sep{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--gris);
+    margin:16px 0 2px;padding-bottom:5px;border-bottom:1px solid var(--linea);
+  }
+  .gx-sep:first-child{margin-top:4px;}
+  .gx-sep span{min-width:0;}
+  .gx-sep b{
+    font-family:var(--serif);font-size:13.5px;color:var(--bosque);
+    letter-spacing:0;text-transform:none;flex:none;
+  }
+  .gx-sep.hoy{color:var(--rojo);}
+
   .gx-dia{
     display:flex;align-items:center;gap:10px;padding:9px 0;
     border-bottom:1px solid var(--linea);font-family:var(--sans);font-size:13.5px;
@@ -2450,7 +2472,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-27 · v12</b><br>
+      Versión de la guía: <b>2026-08-29 · v13</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -2535,7 +2557,13 @@
     <button type="button" class="gx-add" id="gxAdd">Añadir gasto</button>
   </div>
 
-  <div class="gx-h"><span id="gxHoyTit">Hoy</span><em id="gxHoyRes"></em></div>
+  <div class="gx-h">
+    <div class="gx-tabs" id="gxTabs">
+      <button type="button" data-vista="hoy" class="on">Hoy</button>
+      <button type="button" data-vista="todos">Todos</button>
+    </div>
+    <em id="gxHoyRes"></em>
+  </div>
   <div id="gxHoyLista"></div>
 
   <div class="gx-h"><span>Por categoría</span></div>
@@ -2551,7 +2579,7 @@
   <textarea class="gx-exp" id="gxExpTxt" readonly></textarea>
   <div class="gx-msj" id="gxMsj"></div>
 
-  <p class="gx-pie">Los gastos se guardan solo en este navegador, no se sincronizan con otro teléfono. Copiá el resumen cada noche para tener respaldo. Cada gasto guarda el cambio que había al cargarlo, así el histórico no se mueve. El conversor manda para los gastos nuevos y para comparar contra los previstos.</p>
+  <p class="gx-pie">Con <b>Todos</b> ves el histórico completo del viaje, día por día, y podés borrar cualquier gasto viejo. Los gastos se guardan solo en este navegador, no se sincronizan con otro teléfono. Copiá el resumen cada noche para tener respaldo. Cada gasto guarda el cambio que había al cargarlo, así el histórico no se mueve. El conversor manda para los gastos nuevos y para comparar contra los previstos.</p>
 </div>
 
 <div class="lb" id="lightbox">
@@ -2774,6 +2802,7 @@
   var datos = [];
   var cur = 'lei';
   var cat = 'comida';
+  var vista = 'hoy';   /* 'hoy' o 'todos' */
 
   /* ---- utilidades ---- */
   function num(v){
@@ -2851,6 +2880,23 @@
     return datos.filter(function(g){ return g.d === d; });
   }
 
+  function pintarItem(g, cont){
+    var c = infoCat(g.c);
+    var div = document.createElement('div');
+    div.className = 'gx-it';
+    div.innerHTML =
+      '<span class="em">' + c.e + '</span>' +
+      '<span class="tx">' + c.n + (g.t ? '<small>' + esc(g.t) + '</small>' : '') + '</span>' +
+      '<span class="vl">' + eur(aEur(g)) +
+        (g.u === 'lei' ? '<small>' + lei(g.m) + '</small>' : '') + '</span>' +
+      '<button class="del" type="button" aria-label="Borrar">✕</button>';
+    div.querySelector('.del').addEventListener('click', function(){
+      datos = datos.filter(function(x){ return x.i !== g.i; });
+      guardar(); pintar();
+    });
+    cont.appendChild(div);
+  }
+
   function pintar(){
     var tot = totalEur(datos);
     var hoy = diaDeHoy();
@@ -2874,38 +2920,52 @@
     if(tot > 0){ fab.hidden = false; fab.textContent = eur(tot); }
     else { fab.hidden = true; }
 
-    /* hoy */
-    var iHoy = infoDia(hoy);
-    $('gxHoyTit').textContent = 'Hoy · día ' + hoy;
-    var lHoy = delDia(hoy);
-    var tHoy = totalEur(lHoy);
-    if(iHoy && iHoy.est){
-      $('gxHoyRes').textContent = eur(tHoy) + ' de ' + eur(iHoy.est / tasa()) + ' previstos';
-    } else {
-      $('gxHoyRes').textContent = eur(tHoy) + ' · sin estimado en la guía';
-    }
-
+    /* lista: solo hoy, o todo el viaje */
     var cHoy = $('gxHoyLista');
     cHoy.innerHTML = '';
-    if(lHoy.length === 0){
-      cHoy.innerHTML = '<p class="gx-vacio">Todavía nada hoy. Cargá el primero arriba.</p>';
-    } else {
-      lHoy.slice().reverse().forEach(function(g){
-        var c = infoCat(g.c);
-        var div = document.createElement('div');
-        div.className = 'gx-it';
-        div.innerHTML =
-          '<span class="em">' + c.e + '</span>' +
-          '<span class="tx">' + c.n + (g.t ? '<small>' + esc(g.t) + '</small>' : '') + '</span>' +
-          '<span class="vl">' + eur(aEur(g)) +
-            (g.u === 'lei' ? '<small>' + lei(g.m) + '</small>' : '') + '</span>' +
-          '<button class="del" type="button" aria-label="Borrar">✕</button>';
-        div.querySelector('.del').addEventListener('click', function(){
-          datos = datos.filter(function(x){ return x.i !== g.i; });
-          guardar(); pintar();
+
+    if(vista === 'todos'){
+      $('gxHoyRes').textContent = datos.length
+        ? datos.length + (datos.length === 1 ? ' gasto · ' : ' gastos · ') + eur(tot)
+        : '';
+      if(datos.length === 0){
+        cHoy.innerHTML = '<p class="gx-vacio">Todavía no cargaste ningún gasto.</p>';
+      } else {
+        var sueltos = datos.slice();
+        DIAS.slice().reverse().forEach(function(D){
+          var l = delDia(D.d);
+          if(l.length === 0) return;
+          sueltos = sueltos.filter(function(g){ return g.d !== D.d; });
+          var sep = document.createElement('div');
+          sep.className = 'gx-sep' + (D.d === hoy ? ' hoy' : '');
+          sep.innerHTML =
+            '<span>Día ' + D.d + ' · ' + esc(D.n.replace(/^[^·]+· /,'')) + '</span>' +
+            '<b>' + eur(totalEur(l)) + '</b>';
+          cHoy.appendChild(sep);
+          l.slice().reverse().forEach(function(g){ pintarItem(g, cHoy); });
         });
-        cHoy.appendChild(div);
-      });
+        if(sueltos.length){
+          var sx = document.createElement('div');
+          sx.className = 'gx-sep';
+          sx.innerHTML = '<span>Sin día asignado</span><b>' + eur(totalEur(sueltos)) + '</b>';
+          cHoy.appendChild(sx);
+          sueltos.slice().reverse().forEach(function(g){ pintarItem(g, cHoy); });
+        }
+      }
+    } else {
+      var iHoy = infoDia(hoy);
+      var lHoy = delDia(hoy);
+      var tHoy = totalEur(lHoy);
+      if(iHoy && iHoy.est){
+        $('gxHoyRes').textContent = 'día ' + hoy + ' · ' + eur(tHoy) + ' de ' + eur(iHoy.est / tasa()) + ' previstos';
+      } else {
+        $('gxHoyRes').textContent = 'día ' + hoy + ' · ' + eur(tHoy) + ' · sin estimado en la guía';
+      }
+      if(lHoy.length === 0){
+        cHoy.innerHTML = '<p class="gx-vacio">Todavía nada hoy. Cargá el primero arriba, o tocá <b>Todos</b> para ver los días anteriores.</p>';
+      } else {
+        lHoy.slice().reverse().forEach(function(g){ pintarItem(g, cHoy); });
+      }
     }
 
     /* categorías */
@@ -2954,6 +3014,18 @@
       div.innerHTML =
         '<span class="nm"><b>Día ' + D.d + '</b><small>' + D.n.replace(/^[^·]+· /,'') + '</small></span>' +
         '<span class="rl">' + (l.length ? eur(t) : '–') + pie + '</span>';
+      if(l.length){
+        div.style.cursor = 'pointer';
+        div.addEventListener('click', function(){
+          vista = 'todos';
+          Array.prototype.forEach.call($('gxTabs').children, function(x){
+            x.className = (x.getAttribute('data-vista') === 'todos') ? 'on' : '';
+          });
+          pintar();
+          var z = $('gxHoyLista');
+          if(z && z.scrollIntoView) z.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+      }
       cd.appendChild(div);
     });
   }
@@ -3029,6 +3101,16 @@
     Array.prototype.forEach.call(cc.children, function(x){
       x.className = (x === b) ? 'on' : '';
     });
+  });
+
+  $('gxTabs').addEventListener('click', function(e){
+    var b = e.target.closest('button[data-vista]');
+    if(!b) return;
+    vista = b.getAttribute('data-vista');
+    Array.prototype.forEach.call(this.children, function(x){
+      x.className = (x === b) ? 'on' : '';
+    });
+    pintar();
   });
 
   $('gxCur').addEventListener('click', function(e){
