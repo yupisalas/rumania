@@ -50,6 +50,7 @@
   body{
     padding-left:env(safe-area-inset-left);
     padding-right:env(safe-area-inset-right);
+    padding-bottom:calc(62px + env(safe-area-inset-bottom));
   }
   .hero{padding-top:calc(64px + env(safe-area-inset-top));}
   footer{padding-bottom:calc(44px + env(safe-area-inset-bottom));}
@@ -67,7 +68,7 @@
 
   /* ---------- AVISO DE ACTUALIZACIÓN ---------- */
   .upd{
-    position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));
+    position:fixed;left:12px;right:12px;bottom:calc(74px + env(safe-area-inset-bottom));
     background:var(--bosque);color:var(--crema-solid);border:1px solid var(--dorado);
     border-radius:12px;padding:13px 16px;font-size:13.5px;z-index:99;
     display:none;align-items:center;gap:12px;box-shadow:0 8px 26px rgba(0,0,0,.28);
@@ -173,14 +174,14 @@
 
   /* ---------- REGISTRO DE GASTOS ---------- */
   .gx-btn{
-    position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));
-    right:calc(13px + env(safe-area-inset-right));z-index:120;
-    font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.02em;
-    background:rgba(22,48,37,.92);color:var(--crema-solid);
+    position:fixed;top:calc(11px + env(safe-area-inset-top));
+    left:calc(13px + env(safe-area-inset-left));z-index:120;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.02em;
+    background:rgba(22,48,37,.88);color:var(--crema-solid);
     border:1px solid rgba(227,193,121,.55);border-radius:100px;
-    padding:11px 16px;cursor:pointer;backdrop-filter:blur(6px);
-    box-shadow:0 4px 16px rgba(0,0,0,.28);line-height:1;
-    display:flex;align-items:center;gap:8px;
+    padding:8px 13px;cursor:pointer;backdrop-filter:blur(6px);
+    box-shadow:0 3px 12px rgba(0,0,0,.22);line-height:1;
+    display:flex;align-items:center;gap:7px;
   }
   .gx-btn .gx-plus{color:var(--dorado-claro);font-weight:700;font-size:15px;line-height:1;}
   .gx-btn .gx-tot{
@@ -188,7 +189,34 @@
     border-left:1px solid rgba(227,193,121,.35);padding-left:9px;
   }
   .gx-btn:active{transform:scale(.96);}
-  body:has(.upd.show) .gx-btn{bottom:calc(84px + env(safe-area-inset-bottom));}
+
+  /* ---------- BARRA DE ABAJO ---------- */
+  .nv{
+    position:fixed;left:0;right:0;bottom:0;z-index:118;
+    display:flex;justify-content:center;gap:9px;
+    padding:9px 13px calc(9px + env(safe-area-inset-bottom));
+    background:rgba(244,236,220,.94);backdrop-filter:blur(8px);
+    border-top:1px solid var(--linea);
+  }
+  .nv button{
+    flex:1;max-width:210px;
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.03em;
+    background:rgba(22,48,37,.92);color:var(--crema-solid);
+    border:1px solid rgba(227,193,121,.55);border-radius:100px;
+    padding:12px 14px;cursor:pointer;line-height:1;
+  }
+  .nv button .ic{font-size:14px;line-height:1;}
+  .nv button b{color:var(--dorado-claro);font-weight:700;}
+  .nv button:active{transform:scale(.97);}
+
+  .destac{animation:destac 2s ease;border-radius:10px;}
+  @keyframes destac{
+    0%{background:transparent;}
+    12%{background:rgba(201,154,63,.22);}
+    60%{background:rgba(201,154,63,.22);}
+    100%{background:transparent;}
+  }
 
   .gx-bg{
     position:fixed;inset:0;z-index:200;background:rgba(18,42,32,.6);
@@ -889,7 +917,7 @@
 
     <div class="days">
 
-      <div class="day">
+      <div class="day" id="dia1">
         <div class="daynum">1<small>Jue 27</small></div>
         <div>
           <h3>Llegada 14 h → Sinaia</h3>
@@ -1033,7 +1061,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia2">
         <div class="daynum">2<small>Vie 28</small></div>
         <div>
           <h3>Bucegi + Peleș → Brașov</h3>
@@ -1253,7 +1281,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia3">
         <div class="daynum">3<small>Sáb 29</small></div>
         <div>
           <h3>Iglesias fortificadas + Brașov a fondo</h3>
@@ -1457,7 +1485,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia4">
         <div class="daynum">4<small>Dom 30</small></div>
         <div>
           <h3>Dino Parc + cueva + Bran</h3>
@@ -1632,7 +1660,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia5">
         <div class="daynum">5<small>Lun 31</small></div>
         <div>
           <h3>Rupea → Sighișoara</h3>
@@ -1819,7 +1847,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia6">
         <div class="daynum">6<small>Mar 1</small></div>
         <div>
           <h3>Sighișoara → Făgăraș → Sibiu</h3>
@@ -1994,7 +2022,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia7">
         <div class="daynum">7<small>Mié 2</small></div>
         <div>
           <h3>Día en Sibiu</h3>
@@ -2145,7 +2173,7 @@
         </div>
       </div>
 
-      <div class="day peak-day">
+      <div class="day peak-day" id="dia8">
         <div class="daynum">8<small>Jue 3</small></div>
         <div>
           <h3>Transfăgărășan ⛰ · el día grande</h3>
@@ -2159,7 +2187,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia9">
         <div class="daynum">9<small>Vie 4</small></div>
         <div>
           <h3>Curtea de Argeș → Bucarest</h3>
@@ -2173,7 +2201,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" id="dia10">
         <div class="daynum">10<small>Sáb 5</small></div>
         <div>
           <h3>Bucarest → vuelo · 18 h</h3>
@@ -2303,7 +2331,7 @@
 
     <div class="resv">
 
-      <div class="resv-card">
+      <div class="resv-card" id="h1">
         <div class="resv-head">
           <span class="resv-name">Hotel Sinaia</span>
           <span class="resv-when">Día 1 · 27–28 ago · 1 noche</span>
@@ -2321,7 +2349,7 @@
         </div>
       </div>
 
-      <div class="resv-card">
+      <div class="resv-card" id="h2">
         <div class="resv-head">
           <span class="resv-name">Zinne Apartments</span>
           <span class="resv-when">Días 2–4 · 28–31 ago · 3 noches · Brașov</span>
@@ -2339,7 +2367,7 @@
         </div>
       </div>
 
-      <div class="resv-card">
+      <div class="resv-card" id="h3">
         <div class="resv-head">
           <span class="resv-name">Boutique Hotel von Graf</span>
           <span class="resv-when">Día 5 · 31 ago–1 sep · 1 noche · Sighișoara</span>
@@ -2357,7 +2385,7 @@
         </div>
       </div>
 
-      <div class="resv-card">
+      <div class="resv-card" id="h4">
         <div class="resv-head">
           <span class="resv-name">Apartment Balcescu No 10</span>
           <span class="resv-when">Días 6–7 · 1–3 sep · 2 noches · Sibiu</span>
@@ -2375,7 +2403,7 @@
         </div>
       </div>
 
-      <div class="resv-card">
+      <div class="resv-card" id="h5">
         <div class="resv-head">
           <span class="resv-name">Baltina Parc Transfăgărășan</span>
           <span class="resv-when">Día 8 · 3–4 sep · 1 noche · Curtea de Argeș</span>
@@ -2393,7 +2421,7 @@
         </div>
       </div>
 
-      <div class="resv-card">
+      <div class="resv-card" id="h6">
         <div class="resv-head">
           <span class="resv-name">Stil Old Town Boutique Hotel</span>
           <span class="resv-when">Día 9 · 4–5 sep · 1 noche · Bucarest</span>
@@ -2504,7 +2532,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-30 · v15</b><br>
+      Versión de la guía: <b>2026-08-30 · v16</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -2613,6 +2641,11 @@
 
   <p class="gx-pie">Con <b>Todos</b> ves el histórico completo del viaje, día por día, y podés borrar cualquier gasto viejo. Tocá cualquier gasto y se abre la lista de días para moverlo: así se cargan los de días pasados, se carga normal y se mueve. Los gastos se guardan solo en este navegador, no se sincronizan con otro teléfono. Copiá el resumen cada noche para tener respaldo. Cada gasto guarda el cambio que había al cargarlo, así el histórico no se mueve. El conversor manda para los gastos nuevos y para comparar contra los previstos.</p>
 </div>
+
+<nav class="nv" id="nv" aria-label="Ir a">
+  <button type="button" id="nvHoy"><span class="ic">📍</span>Hoy <b id="nvHoyN">·</b></button>
+  <button type="button" id="nvHotel"><span class="ic">🛏</span>Hotel</button>
+</nav>
 
 <div class="gx-bg gx-mvbg" id="gxMovBg"></div>
 
@@ -3152,6 +3185,26 @@
     pintar();
     msj('Cargado. Total del viaje: ' + eur(totalEur(datos)));
   }
+
+  /* ---- barra de abajo: ir al dia de hoy y a su hotel ---- */
+  var HOTELDIA = {1:'h1',2:'h2',3:'h2',4:'h2',5:'h3',6:'h4',7:'h4',8:'h5',9:'h6',10:'h6'};
+
+  function irA(el){
+    if(!el) return;
+    var y = el.getBoundingClientRect().top + (window.pageYOffset || 0) - 60;
+    if(y < 0) y = 0;
+    if(window.scrollTo){ try{ window.scrollTo({top:y, behavior:'smooth'}); }catch(e){ window.scrollTo(0,y); } }
+    el.className += ' destac';
+    setTimeout(function(){ el.className = el.className.replace(' destac',''); }, 2100);
+  }
+
+  if($('nvHoyN')) $('nvHoyN').textContent = diaDeHoy();
+  if($('nvHoy')) $('nvHoy').addEventListener('click', function(){
+    irA(document.getElementById('dia' + diaDeHoy()));
+  });
+  if($('nvHotel')) $('nvHotel').addEventListener('click', function(){
+    irA(document.getElementById(HOTELDIA[diaDeHoy()] || 'h1'));
+  });
 
   if($('gxMovX')) $('gxMovX').addEventListener('click', cerrarMov);
   if($('gxMovBg')) $('gxMovBg').addEventListener('click', cerrarMov);
