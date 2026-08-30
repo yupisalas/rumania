@@ -298,21 +298,36 @@
   }
 
   .gx-it.mov{cursor:pointer;}
-  .gx-it.abierto{border-bottom-color:var(--dorado);}
-  .gx-it.abierto .tx{color:var(--bosque);}
-  .gx-mov{padding:11px 0 13px;border-bottom:1px solid var(--linea);}
-  .gx-mov .lb{
-    display:block;font-family:var(--sans);font-size:10.5px;font-weight:600;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--gris);margin-bottom:9px;
+
+  /* Hoja para mover un gasto de dia */
+  .gx-mvbg{z-index:210;}
+  .gx-mv{z-index:211;padding-bottom:calc(18px + env(safe-area-inset-bottom));}
+  .gx-mv .res{
+    display:flex;align-items:center;gap:10px;background:#fff;
+    border:1px solid var(--linea);border-radius:12px;padding:11px 13px;margin-bottom:6px;
+    font-family:var(--sans);font-size:14px;
   }
-  .gx-mov .ds{display:flex;flex-wrap:wrap;gap:6px;}
-  .gx-mov button{
-    font-family:var(--sans);font-size:12px;color:var(--tinta-suave);background:#fff;
-    border:1px solid var(--linea);border-radius:100px;padding:7px 11px;
-    cursor:pointer;line-height:1;
+  .gx-mv .res .em{font-size:16px;flex:none;}
+  .gx-mv .res .tx{flex:1;min-width:0;color:var(--tinta);line-height:1.3;}
+  .gx-mv .res .tx small{display:block;color:var(--gris);font-size:12px;margin-top:1px;}
+  .gx-mv .res .vl{font-family:var(--serif);font-weight:600;font-size:16px;color:var(--bosque);flex:none;}
+  .gx-mv .ay{
+    font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gris);margin:16px 0 4px;
   }
-  .gx-mov button.on{background:var(--bosque);color:var(--crema-solid);border-color:var(--bosque);}
-  .gx-mov button.hoy{border-color:var(--dorado);}
+  .gx-mv-d{
+    display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+    background:none;border:none;border-bottom:1px solid var(--linea);
+    padding:12px 2px;cursor:pointer;font-family:var(--sans);font-size:14px;color:var(--tinta);
+  }
+  .gx-mv-d .nm{flex:1;min-width:0;}
+  .gx-mv-d .nm b{font-weight:600;}
+  .gx-mv-d .nm small{display:block;color:var(--gris);font-size:12px;margin-top:1px;}
+  .gx-mv-d .ck{flex:none;font-size:15px;color:var(--bosque);opacity:0;}
+  .gx-mv-d.on{color:var(--bosque);}
+  .gx-mv-d.on .ck{opacity:1;}
+  .gx-mv-d.hoy .nm small{color:var(--dorado-oscuro,var(--rojo));}
+  .gx-mv-d:active{background:rgba(32,24,15,.05);}
 
   .gx-tabs{display:flex;border:1px solid var(--linea);border-radius:100px;overflow:hidden;flex:none;}
   .gx-tabs button{
@@ -2489,7 +2504,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-30 · v14</b><br>
+      Versión de la guía: <b>2026-08-30 · v15</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -2596,7 +2611,20 @@
   <textarea class="gx-exp" id="gxExpTxt" readonly></textarea>
   <div class="gx-msj" id="gxMsj"></div>
 
-  <p class="gx-pie">Con <b>Todos</b> ves el histórico completo del viaje, día por día, y podés borrar cualquier gasto viejo. Tocá cualquier gasto y elegí el día al que va: así se cargan los de días pasados, se carga normal y se mueve. Los gastos se guardan solo en este navegador, no se sincronizan con otro teléfono. Copiá el resumen cada noche para tener respaldo. Cada gasto guarda el cambio que había al cargarlo, así el histórico no se mueve. El conversor manda para los gastos nuevos y para comparar contra los previstos.</p>
+  <p class="gx-pie">Con <b>Todos</b> ves el histórico completo del viaje, día por día, y podés borrar cualquier gasto viejo. Tocá cualquier gasto y se abre la lista de días para moverlo: así se cargan los de días pasados, se carga normal y se mueve. Los gastos se guardan solo en este navegador, no se sincronizan con otro teléfono. Copiá el resumen cada noche para tener respaldo. Cada gasto guarda el cambio que había al cargarlo, así el histórico no se mueve. El conversor manda para los gastos nuevos y para comparar contra los previstos.</p>
+</div>
+
+<div class="gx-bg gx-mvbg" id="gxMovBg"></div>
+
+<div class="gx gx-mv" id="gxMovSheet" role="dialog" aria-modal="true" aria-label="Mover gasto de día">
+  <div class="cnv-grab"></div>
+  <div class="cnv-head">
+    <h3>Mover a otro día</h3>
+    <button type="button" class="cnv-x" id="gxMovX" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="res" id="gxMovRes"></div>
+  <div class="ay">Elegí el día</div>
+  <div id="gxMovLista"></div>
 </div>
 
 <div class="lb" id="lightbox">
@@ -2917,44 +2945,53 @@
     cont.appendChild(div);
   }
 
-  /* Tocar un gasto abre los chips de dias y lo mueve al que elijas.
-     Asi tambien se cargan gastos de dias pasados: se carga hoy y se mueve. */
+  /* Tocar un gasto abre una hoja aparte con los 10 dias.
+     Asi se cargan los gastos de dias pasados: se carga normal y se mueve. */
+  var movG = null;
+
   function mover(fila, g){
-    var sig = fila.nextElementSibling;
-    if(sig && sig.className === 'gx-mov'){
-      sig.parentNode.removeChild(sig);
-      fila.className = fila.className.replace(' abierto','');
-      return;
-    }
-    var abiertos = document.querySelectorAll('.gx-mov');
-    for(var j=0;j<abiertos.length;j++){ abiertos[j].parentNode.removeChild(abiertos[j]); }
-    var previas = document.querySelectorAll('.gx-it.abierto');
-    for(var k=0;k<previas.length;k++){ previas[k].className = previas[k].className.replace(' abierto',''); }
+    var sheet = $('gxMovSheet'), bgm = $('gxMovBg'), lst = $('gxMovLista');
+    if(!sheet || !bgm || !lst) return;
+
+    movG = g;
+    var c = infoCat(g.c);
+    $('gxMovRes').innerHTML =
+      '<span class="em">' + c.e + '</span>' +
+      '<span class="tx">' + c.n + (g.t ? '<small>' + esc(g.t) + '</small>' : '') + '</span>' +
+      '<span class="vl">' + eur(aEur(g)) + '</span>';
 
     var hoy = diaDeHoy();
-    var p = document.createElement('div');
-    p.className = 'gx-mov';
-    var h = '<span class="lb">Mover este gasto a</span><div class="ds">';
+    lst.innerHTML = '';
     DIAS.forEach(function(D){
-      var cls = (D.d === g.d) ? ' class="on"' : (D.d === hoy ? ' class="hoy"' : '');
-      h += '<button type="button" data-d="' + D.d + '"' + cls + '>' +
-           esc(D.n.split(' \u00b7 ')[0]) + '</button>';
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'gx-mv-d' + (D.d === g.d ? ' on' : '') + (D.d === hoy ? ' hoy' : '');
+      b.innerHTML =
+        '<span class="nm"><b>D\u00eda ' + D.d + ' \u00b7 ' + esc(D.n.split(' \u00b7 ')[0]) + '</b>' +
+        '<small>' + esc(D.n.split(' \u00b7 ').slice(1).join(' \u00b7 ')) +
+        (D.d === hoy ? ' \u00b7 hoy' : '') + '</small></span>' +
+        '<span class="ck">\u2713</span>';
+      b.addEventListener('click', function(){
+        if(D.d !== movG.d){
+          movG.d = D.d;
+          guardar();
+          msj('Movido al d\u00eda ' + D.d + ' \u00b7 ' + D.n.split(' \u00b7 ')[0] + '.');
+        }
+        cerrarMov();
+        pintar();
+      });
+      lst.appendChild(b);
     });
-    h += '</div>';
-    p.innerHTML = h;
-    p.addEventListener('click', function(e){
-      var b = e.target;
-      while(b && b !== p && !b.getAttribute('data-d')){ b = b.parentNode; }
-      if(!b || b === p) return;
-      var nd = parseInt(b.getAttribute('data-d'), 10);
-      if(nd === g.d){ pintar(); return; }
-      g.d = nd;
-      guardar(); pintar();
-      var inf = infoDia(nd);
-      msj('Movido al d\u00eda ' + nd + (inf ? ' \u00b7 ' + inf.n.split(' \u00b7 ')[0] : '') + '.');
-    });
-    fila.className += ' abierto';
-    fila.parentNode.insertBefore(p, fila.nextSibling);
+
+    sheet.className = 'gx gx-mv open';
+    bgm.className = 'gx-bg gx-mvbg open';
+  }
+
+  function cerrarMov(){
+    var sheet = $('gxMovSheet'), bgm = $('gxMovBg');
+    if(sheet) sheet.className = 'gx gx-mv';
+    if(bgm) bgm.className = 'gx-bg gx-mvbg';
+    movG = null;
   }
 
   function pintar(){
@@ -3115,6 +3152,9 @@
     pintar();
     msj('Cargado. Total del viaje: ' + eur(totalEur(datos)));
   }
+
+  if($('gxMovX')) $('gxMovX').addEventListener('click', cerrarMov);
+  if($('gxMovBg')) $('gxMovBg').addEventListener('click', cerrarMov);
 
   /* ---- exportar ---- */
   function resumen(){
