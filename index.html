@@ -2540,7 +2540,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-31 · v17</b><br>
+      Versión de la guía: <b>2026-08-31 · v18</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -2929,6 +2929,14 @@
     for(var i=0;i<DIAS.length;i++){ if(DIAS[i].f === h) return DIAS[i].d; }
     return (h < DIAS[0].f) ? 1 : 10;   /* antes de salir o después: extremos */
   }
+  var MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  /* 'Jue 27 ago': el dia de semana sale del nombre, el mes de la fecha ISO */
+  function fechaDia(D){
+    if(!D) return '';
+    var p = String(D.f).split('-');
+    var m = MESES[parseInt(p[1],10) - 1] || '';
+    return D.n.split(' \u00b7 ')[0] + ' ' + m;
+  }
   function infoDia(d){
     for(var i=0;i<DIAS.length;i++){ if(DIAS[i].d === d) return DIAS[i]; }
     return null;
@@ -3008,7 +3016,7 @@
       b.type = 'button';
       b.className = 'gx-mv-d' + (D.d === g.d ? ' on' : '') + (D.d === hoy ? ' hoy' : '');
       b.innerHTML =
-        '<span class="nm"><b>D\u00eda ' + D.d + ' \u00b7 ' + esc(D.n.split(' \u00b7 ')[0]) + '</b>' +
+        '<span class="nm"><b>D\u00eda ' + D.d + ' \u00b7 ' + fechaDia(D) + '</b>' +
         '<small>' + esc(D.n.split(' \u00b7 ').slice(1).join(' \u00b7 ')) +
         (D.d === hoy ? ' \u00b7 hoy' : '') + '</small></span>' +
         '<span class="ck">\u2713</span>';
@@ -3077,7 +3085,7 @@
           var sep = document.createElement('div');
           sep.className = 'gx-sep' + (D.d === hoy ? ' hoy' : '');
           sep.innerHTML =
-            '<span>Día ' + D.d + ' · ' + esc(D.n.replace(/^[^·]+· /,'')) + '</span>' +
+            '<span>Día ' + D.d + ' · ' + fechaDia(D) + ' · ' + esc(D.n.replace(/^[^·]+· /,'')) + '</span>' +
             '<b>' + eur(totalEur(l)) + '</b>';
           cHoy.appendChild(sep);
           l.slice().reverse().forEach(function(g){ pintarItem(g, cHoy); });
@@ -3094,10 +3102,11 @@
       var iHoy = infoDia(hoy);
       var lHoy = delDia(hoy);
       var tHoy = totalEur(lHoy);
+      var etq = 'día ' + hoy + (iHoy ? ' · ' + fechaDia(iHoy) : '');
       if(iHoy && iHoy.est){
-        $('gxHoyRes').textContent = 'día ' + hoy + ' · ' + eur(tHoy) + ' de ' + eur(iHoy.est / tasa()) + ' previstos';
+        $('gxHoyRes').textContent = etq + ' · ' + eur(tHoy) + ' de ' + eur(iHoy.est / tasa()) + ' previstos';
       } else {
-        $('gxHoyRes').textContent = 'día ' + hoy + ' · ' + eur(tHoy) + ' · sin estimado en la guía';
+        $('gxHoyRes').textContent = etq + ' · ' + eur(tHoy) + ' · sin estimado en la guía';
       }
       if(lHoy.length === 0){
         cHoy.innerHTML = '<p class="gx-vacio">Todavía nada hoy. Cargá el primero arriba, o tocá <b>Todos</b> para ver los días anteriores. Si el gasto es de otro día, cargalo igual y después tocalo para moverlo.</p>';
@@ -3150,7 +3159,7 @@
         pie = '<small class="na">sin estimado</small>';
       }
       div.innerHTML =
-        '<span class="nm"><b>Día ' + D.d + '</b><small>' + D.n.replace(/^[^·]+· /,'') + '</small></span>' +
+        '<span class="nm"><b>Día ' + D.d + ' · ' + fechaDia(D) + '</b><small>' + D.n.replace(/^[^·]+· /,'') + '</small></span>' +
         '<span class="rl">' + (l.length ? eur(t) : '–') + pie + '</span>';
       if(l.length){
         div.style.cursor = 'pointer';
