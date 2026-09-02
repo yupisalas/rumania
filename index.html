@@ -864,6 +864,141 @@
     .hero{padding:30px 0 24px;}
     section{padding:24px 0;}
   }
+
+  /* ---------- WALKING TOUR SIBIU ---------- */
+  .tour-intro{margin:18px 0 6px;}
+  .tour-acc{
+    display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px;
+  }
+  .tour-acc button,.tour-acc a{
+    font-family:var(--sans);font-size:13px;font-weight:600;
+    background:var(--bosque);color:var(--crema-solid);border:none;
+    padding:10px 16px;border-radius:100px;cursor:pointer;
+    text-decoration:none;display:inline-block;line-height:1.4;
+  }
+  .tour-acc button.sec,.tour-acc a.sec{
+    background:transparent;color:var(--bosque2);
+    border:1px solid rgba(28,58,46,.3);
+  }
+
+  /* mapa vivo */
+  .tmap-box{
+    margin:16px 0 6px;border:1px solid var(--linea);border-radius:10px;
+    overflow:hidden;background:#e9e0cc;position:relative;
+    box-shadow:0 2px 14px rgba(32,24,15,.10);
+  }
+  #tmap{height:320px;width:100%;background:#e9e0cc;}
+  .tmap-ph{
+    height:320px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:10px;text-align:center;padding:0 26px;
+  }
+  .tmap-ph p{font-size:13px;color:var(--tinta-suave);max-width:34ch;}
+  .tmap-ph button{
+    font-family:var(--sans);font-size:13.5px;font-weight:600;
+    background:var(--bosque);color:var(--crema-solid);border:none;
+    padding:11px 20px;border-radius:100px;cursor:pointer;
+  }
+  .tmap-bar{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:10px 12px;border-top:1px solid var(--linea);
+    background:rgba(243,234,217,.5);
+  }
+  .tmap-bar button{
+    font-family:var(--sans);font-size:12px;font-weight:600;
+    background:var(--bosque);color:var(--crema-solid);border:none;
+    padding:8px 14px;border-radius:100px;cursor:pointer;
+  }
+  .tmap-dist{font-size:12.5px;color:var(--tinta-suave);flex:1;min-width:130px;}
+  .tmap-dist b{color:var(--bosque);font-weight:600;}
+  .lmk{
+    display:flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--bosque);color:var(--crema-solid);
+    font-family:var(--sans);font-size:12px;font-weight:700;
+    border:2px solid var(--crema-solid);box-shadow:0 1px 5px rgba(32,24,15,.4);
+  }
+  .lmk.hecha{background:var(--gris);}
+  .lmk.chico{
+    width:15px;height:15px;background:var(--dorado);
+    border-width:2px;font-size:0;
+  }
+  .lyo{
+    width:16px;height:16px;border-radius:50%;
+    background:#2b7de0;border:3px solid #fff;
+    box-shadow:0 0 0 5px rgba(43,125,224,.25);
+  }
+
+  /* paradas */
+  .tp{
+    border:1px solid var(--linea);border-radius:10px;
+    margin-bottom:10px;overflow:hidden;background:rgba(255,255,255,.42);
+  }
+  .tp.hecha{opacity:.55;}
+  .tp-head{
+    display:grid;grid-template-columns:34px 1fr auto;gap:12px;
+    align-items:center;padding:13px 14px;cursor:pointer;list-style:none;
+  }
+  .tp-head::-webkit-details-marker{display:none;}
+  .tp-num{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--bosque);color:var(--crema-solid);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:600;font-size:15px;
+  }
+  .tp.hecha .tp-num{background:var(--gris);}
+  .tp-t{min-width:0;}
+  .tp-t h4{
+    font-family:var(--serif);font-weight:600;font-size:15.5px;
+    color:var(--bosque);line-height:1.2;
+  }
+  .tp-t span{font-size:12px;color:var(--tinta-suave);display:block;margin-top:1px;}
+  .tp-min{
+    font-family:var(--sans);font-size:11px;font-weight:700;
+    color:var(--gris);letter-spacing:.06em;
+  }
+  .tp-body{padding:0 14px 14px;border-top:1px solid var(--linea);}
+  .tp-donde{
+    margin-top:12px;padding:10px 12px;border-radius:8px;
+    background:rgba(201,154,63,.13);
+  }
+  .tp-donde .av-label{
+    font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:#8a6a1f;margin-bottom:3px;
+  }
+  .tp-donde p{font-size:13px;color:var(--tinta-suave);margin:0;}
+  .tp-audio{margin-top:12px;}
+  .tp-audio audio{width:100%;height:38px;}
+  .tp-noaudio{
+    font-size:12px;color:var(--gris);font-style:italic;
+    padding:9px 11px;border-radius:8px;background:var(--gris-bg);
+  }
+  .tp-guion{margin-top:12px;}
+  .tp-guion summary{
+    font-family:var(--sans);font-size:12px;font-weight:600;
+    color:var(--bosque2);cursor:pointer;list-style:none;
+    text-decoration:underline;text-underline-offset:2px;
+  }
+  .tp-guion summary::-webkit-details-marker{display:none;}
+  .tp-guion p{font-size:13.5px;color:var(--tinta-suave);margin-top:8px;}
+  .tp-sig{
+    margin-top:12px;padding-top:10px;border-top:1px dashed var(--linea);
+    font-size:12.5px;color:var(--tinta-suave);
+  }
+  .tp-sig b{color:var(--bosque2);}
+  .tp-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .tp-acts a,.tp-acts button{
+    font-family:var(--sans);font-size:12px;font-weight:600;
+    border:1px solid rgba(28,58,46,.3);background:transparent;
+    color:var(--bosque2);padding:7px 13px;border-radius:100px;
+    cursor:pointer;text-decoration:none;
+  }
+  .tp-acts button.on{background:var(--bosque);color:var(--crema-solid);border-color:var(--bosque);}
+  @media(max-width:520px){
+    #tmap,.tmap-ph{height:270px;}
+    .tp-head{grid-template-columns:30px 1fr auto;gap:10px;padding:11px 12px;}
+    .tp-num{width:30px;height:30px;font-size:14px;}
+    .tp-t h4{font-size:14.5px;}
+  }
 </style>
 </head>
 <body>
@@ -1981,6 +2116,7 @@
           <h3>Día en Sibiu</h3>
           <a class="sleep" href="https://www.google.com/maps/search/?api=1&amp;query=Strada%20Nicolae%20Balcescu%2010%2C%20Sibiu%2C%20Romania" target="_blank" rel="noopener"><span class="pin">📍</span>Apartment Balcescu · Sibiu</a>
           <p>Las dos plazas, el Puente de las Mentiras, las catedrales y el paseo por la muralla medieval de la Strada Cetății. Backup del doc: el <b>Museo ASTRA</b>.</p>
+          <p><a href="#tour-sibiu"><b>→ Audioguía del casco antiguo, 13 paradas</b></a> con mapa y GPS.</p>
           <span class="tag coste">~83 € el día</span><span class="tag">Sin mover valijas</span><span class="tag">Todo caminando</span>
 
           <details class="detalle">
@@ -2471,6 +2607,396 @@
   </div>
 </section>
 
+
+<section class="band" id="tour-sibiu">
+  <div class="wrap">
+    <div class="sec-label">Audioguía · día 7</div>
+    <h2>Sibiu a pie, en 13 paradas</h2>
+    <p class="lead">Bucle cerrado de 2,5 km que sale y vuelve a Bălcescu 10. Se corta al medio para almorzar: paradas 0 a 9 por la mañana, 10 a 12 por la tarde. Unos 23 minutos de audio en total.</p>
+
+    <div class="tour-acc">
+      <button type="button" id="tourMapaBtn">Abrir el mapa</button>
+      <a class="sec" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;origin=45.7944,24.1503&amp;destination=45.7946,24.1480&amp;waypoints=45.7968,24.1512%7C45.7966,24.1507%7C45.7976,24.1521%7C45.7977,24.1512%7C45.7983,24.1508%7C45.7977,24.1501%7C45.7980,24.1497%7C45.7970,24.1493" target="_blank" rel="noopener">Mañana en Maps</a>
+      <a class="sec" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;origin=45.7944,24.1503&amp;destination=45.7934,24.1523&amp;waypoints=45.7944,24.1537%7C45.7943,24.1532%7C45.7938,24.1523%7C45.7932,24.1512" target="_blank" rel="noopener">Tarde en Maps</a>
+      <button type="button" class="sec" id="tourReset">Reiniciar</button>
+    </div>
+
+    <div class="tmap-box" id="tmapBox">
+      <div class="tmap-ph" id="tmapPh">
+        <p>El mapa carga desde internet y gasta datos. Tocá para abrirlo; después queda guardado.</p>
+        <button type="button" id="tmapCargar">Cargar el mapa</button>
+      </div>
+      <div id="tmap" hidden></div>
+      <div class="tmap-bar" id="tmapBar" hidden>
+        <button type="button" id="tmapGps">Mi posición</button>
+        <div class="tmap-dist" id="tmapDist">Tocá "Mi posición" para ver a cuánto está la próxima parada.</div>
+      </div>
+    </div>
+    <p class="mapa-pie">Los círculos verdes son las paradas con audio. Los puntos dorados, referencias del camino.</p>
+
+    <div class="aviso">
+      <div class="av-label">Antes de salir</div>
+      <p>Turnul Sfatului está <b>cerrada</b> por restauración hasta fines de 2027. La Catedral Evangélica cierra el campanario antes que la nave: preguntá en taquilla. Las torres de Cetății cierran los lunes.</p>
+      <p>Entradas si entran a todo: ~273 lei los dos. Lo esencial (Evangélica con campanario, Casa Altemberger y las torres) son <b>106 lei</b>.</p>
+    </div>
+
+    <div style="margin-top:20px">
+      <details class="tp" id="tp00" data-n="0" data-lat="45.7944" data-lng="24.1503">
+        <summary class="tp-head">
+          <span class="tp-num">0</span>
+          <span class="tp-t"><h4>Introducción</h4><span>Strada Nicolae Bălcescu</span></span>
+          <span class="tp-min">1:40</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Escuchalo caminando hacia el norte por la peatonal. Son 300 metros y el bloque dura lo justo.</p>
+          </div>
+          
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-00.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Estás caminando por la columna vertebral de una ciudad que durante ochocientos años no se llamó Sibiu. Se llamó Hermanshtat.</p><p>No la fundaron rumanos. La fundaron colonos alemanes, traídos desde el Rin y el Mosela por los reyes de Hungría a mediados del siglo doce, para poblar y defender la frontera oriental del reino. Se los llamó los sajones de Transilvania, aunque de Sajonia no venía casi ninguno. La primera mención escrita de este lugar es de mil ciento noventa y uno, en un documento papal, bajo el nombre latino de Chibínium, por el río Chibin que corre acá al lado.</p><p>Antes de arrancar, quedate con dos ideas. Son la llave de todo lo que vas a ver en las próximas dos horas.</p><p>La primera es que Sibiu creció en anillos. Tres cinturones de murallas, uno adentro del otro, como los aros de un tronco. El más antiguo y más chico, del siglo trece, rodea la catedral gótica. El segundo abraza la plaza pequeña. Y el tercero, terminado hacia mil trescientos sesenta y seis, es el que encierra la plaza grande y todavía se puede tocar con la mano en la calle de la muralla. Cada vez que cruces un arco hoy, estás atravesando una época.</p><p>La segunda idea es que acá no mandaba un rey ni un obispo. Mandaban los gremios. Los carpinteros, los alfareros, los orfebres, los arcabuceros, los pañeros. Cada gremio pagaba, mantenía, armaba y defendía su propia torre y su propio tramo de muralla. No era simbólico: si un gremio se empobrecía, su torre se caía a pedazos y ese flanco de la ciudad quedaba débil. La defensa de Sibiu dependía, ladrillo a ladrillo, de si ese año se habían vendido bien las ollas.</p><p>Una ciudad de comerciantes que se defendía a sí misma, con la contabilidad como sistema de seguridad nacional.</p><p>Son unos dos kilómetros y medio, todo empedrado, todo dentro de un cuadrado de quinientos metros. Seguí derecho hasta que la calle se abra de golpe.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Bălcescu hacia el norte, 300 m. La calle desemboca sola en Piața Mare.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.7944,24.1503" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="0">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp01" data-n="1" data-lat="45.79678" data-lng="24.15124">
+        <summary class="tp-head">
+          <span class="tp-num">1</span>
+          <span class="tp-t"><h4>Piața Mare</h4><span>La plaza grande</span></span>
+          <span class="tp-min">2:10</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Parate en el centro de la plaza, mirando al norte, hacia la torre.</p>
+          </div>
+          <div><span class="dato">142 × 93 m</span><span class="dato">Plaza mayor desde 1366</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-01.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Estás en el centro de gravedad de Sibiu desde mil trescientos sesenta y seis, el año en que la ciudad recibió oficialmente el título de ciudad. Ciento cuarenta y dos metros de largo por noventa y tres de ancho. Todos los edificios que la rodean son monumento histórico, sin una sola excepción.</p><p>Acá vivía la élite. Por eso las casas de esta plaza tienen nombre propio, como si fueran personas: Casa Haller, Casa Hecht, Casa Lutsch. Y acá pasaba todo lo que importaba: las ferias comerciales, las asambleas de ciudadanos, las procesiones y las ejecuciones.</p><p>Ahora levantá la vista a los tejados. Esas ventanas ovaladas, entrecerradas, que parecen párpados pesados, son los famosos ojos de Sibiu. La explicación es prosaica: son respiraderos. Los sajones usaban los desvanes para secar y almacenar alimento, y el aire tenía que circular o se pudría todo. Pero el efecto es imposible de sacudirse. Los tejados te miran, y no del todo con simpatía.</p><p>Hacia el norte tenés la iglesia católica de la Santísima Trinidad, la de los jesuitas, levantada entre mil setecientos veintiséis y mil setecientos treinta y tres. Es un dato político disfrazado de arquitectura: los Habsburgo católicos plantando una iglesia barroca en el corazón de una ciudad luterana que llevaba dos siglos siendo protestante. Fachada sobria por fuera, interior recargado por dentro.</p><p>Y en algún punto de este empedrado, en época medieval, había dos objetos clavados en el piso. Uno era el poste de la infamia. El otro se llamaba la jaula de los locos: una estructura de madera donde encerraban durante unos días, a la vista de todo el mundo, a los borrachos y a los que cometían delitos menores. Fijate en la lógica. El castigo no era el encierro ni el dolor. El castigo era que todos tus vecinos, tus clientes y tu suegra te vieran ahí adentro mientras iban al mercado. En una ciudad de gremios, donde tu oficio era tu apellido y tu reputación era tu capital, la vergüenza pública era la pena más eficiente que existía.</p><p>Desde mil setecientos treinta y cuatro la plaza estuvo dominada por una estatua de San Juan Nepomuceno. El régimen comunista la sacó.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Cruzá al lado oeste de la plaza: la fachada barroca larga con el portal de piedra.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79678,24.15124" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="1">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp02" data-n="2" data-lat="45.79658" data-lng="24.15066">
+        <summary class="tp-head">
+          <span class="tp-num">2</span>
+          <span class="tp-t"><h4>Palatul Brukenthal</h4><span>El palacio del barón</span></span>
+          <span class="tp-min">2:30</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Frente al portal, desde la vereda. No hace falta entrar.</p>
+          </div>
+          <div><span class="dato">50 lei por adulto</span><span class="dato">Mié a dom, 10 a 18</span><span class="dato">1 h 30 si entrás</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-02.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Este palacio barroco lo mandó construir a fines del siglo dieciocho el barón Samuel von Brúkental, gobernador de Transilvania bajo María Teresa de Austria. Un hombre que hizo tres cosas que todavía se sienten.</p><p>La primera: coleccionó arte con obsesión, aprovechando su posición y su fortuna, y después dejó escrito en su testamento que a su muerte el palacio y las colecciones debían abrirse al público. Así, en mil ochocientos diecisiete, nació el Museo Brúkental. El primer museo público de Rumanía y uno de los primeros de Europa: abrió sus puertas dos años antes que el Prado. Hoy exhibe pintura flamenca, holandesa y austríaca, y una colección de grabados con Durero y Piranesi.</p><p>La segunda es más rara y más divertida. En octubre de mil setecientos setenta y siete, el barón contrató como bibliotecario y médico personal a un alemán de veintidós años que había tenido que abandonar la carrera de medicina en Viena porque lo asaltaron y se quedó sin plata. Se llamaba Samuel Hánemann. Pasó dos años acá adentro con acceso ilimitado a una de las mejores bibliotecas privadas del imperio, incluidos libros prohibidos por la censura de los Habsburgo, y ahí empezó a formarse su desconfianza hacia la medicina de su época, con sus sangrías y sus purgas. Años más tarde, ese muchacho inventó la homeopatía. Se la juzgue como se la juzgue, nació en parte en estas habitaciones.</p><p>Y la tercera no es del barón sino de sus archivos. En los años sesenta, un investigador rumano llamado Doru Todericiu encontró acá un manuscrito catalogado como Varia dos, trescientos setenta y cuatro. Trescientas noventa y dos hojas en alemán medieval, doscientas tres ilustraciones a color. Lo había escrito, a mediados del siglo dieciséis, Conrad Haas, el jefe del arsenal militar de Sibiu. Y entre los diagramas de artillería aparecía la descripción técnica de un cohete de dos etapas y de tres etapas, con estabilizadores triangulares, mezclas de combustible y hasta una idea que Haas llamó la casita voladora.</p><p>Es la descripción más antigua que se conoce del cohete multietapa: el principio exacto con el que doscientos años después se llegó a la Luna. Escrita acá, en mil quinientos veintinueve. El libro que Todericiu publicó sobre el hallazgo fue prohibido y destruido por el régimen comunista cuando el autor se fugó a Francia.</p><p>Y como para cerrar el círculo: Herman Oberth, uno de los padres teóricos de la astronáutica y maestro de Wernher von Braun, nació en esta misma ciudad en mil ochocientos noventa y cuatro. En Sibiu alguien miró para arriba dos veces, con cuatro siglos de diferencia.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Volvé al lado norte de la plaza y metete debajo del arco de la torre.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79658,24.15066" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="2">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp03" data-n="3" data-lat="45.79763" data-lng="24.15214">
+        <summary class="tp-head">
+          <span class="tp-num">3</span>
+          <span class="tp-t"><h4>Turnul Sfatului</h4><span>La torre del consejo</span></span>
+          <span class="tp-min">1:20</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Escuchalo debajo del arco, mientras cruzás de una plaza a la otra.</p>
+          </div>
+          <div><span class="dato">Cerrada hasta fines de 2027</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-03.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Estás pasando por debajo del edificio más emblemático de Sibiu, y también del más trabajador.</p><p>La Torre del Consejo aparece mencionada por primera vez en mil trescientos veinticuatro, y su función original era defender la puerta del segundo cinturón de murallas. Es decir: exactamente este arco que estás atravesando ahora. Del otro lado había ciudad. De este lado, también, pero otra.</p><p>A lo largo de setecientos años esta torre fue puerta fortificada, depósito de grano, puesto de vigilancia contra incendios, cárcel, museo de ciencias naturales y mirador turístico. Pocos edificios en Europa cambiaron tantas veces de oficio sin cambiar de forma.</p><p>Antes de salir del arco, mirá los dos leones de piedra que custodian la entrada. Casi nadie los registra. Son de la construcción original.</p><p>Lo que no vas a poder hacer hoy es subir los ciento cuarenta y un escalones hasta arriba. Desde enero de dos mil veintiséis la torre está en restauración integral y no abre al público hasta fines de dos mil veintisiete. Le están rehaciendo las fachadas, el techo de cobre y el mecanismo histórico del reloj, y grabando descripciones en braille en los pasamanos y en los alféizares, para que alguien que no ve pueda igual leer con los dedos qué hay en cada una de las cuatro direcciones. La vista queda pendiente. El arco no lo puede cerrar nadie.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Salí del arco y frenate: ya estás en Piața Mică.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79763,24.15214" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="3">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp04" data-n="4" data-lat="45.79767" data-lng="24.15121">
+        <summary class="tp-head">
+          <span class="tp-num">4</span>
+          <span class="tp-t"><h4>Piața Mică</h4><span>La plaza de los oficios</span></span>
+          <span class="tp-min">2:10</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>En la plaza, mirando la casa de arcadas del lado norte.</p>
+          </div>
+          <div><span class="dato">Farmacia: 16 lei, 9 a 17</span><span class="dato">Casa de las Artes: 10 a 18</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-04.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Cambió todo en veinte metros, ¿no? Pasaste del poder a los oficios.</p><p>Esta plaza es más antigua que la grande, más chica, curva y desordenada, y estaba dentro del segundo anillo de murallas. Acá no vivían los patricios: acá estaban los talleres, los depósitos, las carnicerías y las casas de gremio.</p><p>Esa casa de arcadas del lado norte es la más importante. Hoy se llama Casa de las Artes y aloja el Museo de Etnografía Sajona, pero su nombre verdadero es la Halle de los Carniceros, y está documentada desde mil trescientos setenta. Es la casa de gremio más antigua de Transilvania. La planta baja, la de las arcadas abiertas, era donde se despiezaba y se vendía la carne. El piso de arriba era una única sala grande donde el gremio de carniceros se reunía a decidir sus asuntos. En mil setecientos sesenta y cinco funcionó unos meses como sala de teatro, y en mil setecientos ochenta y nueve le pusieron el escudo de la ciudad en la fachada sur.</p><p>A pocos metros, en el número veintiséis, hay un edificio de mil quinientos sesenta y ocho que fue farmacia sin interrupción hasta fines de los años sesenta, con un nombre precioso: La Ursul Negru, El Oso Negro. Hoy es el Museo de Historia de la Farmacia. Adentro hay más de seis mil seiscientas piezas, incluido un mortero de bronce fechado en mil quinientos noventa y siete, y una colección de homeopatía con preparados del propio Hánemann, el bibliotecario del barón que dejamos hace diez minutos.</p><p>¿Y por qué justo acá un museo de farmacia? Porque la primera farmacia documentada de todo el territorio rumano abrió en Sibiu, en mil cuatrocientos noventa y cuatro. Sumale el primer hospital, el primer museo público y el primer puente de hierro colado del país, y entendés por qué los sibienses tienen esa costumbre levemente insoportable de decir que todo empezó acá. El problema es que bastante seguido tienen razón.</p><p>Y si querés ver los ojos de los tejados en su mejor versión, es desde este punto exacto, no desde la plaza grande.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Hacia el noreste de la plaza, buscá los escalones de piedra del Pasaje de los Orfebres y bajá.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79767,24.15121" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="4">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp05" data-n="5" data-lat="45.7983" data-lng="24.15079">
+        <summary class="tp-head">
+          <span class="tp-num">5</span>
+          <span class="tp-t"><h4>Podul Minciunilor</h4><span>El puente de las mentiras</span></span>
+          <span class="tp-min">2:20</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Escuchalo primero desde abajo, sobre Strada Ocnei. Después subí y cruzalo.</p>
+          </div>
+          <div><span class="dato">1859</span><span class="dato">El más antiguo de hierro colado en servicio</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-05.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Este es el puente más fotografiado de Rumanía, y su nombre es, casi con seguridad, un malentendido lingüístico.</p><p>Los datos primero, porque son mejores que la leyenda. Se fundió en hierro colado en mil ochocientos cincuenta y nueve en la fundición Fríedrichs Hüte, se montó acá al año siguiente y se inauguró el diecisiete de diciembre de mil ochocientos sesenta. Es el puente de hierro colado más antiguo que sigue en servicio en Rumanía y el segundo de su tipo construido en Europa. Un solo vano de diez metros con cuarenta, cuatro traviesas arqueadas atornilladas en la clave, y decoración neogótica de rosetas y cuadrilóbulos.</p><p>Si estás abajo, en Strada Ocnei, mirá los arcos. Del lado sur están decorados con el escudo de Sibiu. Del lado norte llevan grabados en el metal el año mil ochocientos cincuenta y nueve y el nombre de la fundición. Está todo escrito ahí, a la vista, hace ciento sesenta y cinco años.</p><p>Hasta mediados del siglo diecinueve, acá no había puente: había un túnel curvo que pasaba por debajo de una hilera de casas y que partía la plaza pequeña en dos. Lo demolieron en mil ochocientos cincuenta y uno porque se había vuelto insalubre y peligroso.</p><p>Ahora, el nombre. La leyenda dice que el puente cruje, chirría o directamente se derrumba si alguien miente parado encima. Hay versiones para todos los gustos: los comerciantes que estafaban en los días de feria, los cadetes de la academia militar jurando amor eterno antes de irse, las muchachas que juraban ser vírgenes. Hay incluso un documento de mil setecientos setenta y uno que menciona que el paso por debajo estaba iluminado de noche con tres faroles y vigilado por tres centinelas.</p><p>Pero la explicación más aceptada es mucho menos romántica. Este fue el primer puente de la zona construido sin pilares de apoyo, sostenido solo en sus extremos. Por eso en alemán lo llamaron el puente acostado, el puente recostado: Líguenbruque. Y en el dialecto sajón local, la palabra para acostado suena prácticamente igual que la palabra para mentira.</p><p>O sea: el puente de las mentiras se llama así por un error de pronunciación. Un detector de mentiras nacido de un malentendido. Es difícil imaginar un origen más apropiado.</p><p>Y la plaza a la que bajan estas escaleras se llama hoy Piața Aurarilor, la plaza de los Orfebres, pero en los documentos alemanes aparece como Fingerlingsplatz. En mil cuatrocientos noventa y seis ya se mencionaba acá una fuente pública, y durante siglos el lugar se identificó simplemente como junto a la fuente, o debajo de la escalera. Los nombres de este barrio son direcciones, no homenajes.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Cruzá el puente hacia el oeste. Del otro lado ya estás en Piața Huet, con la catedral enfrente.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.7983,24.15079" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="5">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp06" data-n="6" data-lat="45.79774" data-lng="24.1501">
+        <summary class="tp-head">
+          <span class="tp-num">6</span>
+          <span class="tp-t"><h4>Catedrala Evanghelică</h4><span>Piața Huet</span></span>
+          <span class="tp-min">2:30</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Afuera, frente al pórtico, antes de entrar.</p>
+          </div>
+          <div><span class="dato">Nave 10 lei</span><span class="dato">Con campanario ~15 lei</span><span class="dato">Menores de 6 gratis</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-06.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Esta plaza es donde empezó Sibiu. Acá estaba el primer recinto fortificado, el del siglo trece, y muchas de las casas que la rodean están literalmente construidas sobre los restos de aquellas murallas. La leyenda dice que en el terreno donde hoy se levanta la catedral vivía el caballero Hermann, el fundador mítico que le dio nombre a Hermanshtat.</p><p>La Catedral Evangélica Santa María se construyó entre los siglos catorce y dieciséis sobre una basílica románica anterior del siglo doce, cuyo trazado está marcado en el piso con baldosas de otro color. La torre mide setenta y tres metros con treinta y cuatro, tiene siete niveles, y fue el edificio más alto de la ciudad hasta los años setenta del siglo veinte.</p><p>Mirá la punta. Cuatro torrecitas en las esquinas. Eso no es decoración: en el mundo germánico medieval era un cartel legal. Significaba que la ciudad tenía el ius gladii, el derecho de la espada, es decir, el derecho a juzgar y ejecutar por su cuenta. La torre también era el puesto de vigilancia contra incendios, y desde sus ventanas se enviaban mensajes a la ciudad con banderas: negra si había luto.</p><p>Adentro hay cuatro cosas que valen la pena buscar. Un fresco de la Crucifixión pintado por Yohanes de Rosenau en mil cuatrocientos cuarenta y cinco. Un órgano instalado en mil novecientos catorce, en su momento el más grande del sudeste de Europa. Una pila bautismal de la que se dice que se fundió en mil cuatrocientos treinta y ocho con el bronce de cañones turcos capturados en batalla. Y una galería con sesenta y siete lápidas funerarias reunidas en un solo espacio, algo único en Rumanía.</p><p>Entre esas tumbas hay una que ata este viaje entero con un nudo. Acá está enterrado Mihnea el Malo, príncipe de Valaquia e hijo de Vlad Tepesh, el Empalador. Lo asesinaron a puñaladas en mil quinientos diez, justo afuera de esta iglesia, mientras salía de misa. Es el único rumano enterrado en la catedral evangélica: el hijo de Drácula terminó bajo las piedras de un templo luterano sajón.</p><p>Y un último detalle sobre las jerarquías de esta ciudad. En mil setecientos noventa y seis se prohibió por completo enterrar gente dentro de esta iglesia. Hubo una sola excepción en toda la historia posterior. El barón Brúkental.</p><p>Si subís al campanario son ciento noventa y dos escalones, y arriba, además de las cuatro vistas, están las tres campanas, que pesan más de cinco toneladas.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Rodeá la catedral hacia el noroeste hasta el arco fortificado con las escaleras.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79774,24.1501" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="6">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp07" data-n="7" data-lat="45.798" data-lng="24.14971">
+        <summary class="tp-head">
+          <span class="tp-num">7</span>
+          <span class="tp-t"><h4>Turnul Scărilor</h4><span>La torre de las escaleras y la Casa de las Calfas</span></span>
+          <span class="tp-min">1:50</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>En el arco, mirando el pasaje que baja hacia la ciudad baja.</p>
+          </div>
+          <div><span class="dato">Siglo XIII</span><span class="dato">Lo más antiguo de la ciudad</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-07.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Este arco es, muy probablemente, lo más antiguo que sigue en pie en Sibiu. La Torre de las Escaleras, del siglo trece, es lo único que sobrevivió del primer cinturón de murallas. Todo el resto de aquel anillo desapareció, absorbido por las casas que se le fueron pegando encima durante ochocientos años.</p><p>El pasaje que baja desde acá comunicaba la Ciudad Alta con la Ciudad Baja. Arriba, los patricios, los gremios ricos, las iglesias y el poder. Abajo, los talleres pesados, los depósitos y la gente que trabajaba con las manos. Estas escaleras no eran una escalera. Eran una frontera social con escalones.</p><p>Y pegada a la torre hay una casa que merece detenerse. La Casa de las Calfas, la Casa Calfelor.</p><p>En el sistema gremial alemán, un aprendiz que terminaba su formación no podía llamarse maestro de golpe. Tenía que salir a la ruta durante años, caminando, trabajando gratis a cambio de techo y comida, sin acercarse a su ciudad natal. Se los llama calfas, oficiales viajeros, y todavía existen: se los reconoce por el sombrero negro de ala ancha, la chaqueta de botones, el pantalón acampanado y el bastón retorcido. No llevan teléfono. Muchos siguen haciendo dedo en las rutas de Europa.</p><p>Esta casa de Sibiu fue la primera Casa de Calfas fundada fuera de Alemania, Suiza y Francia. Y Sibiu sigue siendo la ciudad más oriental de Europa donde un oficial viajero puede llegar, golpear la puerta y pedir alojamiento durante su viaje iniciático. Vienen sobre todo en verano.</p><p>Si ves a alguien vestido de una forma que parece un disfraz de época, no lo es. Es alguien haciendo, en dos mil veintiséis, exactamente lo mismo que se hacía en mil cuatrocientos, por las mismas razones y con las mismas reglas.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Volvé a Piața Huet y tomá Strada Mitropoliei hacia el sur. A 150 m, a la izquierda, el portón con el arco.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.798,24.14971" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="7">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp08" data-n="8" data-lat="45.79697" data-lng="24.14932">
+        <summary class="tp-head">
+          <span class="tp-num">8</span>
+          <span class="tp-t"><h4>Casa Altemberger</h4><span>La primaria vieja · Museo de Historia</span></span>
+          <span class="tp-min">2:10</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Bajando por Mitropoliei, frente al portón con el arco. Strada Mitropoliei 2.</p>
+          </div>
+          <div><span class="dato">36 lei por adulto</span><span class="dato">Mié a dom, 9 a 17</span><span class="dato">Si entrás a un solo museo, este</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-08.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Este portón discreto esconde el edificio civil más importante de la Transilvania gótica, y probablemente el que más te cuenta sobre cómo se gobernaba esta ciudad.</p><p>Fijate primero dónde estás parado. Esta casa se levanta justo en la costura entre la Ciudad Alta y la Ciudad Baja, apoyada contra el primer anillo de murallas y metida dentro del segundo. Su parte más antigua es una torre vivienda cuya construcción empezó a fines del siglo trece: una casa fortificada, pensada para que una familia rica pudiera atrincherarse dentro de su propia sala de estar.</p><p>Entre mil cuatrocientos setenta y mil cuatrocientos noventa, el alcalde Thomas Altemberger levantó sobre esa base el conjunto que ves, con el maestro cantero Andreas Lapicida al frente de la obra. Son diez cuerpos de edificio articulados alrededor de dos patios, más una torre de defensa. Es el mayor conjunto de arquitectura civil gótica de Rumanía.</p><p>Y acá viene lo interesante. En mil quinientos cuarenta y cinco, la ciudad le compró la casa a los herederos y la convirtió en ayuntamiento. Funcionó como sede del gobierno municipal durante cuatrocientos años, hasta mil novecientos cuarenta y ocho. Es decir: los sajones de Sibiu no construyeron un palacio consistorial nuevo para su poder político. Le compraron la casa a un vecino rico y se mudaron adentro. Muy de comerciantes.</p><p>En su torre se guardaron, desde mil quinientos cuarenta y seis hasta mil novecientos veintitrés, los archivos de la ciudad y de la Universidad Sajona, que no era una universidad sino la institución que representaba políticamente a toda la comunidad sajona de Transilvania. Casi cuatro siglos de la memoria escrita de un pueblo entero, apilados en una torre.</p><p>En los sótanos estuvo la cárcel de la ciudad. Ahí pasaron, durante siglos, todos los sibienses llevados a juicio, incluidas las acusadas de brujería.</p><p>Si entrás, en el patio hay unas ménsulas de piedra del siglo diecisiete talladas con retratos de vecinos: el médico, el alcalde, el estudiante, el tabernero. La ciudad retratándose a sí misma en la fachada de su propia sede.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Seguí bajando por Mitropoliei, 300 m. La cúpula aparece a la izquierda.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79697,24.14932" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="8">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp09" data-n="9" data-lat="45.79465" data-lng="24.14799">
+        <summary class="tp-head">
+          <span class="tp-num">9</span>
+          <span class="tp-t"><h4>Catedrala Sfânta Treime</h4><span>La catedral ortodoxa</span></span>
+          <span class="tp-min">2:10</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Frente a la fachada, sobre Strada Mitropoliei.</p>
+          </div>
+          <div><span class="dato">Gratis</span><span class="dato">7 a 20</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-09.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Frená un segundo y registrá el contraste. Hace diez minutos estabas frente a una catedral gótica sajona, luterana, vertical y austera, con la torre apuntando al cielo como una lanza. Ahora tenés enfrente cúpulas, curvas, oro y olor a incienso. En cuatrocientos metros cruzaste una frontera cultural entera.</p><p>Y esa frontera es exactamente el punto de este edificio.</p><p>Durante siglos, los rumanos ortodoxos de Transilvania no tuvieron derechos dentro de las ciudades sajonas amuralladas. No podían tener propiedad, no formaban parte de los gremios y su culto quedaba puertas afuera. Levantar una gran catedral ortodoxa en pleno centro de Sibiu fue una idea del metropolita Andrei Shaguna, a mediados del siglo diecinueve, y le llevó décadas conseguir el terreno, el permiso imperial de Francisco José y el dinero.</p><p>Se convocó un concurso de proyectos con una condición explícita: tenía que ser bizantina, y tenían que entrar mil ochocientas personas. Se presentaron treinta y un proyectos, la mayoría de arquitectos húngaros y austríacos. Ganó el de Yósef Kammer y Vírgil Nagy, profesores del Politécnico de Budapest, inspirado directamente en Santa Sofía de Constantinopla.</p><p>Se construyó entre mil novecientos dos y mil novecientos seis, sobre el terreno de una vieja iglesia griega de fines del siglo dieciocho. La cúpula tiene quince metros de diámetro y las dos torres superan los cuarenta metros. La familia Mocsonyi puso la mayor parte del dinero. Se consagró el treinta de abril de mil novecientos seis, con el historiador Nicolae Yorga entre los invitados. Y en la entrada descansan hoy las reliquias del propio Shaguna, que empezó todo y no llegó a verlo.</p><p>Pensalo así: los sajones construyeron su catedral para anunciar que tenían el derecho de matar. Los rumanos construyeron la suya, quinientos años después, para anunciar que existían. Los dos edificios están a cuatro cuadras y dicen cosas opuestas.</p><p>Entrá si podés. La luz que baja desde los ventanales de la cúpula hace la mitad del trabajo.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Fin de la mañana. El departamento está a 350 m. Para la tarde, salí hacia el este cruzando Bălcescu hasta el extremo norte de Strada Cetății.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79465,24.14799" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="9">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp10" data-n="10" data-lat="45.79443" data-lng="24.15372">
+        <summary class="tp-head">
+          <span class="tp-num">10</span>
+          <span class="tp-t"><h4>Turnul Gros · Sala Thalia</h4><span>El torreón gordo</span></span>
+          <span class="tp-min">2:20</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Al entrar a Strada Cetății por el norte, frente al edificio de la Filarmónica.</p>
+          </div>
+          <div><span class="dato">c. 1540</span><span class="dato">Primer teatro de Rumanía, 1788</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-10.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Este bloque macizo, medio torre y medio edificio, se llama el Torreón Gordo, Turnul Gros, y su historia es una de las mejores conversiones de un edificio en Europa.</p><p>Lo mandó construir alrededor de mil quinientos cuarenta Marcus Pemflinger, juez real de Sibiu, cuando la amenaza otomana obligó a reforzar las murallas medievales con estructuras capaces de aguantar artillería. Es un rondel de cañones: muros gruesos, planta redonda, casamatas con troneras en el nivel inferior. Pura máquina de guerra defensiva. Es el único rondel de Sibiu que sobrevivió.</p><p>Doscientos cincuenta años después, en mil setecientos ochenta y siete, un librero e impresor llamado Martin Hochmeister firmó un contrato con el magistrado de la ciudad. Quería construir un teatro, pero en el centro histórico ya no quedaba espacio. Así que pidió la torre. Le cedieron el Torreón Gordo para levantar, textualmente, una casa de comedias.</p><p>La obra tardó un año. El primero de junio de mil setecientos ochenta y ocho se inauguró con un prólogo festivo y una comedia alemana. Era una sala rococó con dos balcones y un palco reservado exclusivamente al gobernador de Transilvania. Y era el primer edificio construido específicamente para teatro en el actual territorio de Rumanía, antes que en Praga, Graz o Budapest.</p><p>Acá se representó Shakespeare y Molière durante décadas, en alemán. En junio de mil ochocientos sesenta y ocho, la compañía de Mihail Pascaly dio en esta sala las primeras funciones de teatro en lengua rumana de Sibiu. El apuntador de la compañía, agachado en su cajón bajo el escenario, era un joven de dieciocho años llamado Mihai Eminescu, que terminaría siendo el poeta nacional de Rumanía.</p><p>El teatro funcionó ciento setenta y un años seguidos. Lo terminó un incendio en mil novecientos cuarenta y nueve, provocado por un cigarrillo. Durante el comunismo la plataforma de la torre se convirtió en el club sindical de la fábrica Independența. Desde dos mil cuatro es la Sala Thalia, sede de la Filarmónica del Estado de Sibiu.</p><p>Contá la secuencia: cañones, comedias, sindicato, orquesta. Cuatro usos completamente distintos en cinco siglos, en el mismo edificio, sin que nadie lo demoliera nunca. Sibiu no tira cosas. Las recicla.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Seguí Strada Cetății hacia el sur. La primera torre a la izquierda es la de los Carpinteros.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79443,24.15372" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="10">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp11" data-n="11" data-lat="45.79426" data-lng="24.15323">
+        <summary class="tp-head">
+          <span class="tp-num">11</span>
+          <span class="tp-t"><h4>Las tres torres</h4><span>Strada Cetății</span></span>
+          <span class="tp-min">2:00</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Caminando por la calle de la muralla, de norte a sur.</p>
+          </div>
+          <div><span class="dato">2 lei las dos torres</span><span class="dato">Mar a dom, 11 a 18</span><span class="dato">Se entra por Dulgherilor</span></div>
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-11.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Esta es la calle más bonita de Sibiu y también la más franca. Es el tramo mejor conservado del tercer cinturón de murallas, levantado entre mil trescientos cincuenta y siete y mil trescientos sesenta y seis, cuando la ciudad terminaba de cerrarse sobre sí misma.</p><p>Acá se ve, en piedra y ladrillo, lo que te conté al empezar. Las murallas de Sibiu estaban repartidas entre los gremios. Cada uno tenía la obligación de mantener su torre, repararla, proveer el armamento (arcos, lanzas, espadas y más tarde arcabuces y fusiles) y poner los hombres que defendían tanto la torre como el segmento de muro contiguo. Por eso las torres se conocen hasta hoy por el nombre del oficio que las tenía a cargo, y no por el de ningún noble.</p><p>Las tres que quedaron en pie son, de norte a sur: la Torre de los Carpinteros, del siglo catorce. La Torre de los Alfareros, del siglo quince, en el medio. Y la Torre de los Arcabuceros, la más al sur, del siglo catorce, que más tarde pasó a llamarse Torre de los Pañeros cuando cambió el gremio responsable. Miden unos veinte metros cada una, son de piedra y ladrillo, con techos piramidales y consolas con troneras entre los arcos, y están unidas por el lienzo de muralla que estás bordeando. En el muro que va de la torre de los alfareros a la de los carpinteros se distinguen a simple vista dos fases constructivas distintas: cambia el material a media altura.</p><p>El nombre alemán de esta calle es Harteneckgasse, por el alcalde Johann Sachs von Harteneck.</p><p>Se entra por la Torre de los Carpinteros y se sale por la de los Alfareros, cruzando por dentro del corredor de la muralla. Cuesta dos lei, que es menos que un café, y adentro hay paneles sobre los gremios y las armas, escaleras empinadas y aspilleras desde las que se ve la ciudad exactamente como la veía un guardia hace seiscientos años: por una ranura, en tajadas.</p><p>La tercera, la de los arcabuceros, no se visita. Se mira desde afuera, que también es una forma de mirar.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Bajá hasta el final de la calle. El cierre lo escuchás donde quieras.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79426,24.15323" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="11">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+      <details class="tp" id="tp12" data-n="12" data-lat="45.79324" data-lng="24.15124">
+        <summary class="tp-head">
+          <span class="tp-num">12</span>
+          <span class="tp-t"><h4>Cierre</h4><span>El salame que no es de Sibiu</span></span>
+          <span class="tp-min">2:00</span>
+        </summary>
+        <div class="tp-body">
+          <div class="tp-donde">
+            <div class="av-label">Dónde pararse</div>
+            <p>Sentados, en una terraza, con algo en la mano.</p>
+          </div>
+          
+          <div class="tp-audio">
+            <audio controls preload="none" src="audio/sibiu-12.mp3"></audio>
+            <div class="tp-noaudio" hidden>Audio todavía no subido. El texto está acá abajo.</div>
+          </div>
+          <details class="tp-guion">
+            <summary>Leer el texto</summary>
+            <p>Cerramos con una historia que termina en la mesa.</p><p>El embutido más famoso de Rumanía se llama salam de Sibiu, salame de Sibiu. Y no es de Sibiu.</p><p>Lo inventó un italiano del Friuli llamado Filippo Dozzi, que llegó a Rumanía en mil ochocientos ochenta y cinco a trabajar de picapedrero en la cantera de Piatra Arsă, arriba de Sinaia. Es decir: exactamente donde ustedes empezaron este viaje hace una semana. Dozzi venía de una familia de embutidores, se dio cuenta de que el clima de esa montaña era perfecto para el curado en seco largo, y en mil novecientos diez compró un edificio en Sinaia que tenía un restaurante, un depósito de vinos y un hotel, y montó ahí su fábrica. Al producto lo llamó salam de iarnă: salame de invierno. Estaba pensado para los obreros de la cantera, calórico y de larga duración, y en pocos años se volvió un artículo de lujo que pedía la Casa Real.</p><p>¿Y de dónde salió entonces el nombre Sibiu? De la aduana. Se exportaba tanto a través del puesto fronterizo de Sibiu, que era el paso hacia el territorio austrohúngaro, que los clientes terminaron pidiéndolo por el sello del despacho en lugar de por el lugar donde se hacía. Para los años treinta el nombre ya era el oficial. Hoy tiene Indicación Geográfica Protegida europea. Un salame de Sinaia que se llama de Sibiu porque pasaba por la aduana correcta.</p><p>Y si te suena familiar, tiene sentido: la receta es prima hermana del fuet catalán. Carne de cerdo, ajo, pimienta, curado largo en seco. Un italiano perdido en los Cárpatos terminó haciendo, sin enterarse nunca, algo bastante parecido a lo que ustedes tienen a diez minutos de casa.</p><p>Para llevarse de acá, además del salame: brânza de burduf de la Mărguinimea Sibiului, la comarca de pastores al oeste de la ciudad, que es queso de oveja madurado en corteza de pino, y algún blanco seco de Târnave, la región vinícola que empieza al norte.</p><p>Sibiu fue Capital Europea de la Cultura en dos mil siete, y ese año arreglaron los adoquines, las plazas y los tejados que acabás de caminar. Pero nada de lo que viste hoy es escenografía. Es una ciudad que sigue funcionando adentro de sus tres anillos, con la gente viviendo en las mismas casas, bajo los mismos ojos.</p><p>Poftă bună.</p>
+          </details>
+          <div class="tp-sig"><b>Después:</b> Subiendo por Bălcescu, el departamento queda a 600 m.</div>
+          <div class="tp-acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;destination=45.79324,24.15124" target="_blank" rel="noopener">Ir con Maps</a>
+            <button type="button" class="tp-ok" data-n="12">Marcar hecha</button>
+          </div>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
 <section class="band">
   <div class="wrap">
     <div class="sec-label">Los números</div>
@@ -2784,7 +3310,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-08-31 · v19</b><br>
+      Versión de la guía: <b>2026-09-02 · v20</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -3587,6 +4113,216 @@
 
   cargar();
   pintar();
+})();
+</script>
+
+<script>
+/* Walking tour de Sibiu: mapa Leaflet a demanda, GPS y paradas hechas */
+(function(){
+  var SEC = document.getElementById('tour-sibiu');
+  if(!SEC) return;
+
+  var PARADAS = [
+  {n:0,lat:45.7944,lng:24.1503,nom:"Introducción"},
+  {n:1,lat:45.79678,lng:24.15124,nom:"Piața Mare"},
+  {n:2,lat:45.79658,lng:24.15066,nom:"Palatul Brukenthal"},
+  {n:3,lat:45.79763,lng:24.15214,nom:"Turnul Sfatului"},
+  {n:4,lat:45.79767,lng:24.15121,nom:"Piața Mică"},
+  {n:5,lat:45.7983,lng:24.15079,nom:"Podul Minciunilor"},
+  {n:6,lat:45.79774,lng:24.1501,nom:"Catedrala Evanghelică"},
+  {n:7,lat:45.798,lng:24.14971,nom:"Turnul Scărilor"},
+  {n:8,lat:45.79697,lng:24.14932,nom:"Casa Altemberger"},
+  {n:9,lat:45.79465,lng:24.14799,nom:"Catedrala Sfânta Treime"},
+  {n:10,lat:45.79443,lng:24.15372,nom:"Turnul Gros · Sala Thalia"},
+  {n:11,lat:45.79426,lng:24.15323,nom:"Las tres torres"},
+  {n:12,lat:45.79324,lng:24.15124,nom:"Cierre"}
+  ];
+  var EXTRAS = [
+  {lat:45.79831,lng:24.15206,nom:"Museo de la Farmacia"},
+  {lat:45.79903,lng:24.15219,nom:"Piața Aurarilor"},
+  {lat:45.79376,lng:24.15229,nom:"Turnul Olarilor"},
+  {lat:45.79341,lng:24.15228,nom:"Parcul Cetății"},
+  {lat:45.7944,lng:24.15033,nom:"Apartment Bălcescu 10"}
+  ];
+  var CLAVE = 'sibiu-tour-hechas';
+
+  /* ---- paradas hechas, en localStorage ---- */
+  function leer(){
+    try{ return JSON.parse(localStorage.getItem(CLAVE) || '[]'); }
+    catch(e){ return []; }
+  }
+  function guardar(a){
+    try{ localStorage.setItem(CLAVE, JSON.stringify(a)); }catch(e){}
+  }
+  var hechas = leer();
+
+  function esHecha(n){ return hechas.indexOf(n) !== -1; }
+
+  function proxima(){
+    for(var i=0;i<PARADAS.length;i++){
+      if(!esHecha(PARADAS[i].n)) return PARADAS[i];
+    }
+    return null;
+  }
+
+  function pintarTarjetas(){
+    PARADAS.forEach(function(p){
+      var el = document.getElementById('tp' + (p.n<10?'0':'') + p.n);
+      if(!el) return;
+      var btn = el.querySelector('.tp-ok');
+      if(esHecha(p.n)){
+        el.classList.add('hecha');
+        if(btn){ btn.textContent = 'Hecha \u2713'; btn.classList.add('on'); }
+      }else{
+        el.classList.remove('hecha');
+        if(btn){ btn.textContent = 'Marcar hecha'; btn.classList.remove('on'); }
+      }
+    });
+    if(marcadores.length) pintarMarcadores();
+    calcularDistancia();
+  }
+
+  SEC.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.tp-ok') : null;
+    if(!b) return;
+    e.preventDefault();
+    var n = parseInt(b.getAttribute('data-n'), 10);
+    var i = hechas.indexOf(n);
+    if(i === -1) hechas.push(n); else hechas.splice(i,1);
+    guardar(hechas);
+    pintarTarjetas();
+  });
+
+  var reset = document.getElementById('tourReset');
+  if(reset) reset.addEventListener('click', function(){
+    hechas = []; guardar(hechas); pintarTarjetas();
+  });
+
+  /* ---- si el mp3 todavia no existe, se muestra el aviso ---- */
+  Array.prototype.forEach.call(SEC.querySelectorAll('.tp-audio audio'), function(a){
+    a.addEventListener('error', function(){
+      a.hidden = true;
+      var av = a.parentNode.querySelector('.tp-noaudio');
+      if(av) av.hidden = false;
+    });
+  });
+
+  /* ---- mapa ---- */
+  var mapa = null, marcadores = [], yo = null, miPos = null, viendo = false;
+
+  function cargarLeaflet(cb){
+    if(window.L) return cb();
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(css);
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    s.onload = cb;
+    s.onerror = function(){
+      var ph = document.getElementById('tmapPh');
+      if(ph) ph.innerHTML = '<p>No se pudo cargar el mapa (sin datos, o el servidor no responde). ' +
+        'Us\u00e1 los botones de Maps de arriba, que abren la ruta completa.</p>';
+    };
+    document.head.appendChild(s);
+  }
+
+  function icono(p){
+    var c = 'lmk' + (esHecha(p.n) ? ' hecha' : '');
+    return L.divIcon({html:'<div class="'+c+'">'+p.n+'</div>', className:'',
+                      iconSize:[26,26], iconAnchor:[13,13]});
+  }
+
+  function pintarMarcadores(){
+    marcadores.forEach(function(m, i){
+      m.setIcon(icono(PARADAS[i]));
+    });
+  }
+
+  function iniciar(){
+    var cont = document.getElementById('tmap');
+    document.getElementById('tmapPh').hidden = true;
+    cont.hidden = false;
+    document.getElementById('tmapBar').hidden = false;
+
+    mapa = L.map(cont, {zoomControl:true, attributionControl:true});
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom:19, attribution:'&copy; OpenStreetMap'
+    }).addTo(mapa);
+
+    var linea = PARADAS.map(function(p){ return [p.lat, p.lng]; });
+    L.polyline(linea, {color:'#1c3a2e', weight:3, opacity:.55, dashArray:'6 6'}).addTo(mapa);
+
+    EXTRAS.forEach(function(e){
+      L.marker([e.lat, e.lng], {
+        icon: L.divIcon({html:'<div class="lmk chico"></div>', className:'',
+                         iconSize:[15,15], iconAnchor:[7,7]})
+      }).addTo(mapa).bindPopup(e.nom);
+    });
+
+    marcadores = PARADAS.map(function(p){
+      return L.marker([p.lat, p.lng], {icon: icono(p)})
+              .addTo(mapa)
+              .bindPopup('<b>' + p.n + ' \u00b7 ' + p.nom + '</b>');
+    });
+
+    mapa.fitBounds(L.latLngBounds(linea), {padding:[28,28]});
+    viendo = true;
+  }
+
+  var btnCargar = document.getElementById('tmapCargar');
+  var btnAbrir  = document.getElementById('tourMapaBtn');
+  function abrirMapa(){
+    if(viendo){ document.getElementById('tmapBox').scrollIntoView({behavior:'smooth'}); return; }
+    cargarLeaflet(function(){ if(!viendo) iniciar(); });
+  }
+  if(btnCargar) btnCargar.addEventListener('click', abrirMapa);
+  if(btnAbrir)  btnAbrir.addEventListener('click', abrirMapa);
+
+  /* ---- GPS ---- */
+  function metros(a, b){
+    var R = 6371000, r = Math.PI/180;
+    var dLat = (b[0]-a[0])*r, dLng = (b[1]-a[1])*r;
+    var x = Math.sin(dLat/2)*Math.sin(dLat/2) +
+            Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dLng/2)*Math.sin(dLng/2);
+    return Math.round(2*R*Math.atan2(Math.sqrt(x), Math.sqrt(1-x)));
+  }
+
+  function calcularDistancia(){
+    var caja = document.getElementById('tmapDist');
+    if(!caja || !miPos) return;
+    var p = proxima();
+    if(!p){ caja.innerHTML = 'Hiciste las 13 paradas. Poft\u0103 bun\u0103.'; return; }
+    var d = metros(miPos, [p.lat, p.lng]);
+    var txt = d >= 1000 ? (d/1000).toFixed(1).replace('.', ',') + ' km' : d + ' m';
+    caja.innerHTML = 'Pr\u00f3xima: <b>' + p.n + ' \u00b7 ' + p.nom + '</b>, a ' + txt + '.';
+  }
+
+  var btnGps = document.getElementById('tmapGps');
+  if(btnGps) btnGps.addEventListener('click', function(){
+    var caja = document.getElementById('tmapDist');
+    if(!navigator.geolocation){
+      caja.textContent = 'Este navegador no da la ubicaci\u00f3n.'; return;
+    }
+    caja.textContent = 'Buscando se\u00f1al...';
+    navigator.geolocation.watchPosition(function(pos){
+      miPos = [pos.coords.latitude, pos.coords.longitude];
+      if(mapa){
+        if(!yo){
+          yo = L.marker(miPos, {icon: L.divIcon({html:'<div class="lyo"></div>',
+               className:'', iconSize:[16,16], iconAnchor:[8,8]})}).addTo(mapa);
+          mapa.setView(miPos, 16);
+        }else{
+          yo.setLatLng(miPos);
+        }
+      }
+      calcularDistancia();
+    }, function(){
+      caja.textContent = 'No se pudo leer la ubicaci\u00f3n. Revis\u00e1 los permisos del navegador.';
+    }, {enableHighAccuracy:true, maximumAge:10000, timeout:15000});
+  });
+
+  pintarTarjetas();
 })();
 </script>
 

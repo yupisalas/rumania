@@ -4,7 +4,7 @@
    Sin señal (o con señal muy mala), se sirve la última copia guardada.
    El timeout es lo que evita que la app se quede colgada en una zona sin cobertura. */
 
-const CACHE = 'rumania-v19';
+const CACHE = 'rumania-v20';
 const TIMEOUT = 3500;
 
 const ASSETS = [
@@ -24,7 +24,23 @@ const ASSETS = [
   './mapa-sibiu-casco.jpg',
   './icon-192.png',
   './icon-512.png',
-  './apple-touch-icon.png'
+  './apple-touch-icon.png',
+
+  /* audioguia de Sibiu: si un mp3 todavia no esta subido,
+     el install lo saltea sin romper nada */
+  './audio/sibiu-00.mp3',
+  './audio/sibiu-01.mp3',
+  './audio/sibiu-02.mp3',
+  './audio/sibiu-03.mp3',
+  './audio/sibiu-04.mp3',
+  './audio/sibiu-05.mp3',
+  './audio/sibiu-06.mp3',
+  './audio/sibiu-07.mp3',
+  './audio/sibiu-08.mp3',
+  './audio/sibiu-09.mp3',
+  './audio/sibiu-10.mp3',
+  './audio/sibiu-11.mp3',
+  './audio/sibiu-12.mp3'
 ];
 
 self.addEventListener('install', (e) => {
