@@ -881,35 +881,57 @@
     border:1px solid rgba(28,58,46,.3);
   }
 
-  /* mapa vivo */
-  .tmap-box{
-    margin:16px 0 6px;border:1px solid var(--linea);border-radius:10px;
-    overflow:hidden;background:#e9e0cc;position:relative;
-    box-shadow:0 2px 14px rgba(32,24,15,.10);
+  /* mapa vivo, en bottom sheet a casi pantalla completa */
+  .tmap-bg{
+    position:fixed;inset:0;z-index:200;background:rgba(18,42,32,.6);
+    opacity:0;pointer-events:none;transition:opacity .24s ease;
   }
-  #tmap{height:320px;width:100%;background:#e9e0cc;}
+  .tmap-bg.open{opacity:1;pointer-events:auto;}
+  .tmap-sheet{
+    position:fixed;left:0;right:0;bottom:0;z-index:201;
+    max-width:520px;margin:0 auto;
+    background:var(--crema-solid);border-top:3px solid var(--dorado);
+    border-radius:20px 20px 0 0;
+    box-shadow:0 -10px 34px rgba(0,0,0,.26);
+    transform:translateY(110%);transition:transform .28s cubic-bezier(.24,.9,.3,1);
+    height:94vh;height:94dvh;
+    display:flex;flex-direction:column;overflow:hidden;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .tmap-sheet.open{transform:translateY(0);}
+  .tmap-top{padding:10px 20px 0;flex:none;}
+  .tmap-top .cnv-head{margin-bottom:10px;}
+  /* el mapa se come todo el alto que sobra */
+  #tmap{flex:1;min-height:0;width:100%;background:#e9e0cc;}
   .tmap-ph{
-    height:320px;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;gap:10px;text-align:center;padding:0 26px;
+    flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:12px;text-align:center;padding:0 30px;
   }
-  .tmap-ph p{font-size:13px;color:var(--tinta-suave);max-width:34ch;}
+  .tmap-ph p{font-size:13.5px;color:var(--tinta-suave);max-width:34ch;}
   .tmap-ph button{
-    font-family:var(--sans);font-size:13.5px;font-weight:600;
+    font-family:var(--sans);font-size:14px;font-weight:600;
     background:var(--bosque);color:var(--crema-solid);border:none;
-    padding:11px 20px;border-radius:100px;cursor:pointer;
+    padding:12px 22px;border-radius:100px;cursor:pointer;
   }
   .tmap-bar{
-    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    padding:10px 12px;border-top:1px solid var(--linea);
-    background:rgba(243,234,217,.5);
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:none;
+    padding:11px 18px calc(11px + env(safe-area-inset-bottom));
+    border-top:1px solid var(--linea);background:var(--crema-solid);
   }
   .tmap-bar button{
-    font-family:var(--sans);font-size:12px;font-weight:600;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;
     background:var(--bosque);color:var(--crema-solid);border:none;
-    padding:8px 14px;border-radius:100px;cursor:pointer;
+    padding:9px 16px;border-radius:100px;cursor:pointer;flex:none;
   }
   .tmap-dist{font-size:12.5px;color:var(--tinta-suave);flex:1;min-width:130px;}
   .tmap-dist b{color:var(--bosque);font-weight:600;}
+  /* atajo flotante para reabrir el mapa desde cualquier parada */
+  .tmap-re{
+    position:sticky;top:8px;z-index:5;display:block;width:100%;
+    font-family:var(--sans);font-size:13px;font-weight:600;
+    background:var(--bosque);color:var(--crema-solid);border:none;
+    padding:11px 16px;border-radius:100px;cursor:pointer;margin-bottom:14px;
+  }
   .lmk{
     display:flex;align-items:center;justify-content:center;
     width:26px;height:26px;border-radius:50%;
@@ -993,8 +1015,19 @@
     cursor:pointer;text-decoration:none;
   }
   .tp-acts button.on{background:var(--bosque);color:var(--crema-solid);border-color:var(--bosque);}
+  /* paradas donde se puede entrar */
+  .tp.entra{border-left:3px solid var(--dorado);}
+  .tp.entra .tp-num{background:var(--dorado);color:var(--tinta);}
+  .tp.entra.hecha .tp-num{background:var(--gris);color:var(--crema-solid);}
+  .tp-in{
+    display:inline-block;margin-top:4px;
+    font-family:var(--sans);font-size:10.5px;font-weight:700;
+    letter-spacing:.04em;text-transform:uppercase;
+    background:rgba(201,154,63,.2);color:#8a6a1f;
+    padding:2px 8px;border-radius:5px;
+  }
+  .lmk.entra{background:var(--dorado);color:var(--tinta);}
   @media(max-width:520px){
-    #tmap,.tmap-ph{height:270px;}
     .tp-head{grid-template-columns:30px 1fr auto;gap:10px;padding:11px 12px;}
     .tp-num{width:30px;height:30px;font-size:14px;}
     .tp-t h4{font-size:14.5px;}
@@ -2612,27 +2645,15 @@
   <div class="wrap">
     <div class="sec-label">Audioguía · día 7</div>
     <h2>Sibiu a pie, en 13 paradas</h2>
-    <p class="lead">Bucle cerrado de 2,5 km que sale y vuelve a Bălcescu 10. Se corta al medio para almorzar: paradas 0 a 9 por la mañana, 10 a 12 por la tarde. Unos 23 minutos de audio en total.</p>
+    <p class="lead">Bucle cerrado de 2,5 km que sale y vuelve a Bălcescu 10, en una sola tirada. Unos 23 minutos de audio y entre 2 h 30 y 3 h de reloj sin contar interiores. Las paradas en <b>dorado</b> se pueden visitar por dentro.</p>
 
     <div class="tour-acc">
       <button type="button" id="tourMapaBtn">Abrir el mapa</button>
-      <a class="sec" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;origin=45.7944,24.1503&amp;destination=45.7946,24.1480&amp;waypoints=45.7968,24.1512%7C45.7966,24.1507%7C45.7976,24.1521%7C45.7977,24.1512%7C45.7983,24.1508%7C45.7977,24.1501%7C45.7980,24.1497%7C45.7970,24.1493" target="_blank" rel="noopener">Mañana en Maps</a>
-      <a class="sec" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;origin=45.7944,24.1503&amp;destination=45.7934,24.1523&amp;waypoints=45.7944,24.1537%7C45.7943,24.1532%7C45.7938,24.1523%7C45.7932,24.1512" target="_blank" rel="noopener">Tarde en Maps</a>
+      <a class="sec" href="https://www.google.com/maps/dir/?api=1&amp;travelmode=walking&amp;origin=45.7944,24.1503&amp;destination=45.7944,24.1503&amp;waypoints=45.7968,24.1512%7C45.7977,24.1512%7C45.7983,24.1508%7C45.7977,24.1501%7C45.7980,24.1497%7C45.7970,24.1493%7C45.7946,24.1480%7C45.7944,24.1537%7C45.7932,24.1512" target="_blank" rel="noopener">Ruta entera en Maps</a>
       <button type="button" class="sec" id="tourReset">Reiniciar</button>
     </div>
 
-    <div class="tmap-box" id="tmapBox">
-      <div class="tmap-ph" id="tmapPh">
-        <p>El mapa carga desde internet y gasta datos. Tocá para abrirlo; después queda guardado.</p>
-        <button type="button" id="tmapCargar">Cargar el mapa</button>
-      </div>
-      <div id="tmap" hidden></div>
-      <div class="tmap-bar" id="tmapBar" hidden>
-        <button type="button" id="tmapGps">Mi posición</button>
-        <div class="tmap-dist" id="tmapDist">Tocá "Mi posición" para ver a cuánto está la próxima parada.</div>
-      </div>
-    </div>
-    <p class="mapa-pie">Los círculos verdes son las paradas con audio. Los puntos dorados, referencias del camino.</p>
+    <button type="button" class="tmap-re" id="tmapRe">🗺 Abrir el mapa a pantalla completa</button>
 
     <div class="aviso">
       <div class="av-label">Antes de salir</div>
@@ -2695,10 +2716,10 @@
           </div>
         </div>
       </details>
-      <details class="tp" id="tp02" data-n="2" data-lat="45.79658" data-lng="24.15066">
+      <details class="tp entra" id="tp02" data-n="2" data-lat="45.79658" data-lng="24.15066">
         <summary class="tp-head">
           <span class="tp-num">2</span>
-          <span class="tp-t"><h4>Palatul Brukenthal</h4><span>El palacio del barón</span></span>
+          <span class="tp-t"><h4>Palatul Brukenthal</h4><span>El palacio del barón</span><span class="tp-in">Se entra · 50 lei</span></span>
           <span class="tp-min">2:30</span>
         </summary>
         <div class="tp-body">
@@ -2749,10 +2770,10 @@
           </div>
         </div>
       </details>
-      <details class="tp" id="tp04" data-n="4" data-lat="45.79767" data-lng="24.15121">
+      <details class="tp entra" id="tp04" data-n="4" data-lat="45.79767" data-lng="24.15121">
         <summary class="tp-head">
           <span class="tp-num">4</span>
-          <span class="tp-t"><h4>Piața Mică</h4><span>La plaza de los oficios</span></span>
+          <span class="tp-t"><h4>Piața Mică</h4><span>La plaza de los oficios</span><span class="tp-in">Se entra · 16 lei</span></span>
           <span class="tp-min">2:10</span>
         </summary>
         <div class="tp-body">
@@ -2803,10 +2824,10 @@
           </div>
         </div>
       </details>
-      <details class="tp" id="tp06" data-n="6" data-lat="45.79774" data-lng="24.1501">
+      <details class="tp entra" id="tp06" data-n="6" data-lat="45.79774" data-lng="24.1501">
         <summary class="tp-head">
           <span class="tp-num">6</span>
-          <span class="tp-t"><h4>Catedrala Evanghelică</h4><span>Piața Huet</span></span>
+          <span class="tp-t"><h4>Catedrala Evanghelică</h4><span>Piața Huet</span><span class="tp-in">Se entra · 10–15 lei</span></span>
           <span class="tp-min">2:30</span>
         </summary>
         <div class="tp-body">
@@ -2857,10 +2878,10 @@
           </div>
         </div>
       </details>
-      <details class="tp" id="tp08" data-n="8" data-lat="45.79697" data-lng="24.14932">
+      <details class="tp entra" id="tp08" data-n="8" data-lat="45.79697" data-lng="24.14932">
         <summary class="tp-head">
           <span class="tp-num">8</span>
-          <span class="tp-t"><h4>Casa Altemberger</h4><span>La primaria vieja · Museo de Historia</span></span>
+          <span class="tp-t"><h4>Casa Altemberger</h4><span>La primaria vieja · Museo de Historia</span><span class="tp-in">Se entra · 36 lei</span></span>
           <span class="tp-min">2:10</span>
         </summary>
         <div class="tp-body">
@@ -2884,10 +2905,10 @@
           </div>
         </div>
       </details>
-      <details class="tp" id="tp09" data-n="9" data-lat="45.79465" data-lng="24.14799">
+      <details class="tp entra" id="tp09" data-n="9" data-lat="45.79465" data-lng="24.14799">
         <summary class="tp-head">
           <span class="tp-num">9</span>
-          <span class="tp-t"><h4>Catedrala Sfânta Treime</h4><span>La catedral ortodoxa</span></span>
+          <span class="tp-t"><h4>Catedrala Sfânta Treime</h4><span>La catedral ortodoxa</span><span class="tp-in">Se entra · gratis</span></span>
           <span class="tp-min">2:10</span>
         </summary>
         <div class="tp-body">
@@ -2938,10 +2959,10 @@
           </div>
         </div>
       </details>
-      <details class="tp" id="tp11" data-n="11" data-lat="45.79426" data-lng="24.15323">
+      <details class="tp entra" id="tp11" data-n="11" data-lat="45.79426" data-lng="24.15323">
         <summary class="tp-head">
           <span class="tp-num">11</span>
-          <span class="tp-t"><h4>Las tres torres</h4><span>Strada Cetății</span></span>
+          <span class="tp-t"><h4>Las tres torres</h4><span>Strada Cetății</span><span class="tp-in">Se entra · 2 lei</span></span>
           <span class="tp-min">2:00</span>
         </summary>
         <div class="tp-body">
@@ -3436,6 +3457,28 @@
   <div class="res" id="gxMovRes"></div>
   <div class="ay">Elegí el día</div>
   <div id="gxMovLista"></div>
+</div>
+
+
+<div class="tmap-bg" id="tmapBg"></div>
+
+<div class="tmap-sheet" id="tmapSheet" role="dialog" aria-modal="true" aria-label="Mapa del tour de Sibiu">
+  <div class="tmap-top">
+    <div class="cnv-grab"></div>
+    <div class="cnv-head">
+      <h3>Sibiu a pie</h3>
+      <button type="button" class="cnv-x" id="tmapX" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+  <div class="tmap-ph" id="tmapPh">
+    <p>El mapa carga desde internet y gasta datos. Tocá para abrirlo; después queda guardado.</p>
+    <button type="button" id="tmapCargar">Cargar el mapa</button>
+  </div>
+  <div id="tmap" hidden></div>
+  <div class="tmap-bar" id="tmapBar" hidden>
+    <button type="button" id="tmapGps">Mi posición</button>
+    <div class="tmap-dist" id="tmapDist">Tocá "Mi posición" para ver a cuánto está la próxima parada.</div>
+  </div>
 </div>
 
 <div class="lb" id="lightbox">
@@ -4227,8 +4270,11 @@
     document.head.appendChild(s);
   }
 
+  var ENTRABLES = [2,4,6,8,9,11];
   function icono(p){
-    var c = 'lmk' + (esHecha(p.n) ? ' hecha' : '');
+    var c = 'lmk';
+    if(ENTRABLES.indexOf(p.n) !== -1) c += ' entra';
+    if(esHecha(p.n)) c += ' hecha';
     return L.divIcon({html:'<div class="'+c+'">'+p.n+'</div>', className:'',
                       iconSize:[26,26], iconAnchor:[13,13]});
   }
@@ -4270,14 +4316,44 @@
     viendo = true;
   }
 
+  var sheet = document.getElementById('tmapSheet');
+  var fondo = document.getElementById('tmapBg');
+
+  function abrirSheet(){
+    fondo.classList.add('open');
+    sheet.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    /* Leaflet mide mal si arranca oculto: se le avisa cuando ya esta a la vista */
+    if(mapa) setTimeout(function(){ mapa.invalidateSize(); }, 320);
+  }
+  function cerrarSheet(){
+    fondo.classList.remove('open');
+    sheet.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function abrirMapa(){
+    abrirSheet();
+    if(viendo) return;
+    cargarLeaflet(function(){
+      if(!viendo){
+        iniciar();
+        setTimeout(function(){ if(mapa) mapa.invalidateSize(); }, 60);
+      }
+    });
+  }
+
   var btnCargar = document.getElementById('tmapCargar');
   var btnAbrir  = document.getElementById('tourMapaBtn');
-  function abrirMapa(){
-    if(viendo){ document.getElementById('tmapBox').scrollIntoView({behavior:'smooth'}); return; }
-    cargarLeaflet(function(){ if(!viendo) iniciar(); });
-  }
+  var btnRe     = document.getElementById('tmapRe');
   if(btnCargar) btnCargar.addEventListener('click', abrirMapa);
   if(btnAbrir)  btnAbrir.addEventListener('click', abrirMapa);
+  if(btnRe)     btnRe.addEventListener('click', abrirMapa);
+  document.getElementById('tmapX').addEventListener('click', cerrarSheet);
+  fondo.addEventListener('click', cerrarSheet);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && sheet.classList.contains('open')) cerrarSheet();
+  });
 
   /* ---- GPS ---- */
   function metros(a, b){
