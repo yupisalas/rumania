@@ -3022,7 +3022,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-09-02 · v20</b><br>
+      Versión de la guía: <b>2026-09-02 · v22</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -3686,7 +3686,7 @@
   }
 
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').then(function(reg){
+    navigator.serviceWorker.register('sw.js', {updateViaCache:'none'}).then(function(reg){
 
       // Si aparece una versión nueva mientras la app está abierta, avisamos
       reg.addEventListener('updatefound', function(){
@@ -4315,19 +4315,57 @@
   /* ---- mapa ---- */
   var mapa = null, marcadores = [], yo = null, miPos = null, viendo = false;
 
-  function cargarLeaflet(cb){
+  var CDNS = [
+    'https://unpkg.com/leaflet@1.9.4/dist/',
+    'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/'
+  ];
+
+  function fallo(msj){
+    var ph = document.getElementById('tmapPh');
+    if(!ph) return;
+    ph.hidden = false;
+    ph.innerHTML = '<p>' + msj + '</p>' +
+      '<a class="sec" style="font-family:var(--sans);font-size:13px;font-weight:600;' +
+      'color:var(--bosque2);border:1px solid rgba(28,58,46,.3);border-radius:100px;' +
+      'padding:11px 18px;text-decoration:none" target="_blank" rel="noopener" ' +
+      'href="https://www.google.com/maps/dir/?api=1&travelmode=walking' +
+      '&origin=45.7944,24.1503&destination=45.7944,24.1503&waypoints=' +
+      '45.7968,24.1512%7C45.7977,24.1512%7C45.7983,24.1508%7C45.7977,24.1501' +
+      '%7C45.7980,24.1497%7C45.7970,24.1493%7C45.7946,24.1480%7C45.7944,24.1537' +
+      '%7C45.7932,24.1512">Abrir la ruta en Google Maps</a>';
+  }
+
+  function cargarLeaflet(cb, intento){
     if(window.L) return cb();
+    intento = intento || 0;
+    if(intento >= CDNS.length){
+      fallo('No se pudo cargar el mapa. Puede ser se\u00f1al floja o el servidor ca\u00eddo.');
+      return;
+    }
+    var ph = document.getElementById('tmapPh');
+    if(ph) ph.innerHTML = '<p>Cargando el mapa...</p>';
+
     var css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    css.href = CDNS[intento] + 'leaflet.css';
     document.head.appendChild(css);
+
     var s = document.createElement('script');
-    s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    s.onload = cb;
+    s.src = CDNS[intento] + 'leaflet.js';
+    var listo = false;
+    var reloj = setTimeout(function(){
+      if(listo || window.L) return;
+      listo = true;
+      cargarLeaflet(cb, intento + 1);
+    }, 8000);
+    s.onload = function(){
+      if(listo) return;
+      listo = true; clearTimeout(reloj); cb();
+    };
     s.onerror = function(){
-      var ph = document.getElementById('tmapPh');
-      if(ph) ph.innerHTML = '<p>No se pudo cargar el mapa (sin datos, o el servidor no responde). ' +
-        'Us\u00e1 los botones de Maps de arriba, que abren la ruta completa.</p>';
+      if(listo) return;
+      listo = true; clearTimeout(reloj);
+      cargarLeaflet(cb, intento + 1);
     };
     document.head.appendChild(s);
   }
@@ -4354,9 +4392,19 @@
     document.getElementById('tmapBar').hidden = false;
 
     mapa = L.map(cont, {zoomControl:true, attributionControl:true});
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    var fallos = 0;
+    var capa = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom:19, attribution:'&copy; OpenStreetMap'
-    }).addTo(mapa);
+    });
+    capa.on('tileerror', function(){
+      fallos++;
+      if(fallos === 6){
+        var d = document.getElementById('tmapDist');
+        if(d) d.innerHTML = 'Los mosaicos del mapa no cargan. Prob\u00e1 con wifi, ' +
+          'o us\u00e1 el bot\u00f3n de Google Maps del final de la lista.';
+      }
+    });
+    capa.addTo(mapa);
 
     var linea = PARADAS.map(function(p){ return [p.lat, p.lng]; });
     L.polyline(linea, {color:'#1c3a2e', weight:3, opacity:.55, dashArray:'6 6'}).addTo(mapa);

@@ -4,7 +4,7 @@
    Sin señal (o con señal muy mala), se sirve la última copia guardada.
    El timeout es lo que evita que la app se quede colgada en una zona sin cobertura. */
 
-const CACHE = 'rumania-v20';
+const CACHE = 'rumania-v22';
 const TIMEOUT = 3500;
 
 const ASSETS = [
@@ -115,18 +115,24 @@ function cachePrimero(req) {
         caches.open(CACHE).then((c) => c.put(req, copia));
       }
       return res;
-    }).catch(() => guardada);
+    }).catch(() => guardada || Response.error());
   });
 }
+
+/* Dominios externos que si conviene guardar: solo las webfonts.
+   Todo lo demas (Leaflet, mosaicos del mapa) se deja pasar sin tocar,
+   para que lo maneje el navegador con sus propios reintentos. */
+const FUENTES = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
   if (url.origin === self.location.origin) {
     e.respondWith(redPrimero(e.request));
-  } else {
+  } else if (FUENTES.indexOf(url.hostname) !== -1) {
     e.respondWith(cachePrimero(e.request));
   }
+  /* resto de dominios: sin respondWith, pasa directo a la red */
 });
 
 /* Permite forzar la limpieza del caché desde la página */
