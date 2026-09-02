@@ -953,7 +953,8 @@
   .tmap-top{padding:10px 20px 0;flex:none;}
   .tmap-top .cnv-head{margin-bottom:10px;}
   /* el mapa se come todo el alto que sobra */
-  #tmap{flex:1;min-height:0;width:100%;background:#e9e0cc;}
+  #tmap{flex:1;min-height:0;width:100%;background:var(--crema-solid);padding:6px 10px 0;}
+  #tmap svg{display:block;width:100%;height:100%;}
   .tmap-ph{
     flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;
     justify-content:center;gap:12px;text-align:center;padding:0 30px;
@@ -3022,7 +3023,7 @@
     <p class="fr">"Drumul bun se cunoaște de dimineață"</p>
     <p>El buen camino se reconoce desde la mañana · Nos vemos en los Cárpatos</p>
     <div class="sello">
-      Versión de la guía: <b>2026-09-02 · v22</b><br>
+      Versión de la guía: <b>2026-09-02 · v23</b><br>
       <span class="pill" id="estado">Comprobando si hay algo nuevo</span>
     </div>
   </div>
@@ -3533,8 +3534,8 @@
 
   <div class="tour-pane" id="paneMapa" hidden>
     <div class="tmap-ph" id="tmapPh">
-      <p>El mapa carga desde internet y gasta datos. Tocá para abrirlo; después queda guardado.</p>
-      <button type="button" id="tmapCargar">Cargar el mapa</button>
+      <p>Croquis de las 13 paradas, sin callejero. Funciona sin señal.</p>
+      <button type="button" id="tmapCargar">Ver el croquis</button>
     </div>
     <div id="tmap" hidden></div>
   </div>
@@ -4220,7 +4221,10 @@
 </script>
 
 <script>
-/* Walking tour de Sibiu: mapa Leaflet a demanda, GPS y paradas hechas */
+/* Walking tour de Sibiu.
+   El mapa se dibuja en SVG con las propias coordenadas: sin librerias
+   externas, sin mosaicos y sin red. Lo unico que necesita es el GPS,
+   que es local. Para el callejero esta el boton de Google Maps. */
 (function(){
   var SEC = document.getElementById('tour-sibiu');
   if(!SEC) return;
@@ -4247,43 +4251,163 @@
   {lat:45.79341,lng:24.15228,nom:"Parcul Cetății"},
   {lat:45.7944,lng:24.15033,nom:"Apartment Bălcescu 10"}
   ];
+  var ENTRABLES = [2,4,6,8,9,11];
   var CLAVE = 'sibiu-tour-hechas';
 
-  /* ---- paradas hechas, en localStorage ---- */
+  /* ---------------- paradas hechas ---------------- */
   function leer(){
     try{ return JSON.parse(localStorage.getItem(CLAVE) || '[]'); }
     catch(e){ return []; }
   }
-  function guardar(a){
-    try{ localStorage.setItem(CLAVE, JSON.stringify(a)); }catch(e){}
-  }
+  function guardar(a){ try{ localStorage.setItem(CLAVE, JSON.stringify(a)); }catch(e){} }
   var hechas = leer();
-
   function esHecha(n){ return hechas.indexOf(n) !== -1; }
-
   function proxima(){
-    for(var i=0;i<PARADAS.length;i++){
-      if(!esHecha(PARADAS[i].n)) return PARADAS[i];
-    }
+    for(var i=0;i<PARADAS.length;i++){ if(!esHecha(PARADAS[i].n)) return PARADAS[i]; }
     return null;
   }
 
+  /* ---------------- proyeccion ----------------
+     A esta escala (500 m) la Mercator es practicamente lineal.
+     Solo hace falta corregir la longitud por el coseno de la latitud. */
+  var W = 340, H = 430, PAD = 26;
+  var todos = PARADAS.concat(EXTRAS);
+  var lat0 = 45.797, kx = Math.cos(lat0 * Math.PI / 180);
+  var minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
+  todos.forEach(function(p){
+    var x = p.lng * kx, y = -p.lat;
+    if(x < minX) minX = x; if(x > maxX) maxX = x;
+    if(y < minY) minY = y; if(y > maxY) maxY = y;
+  });
+  var escala = Math.min((W - 2*PAD) / (maxX - minX), (H - 2*PAD) / (maxY - minY));
+  var offX = (W - (maxX - minX) * escala) / 2;
+  var offY = (H - (maxY - minY) * escala) / 2;
+
+  function proy(lat, lng){
+    return [ (lng * kx - minX) * escala + offX,
+             (-lat - minY) * escala + offY ];
+  }
+
+  /* metros por unidad de SVG, para la barra de escala */
+  var mPorUnidad = 111320 / escala;
+
+  /* ---------------- dibujo ---------------- */
+  var svg = null, dibujado = false, gYo = null;
+
+  function el(tag, attrs){
+    var n = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for(var k in attrs){ n.setAttribute(k, attrs[k]); }
+    return n;
+  }
+
+  function dibujar(){
+    if(dibujado) return;
+    var cont = document.getElementById('tmap');
+    var ph = document.getElementById('tmapPh');
+    if(ph) ph.hidden = true;
+    cont.hidden = false;
+    cont.innerHTML = '';
+
+    svg = el('svg', {viewBox:'0 0 ' + W + ' ' + H,
+                     preserveAspectRatio:'xMidYMid meet',
+                     width:'100%', height:'100%'});
+
+    /* recorrido */
+    var d = PARADAS.map(function(p, i){
+      var c = proy(p.lat, p.lng);
+      return (i ? 'L' : 'M') + c[0].toFixed(1) + ' ' + c[1].toFixed(1);
+    }).join(' ');
+    svg.appendChild(el('path', {d:d, fill:'none', stroke:'#1c3a2e',
+      'stroke-width':2.4, 'stroke-opacity':.45, 'stroke-dasharray':'6 5',
+      'stroke-linejoin':'round', 'stroke-linecap':'round'}));
+
+    /* referencias del camino */
+    EXTRAS.forEach(function(e){
+      var c = proy(e.lat, e.lng);
+      svg.appendChild(el('circle', {cx:c[0], cy:c[1], r:3.4,
+        fill:'#c99a3f', stroke:'#f4ecdc', 'stroke-width':1.4}));
+    });
+
+    /* posicion propia, se dibuja despues pero reserva su lugar */
+    gYo = el('g', {});
+    svg.appendChild(gYo);
+
+    /* paradas */
+    PARADAS.forEach(function(p){
+      var c = proy(p.lat, p.lng);
+      var g = el('g', {'data-n':p.n, style:'cursor:pointer'});
+      g.appendChild(el('circle', {cx:c[0], cy:c[1], r:11.5,
+        stroke:'#f4ecdc', 'stroke-width':2.2, 'class':'pm-c'}));
+      var t = el('text', {x:c[0], y:c[1] + 3.9, 'text-anchor':'middle',
+        'font-size':11, 'font-weight':700, 'class':'pm-t',
+        'font-family':'-apple-system,Inter,sans-serif'});
+      t.textContent = p.n;
+      g.appendChild(t);
+      g.addEventListener('click', function(){
+        verTab('paradas');
+        var card = document.getElementById('tp' + (p.n<10?'0':'') + p.n);
+        if(card){ card.open = true; card.scrollIntoView({block:'center'}); }
+      });
+      svg.appendChild(g);
+    });
+
+    /* barra de escala: 100 m */
+    var largo = 100 / mPorUnidad;
+    var bx = PAD, by = H - 14;
+    svg.appendChild(el('path', {d:'M'+bx+' '+by+' h'+largo.toFixed(1),
+      stroke:'#4a3f30', 'stroke-width':1.6}));
+    var lt = el('text', {x:bx + largo/2, y:by - 5, 'text-anchor':'middle',
+      'font-size':9, fill:'#4a3f30', 'font-family':'-apple-system,Inter,sans-serif'});
+    lt.textContent = '100 m';
+    svg.appendChild(lt);
+
+    cont.appendChild(svg);
+    dibujado = true;
+    pintarMarcadores();
+    pintarYo();
+  }
+
+  function pintarMarcadores(){
+    if(!svg) return;
+    PARADAS.forEach(function(p){
+      var g = svg.querySelector('g[data-n="' + p.n + '"]');
+      if(!g) return;
+      var c = g.querySelector('.pm-c'), t = g.querySelector('.pm-t');
+      var relleno = '#1c3a2e', letra = '#f4ecdc';
+      if(ENTRABLES.indexOf(p.n) !== -1){ relleno = '#c99a3f'; letra = '#20180f'; }
+      if(esHecha(p.n)){ relleno = '#8f8677'; letra = '#f4ecdc'; }
+      c.setAttribute('fill', relleno);
+      t.setAttribute('fill', letra);
+    });
+  }
+
+  function pintarYo(){
+    if(!gYo || !miPos) return;
+    gYo.innerHTML = '';
+    var c = proy(miPos[0], miPos[1]);
+    gYo.appendChild(el('circle', {cx:c[0], cy:c[1], r:13,
+      fill:'#2b7de0', 'fill-opacity':.18}));
+    gYo.appendChild(el('circle', {cx:c[0], cy:c[1], r:6,
+      fill:'#2b7de0', stroke:'#fff', 'stroke-width':2.4}));
+  }
+
+  /* ---------------- tarjetas ---------------- */
   function pintarTarjetas(){
     PARADAS.forEach(function(p){
-      var el = document.getElementById('tp' + (p.n<10?'0':'') + p.n);
-      if(!el) return;
-      var btn = el.querySelector('.tp-ok');
+      var e = document.getElementById('tp' + (p.n<10?'0':'') + p.n);
+      if(!e) return;
+      var b = e.querySelector('.tp-ok');
       if(esHecha(p.n)){
-        el.classList.add('hecha');
-        if(btn){ btn.textContent = 'Hecha \u2713'; btn.classList.add('on'); }
+        e.classList.add('hecha');
+        if(b){ b.textContent = 'Hecha \u2713'; b.classList.add('on'); }
       }else{
-        el.classList.remove('hecha');
-        if(btn){ btn.textContent = 'Marcar hecha'; btn.classList.remove('on'); }
+        e.classList.remove('hecha');
+        if(b){ b.textContent = 'Marcar hecha'; b.classList.remove('on'); }
       }
     });
-    if(marcadores.length) pintarMarcadores();
     var prog = document.getElementById('tcProg');
     if(prog) prog.textContent = hechas.length + '/' + PARADAS.length;
+    pintarMarcadores();
     calcularDistancia();
   }
 
@@ -4293,9 +4417,17 @@
     e.preventDefault();
     var n = parseInt(b.getAttribute('data-n'), 10);
     var i = hechas.indexOf(n);
-    if(i === -1) hechas.push(n); else hechas.splice(i,1);
-    guardar(hechas);
-    pintarTarjetas();
+    if(i === -1) hechas.push(n); else hechas.splice(i, 1);
+    guardar(hechas); pintarTarjetas();
+  });
+  document.getElementById('tmapSheet').addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.tp-ok') : null;
+    if(!b) return;
+    e.preventDefault();
+    var n = parseInt(b.getAttribute('data-n'), 10);
+    var i = hechas.indexOf(n);
+    if(i === -1) hechas.push(n); else hechas.splice(i, 1);
+    guardar(hechas); pintarTarjetas();
   });
 
   var reset = document.getElementById('tourReset');
@@ -4303,8 +4435,8 @@
     hechas = []; guardar(hechas); pintarTarjetas();
   });
 
-  /* ---- si el mp3 todavia no existe, se muestra el aviso ---- */
-  Array.prototype.forEach.call(SEC.querySelectorAll('.tp-audio audio'), function(a){
+  /* mp3 todavia no subido */
+  Array.prototype.forEach.call(document.querySelectorAll('.tp-audio audio'), function(a){
     a.addEventListener('error', function(){
       a.hidden = true;
       var av = a.parentNode.querySelector('.tp-noaudio');
@@ -4312,120 +4444,7 @@
     });
   });
 
-  /* ---- mapa ---- */
-  var mapa = null, marcadores = [], yo = null, miPos = null, viendo = false;
-
-  var CDNS = [
-    'https://unpkg.com/leaflet@1.9.4/dist/',
-    'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/'
-  ];
-
-  function fallo(msj){
-    var ph = document.getElementById('tmapPh');
-    if(!ph) return;
-    ph.hidden = false;
-    ph.innerHTML = '<p>' + msj + '</p>' +
-      '<a class="sec" style="font-family:var(--sans);font-size:13px;font-weight:600;' +
-      'color:var(--bosque2);border:1px solid rgba(28,58,46,.3);border-radius:100px;' +
-      'padding:11px 18px;text-decoration:none" target="_blank" rel="noopener" ' +
-      'href="https://www.google.com/maps/dir/?api=1&travelmode=walking' +
-      '&origin=45.7944,24.1503&destination=45.7944,24.1503&waypoints=' +
-      '45.7968,24.1512%7C45.7977,24.1512%7C45.7983,24.1508%7C45.7977,24.1501' +
-      '%7C45.7980,24.1497%7C45.7970,24.1493%7C45.7946,24.1480%7C45.7944,24.1537' +
-      '%7C45.7932,24.1512">Abrir la ruta en Google Maps</a>';
-  }
-
-  function cargarLeaflet(cb, intento){
-    if(window.L) return cb();
-    intento = intento || 0;
-    if(intento >= CDNS.length){
-      fallo('No se pudo cargar el mapa. Puede ser se\u00f1al floja o el servidor ca\u00eddo.');
-      return;
-    }
-    var ph = document.getElementById('tmapPh');
-    if(ph) ph.innerHTML = '<p>Cargando el mapa...</p>';
-
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = CDNS[intento] + 'leaflet.css';
-    document.head.appendChild(css);
-
-    var s = document.createElement('script');
-    s.src = CDNS[intento] + 'leaflet.js';
-    var listo = false;
-    var reloj = setTimeout(function(){
-      if(listo || window.L) return;
-      listo = true;
-      cargarLeaflet(cb, intento + 1);
-    }, 8000);
-    s.onload = function(){
-      if(listo) return;
-      listo = true; clearTimeout(reloj); cb();
-    };
-    s.onerror = function(){
-      if(listo) return;
-      listo = true; clearTimeout(reloj);
-      cargarLeaflet(cb, intento + 1);
-    };
-    document.head.appendChild(s);
-  }
-
-  var ENTRABLES = [2,4,6,8,9,11];
-  function icono(p){
-    var c = 'lmk';
-    if(ENTRABLES.indexOf(p.n) !== -1) c += ' entra';
-    if(esHecha(p.n)) c += ' hecha';
-    return L.divIcon({html:'<div class="'+c+'">'+p.n+'</div>', className:'',
-                      iconSize:[26,26], iconAnchor:[13,13]});
-  }
-
-  function pintarMarcadores(){
-    marcadores.forEach(function(m, i){
-      m.setIcon(icono(PARADAS[i]));
-    });
-  }
-
-  function iniciar(){
-    var cont = document.getElementById('tmap');
-    document.getElementById('tmapPh').hidden = true;
-    cont.hidden = false;
-    document.getElementById('tmapBar').hidden = false;
-
-    mapa = L.map(cont, {zoomControl:true, attributionControl:true});
-    var fallos = 0;
-    var capa = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom:19, attribution:'&copy; OpenStreetMap'
-    });
-    capa.on('tileerror', function(){
-      fallos++;
-      if(fallos === 6){
-        var d = document.getElementById('tmapDist');
-        if(d) d.innerHTML = 'Los mosaicos del mapa no cargan. Prob\u00e1 con wifi, ' +
-          'o us\u00e1 el bot\u00f3n de Google Maps del final de la lista.';
-      }
-    });
-    capa.addTo(mapa);
-
-    var linea = PARADAS.map(function(p){ return [p.lat, p.lng]; });
-    L.polyline(linea, {color:'#1c3a2e', weight:3, opacity:.55, dashArray:'6 6'}).addTo(mapa);
-
-    EXTRAS.forEach(function(e){
-      L.marker([e.lat, e.lng], {
-        icon: L.divIcon({html:'<div class="lmk chico"></div>', className:'',
-                         iconSize:[15,15], iconAnchor:[7,7]})
-      }).addTo(mapa).bindPopup(e.nom);
-    });
-
-    marcadores = PARADAS.map(function(p){
-      return L.marker([p.lat, p.lng], {icon: icono(p)})
-              .addTo(mapa)
-              .bindPopup('<b>' + p.n + ' \u00b7 ' + p.nom + '</b>');
-    });
-
-    mapa.fitBounds(L.latLngBounds(linea), {padding:[28,28]});
-    viendo = true;
-  }
-
+  /* ---------------- sheet y pestanas ---------------- */
   var sheet = document.getElementById('tmapSheet');
   var fondo = document.getElementById('tmapBg');
 
@@ -4433,8 +4452,6 @@
     fondo.classList.add('open');
     sheet.classList.add('open');
     document.body.style.overflow = 'hidden';
-    /* Leaflet mide mal si arranca oculto: se le avisa cuando ya esta a la vista */
-    if(mapa) setTimeout(function(){ mapa.invalidateSize(); }, 320);
   }
   function cerrarSheet(){
     fondo.classList.remove('open');
@@ -4442,9 +4459,6 @@
     document.body.style.overflow = '';
   }
 
-  function abrirMapa(){ abrirSheet(); }
-
-  /* pestanas */
   var tabP = document.getElementById('tabParadas');
   var tabM = document.getElementById('tabMapa');
   var panP = document.getElementById('paneParadas');
@@ -4456,27 +4470,24 @@
     tabP.classList.toggle('on', !esMapa);
     panM.hidden = !esMapa;
     panP.hidden = esMapa;
-    if(esMapa){
-      if(!viendo) cargarLeaflet(function(){ if(!viendo) iniciar(); });
-      else setTimeout(function(){ mapa.invalidateSize(); }, 40);
-    }
+    if(esMapa) dibujar();
   }
   tabP.addEventListener('click', function(){ verTab('paradas'); });
   tabM.addEventListener('click', function(){ verTab('mapa'); });
 
+  var btnAbrir = document.getElementById('tourAbrir');
+  if(btnAbrir) btnAbrir.addEventListener('click', abrirSheet);
   var btnCargar = document.getElementById('tmapCargar');
-  var btnAbrir  = document.getElementById('tourAbrir');
-  if(btnCargar) btnCargar.addEventListener('click', function(){
-    cargarLeaflet(function(){ if(!viendo) iniciar(); });
-  });
-  if(btnAbrir)  btnAbrir.addEventListener('click', abrirMapa);
+  if(btnCargar) btnCargar.addEventListener('click', dibujar);
   document.getElementById('tmapX').addEventListener('click', cerrarSheet);
   fondo.addEventListener('click', cerrarSheet);
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && sheet.classList.contains('open')) cerrarSheet();
   });
 
-  /* ---- GPS ---- */
+  /* ---------------- GPS ---------------- */
+  var miPos = null;
+
   function metros(a, b){
     var R = 6371000, r = Math.PI/180;
     var dLat = (b[0]-a[0])*r, dLng = (b[1]-a[1])*r;
@@ -4504,18 +4515,10 @@
     caja.textContent = 'Buscando se\u00f1al...';
     navigator.geolocation.watchPosition(function(pos){
       miPos = [pos.coords.latitude, pos.coords.longitude];
-      if(mapa){
-        if(!yo){
-          yo = L.marker(miPos, {icon: L.divIcon({html:'<div class="lyo"></div>',
-               className:'', iconSize:[16,16], iconAnchor:[8,8]})}).addTo(mapa);
-          mapa.setView(miPos, 16);
-        }else{
-          yo.setLatLng(miPos);
-        }
-      }
+      pintarYo();
       calcularDistancia();
     }, function(){
-      caja.textContent = 'No se pudo leer la ubicaci\u00f3n. Revis\u00e1 los permisos del navegador.';
+      caja.textContent = 'No se pudo leer la ubicaci\u00f3n. Revis\u00e1 los permisos.';
     }, {enableHighAccuracy:true, maximumAge:10000, timeout:15000});
   });
 
